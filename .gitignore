@@ -3,4 +3,4 @@ public/
 .hugo_build.lock
 
 */**/node_modules
-*/**/_vendor
+# */**/_vendor
