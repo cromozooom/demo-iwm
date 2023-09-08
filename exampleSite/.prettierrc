@@ -20,7 +20,7 @@
             ],
             "options": {
                 "useTabs": false,
-                "printWidth": 1000,
+                "printWidth": 500,
                 "singleQuote": true
             }
         }
