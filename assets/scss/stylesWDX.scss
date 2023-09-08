@@ -1,0 +1,209 @@
+@use "sass:map";
+@use "sass:color";
+
+// // @import "bootstrap/bootstrap";
+
+html,
+.body {
+  // font-size: 1rem;
+  font-size: 62.5%;
+}
+
+/*!
+* Bootstrap v4.6.1 (https://getbootstrap.com/)
+* Copyright 2011-2021 The Bootstrap Authors
+* Copyright 2011-2021 Twitter, Inc.
+* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+*/
+
+@import "bootstrap/functions";
+@import "variables_wdx";
+@import "themes";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+@import "bootstrap/button-group";
+@import "bootstrap/input-group";
+@import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/pagination";
+@import "bootstrap/badge";
+@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+@import "bootstrap/progress";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/close";
+@import "bootstrap/toasts";
+@import "bootstrap/modal";
+@import "bootstrap/tooltip";
+@import "bootstrap/popover";
+@import "bootstrap/carousel";
+@import "bootstrap/spinners";
+@import "bootstrap/utilities";
+@import "bootstrap/print";
+
+@import "custom";
+
+// // Original
+
+// @import "../scss-wdx/instance-relay";
+
+// @import "../scss-wdx/wdx/abstract/global-reset";
+// @import "../scss-wdx/wdx/abstract/functions";
+
+// // @import "xxnode_modules/bootstrap/scss/functions";
+// @import "bootstrap/functions";
+
+// // @import "xxnode_modules/bootstrap/scss/variables";
+// @import "bootstrap/variables";
+
+// @import "../scss-wdx/fallback"; // for instance-relay
+
+// @import "../scss-wdx/wdx/variables/grayscale";
+// @import "../scss-wdx/wdx/variables/typography";
+
+// @import "../scss-wdx/bs4-overrides/variables/options";
+// @import "../scss-wdx/bs4-overrides/variables/variables";
+// @import "../scss-wdx/bs4-overrides/variables/theme";
+
+// @import "../scss-wdx/bs4-overrides/variables/svg";
+// @import "../scss-wdx/bs4-overrides/variables/spacing";
+// @import "../scss-wdx/bs4-overrides/variables/sizes";
+// @import "../scss-wdx/bs4-overrides/variables/body";
+// @import "../scss-wdx/bs4-overrides/variables/borders";
+// @import "../scss-wdx/bs4-overrides/variables/links";
+// @import "../scss-wdx/bs4-overrides/variables/paragraphs";
+// @import "../scss-wdx/bs4-overrides/variables/grid";
+// @import "../scss-wdx/bs4-overrides/variables/components";
+// @import "../scss-wdx/bs4-overrides/variables/typography";
+// @import "../scss-wdx/bs4-overrides/variables/tables";
+// @import "../scss-wdx/bs4-overrides/variables/buttons";
+// @import "../scss-wdx/bs4-overrides/variables/forms";
+// @import "../scss-wdx/bs4-overrides/variables/navs";
+// @import "../scss-wdx/bs4-overrides/variables/navbar";
+// @import "../scss-wdx/bs4-overrides/variables/dropdowns";
+// @import "../scss-wdx/bs4-overrides/variables/pagination";
+// @import "../scss-wdx/bs4-overrides/variables/jumbotron";
+// @import "../scss-wdx/bs4-overrides/variables/cards";
+// @import "../scss-wdx/bs4-overrides/variables/tooltips";
+// @import "../scss-wdx/bs4-overrides/variables/popovers";
+// @import "../scss-wdx/bs4-overrides/variables/toasts";
+// @import "../scss-wdx/bs4-overrides/variables/badges";
+// @import "../scss-wdx/bs4-overrides/variables/modals";
+// @import "../scss-wdx/bs4-overrides/variables/progress-bars";
+// @import "../scss-wdx/bs4-overrides/variables/list-group";
+// @import "../scss-wdx/bs4-overrides/variables/image-thumbnails";
+// @import "../scss-wdx/bs4-overrides/variables/figures";
+// @import "../scss-wdx/bs4-overrides/variables/breadcrumbs";
+// @import "../scss-wdx/bs4-overrides/variables/carousel";
+// @import "../scss-wdx/bs4-overrides/variables/spinners";
+// @import "../scss-wdx/bs4-overrides/variables/close";
+// @import "../scss-wdx/bs4-overrides/variables/code";
+// @import "../scss-wdx/bs4-overrides/variables/utilities";
+// @import "../scss-wdx/bs4-overrides/variables/printing";
+// @import "../scss-wdx/bs4-overrides/variables/well";
+
+// @import "../scss-wdx/wdx/variables/__variables";
+
+// // @import "node_modules/bootstrap/scss/bootstrap";
+// @import "bootstrap/bootstrap";
+
+// @import "../scss-wdx/wdx/abstract/mixins";
+// @import "../scss-wdx/bs4-overrides/abstract/mixins/border-radius";
+// @import "../scss-wdx/bs4-overrides/abstract/mixins/box-shadow";
+// @import "../scss-wdx/bs4-overrides/abstract/mixins/buttons";
+
+// @import "../scss-wdx/bs4-overrides/classes/reboot";
+
+// @import "../scss-wdx/bs4-overrides/classes/__classes";
+
+// @import "../scss-wdx/wdx/abstract/keyframes";
+
+// /*#region ../scss-wdx/wdx/variables/admin-portal*/
+// @import "../scss-wdx/wdx/variables/admin-portal";
+
+// /*#region ../scss-wdx/wdx/variables/components*/
+// @import "../scss-wdx/wdx/variables/components/__components";
+
+// /*#region ../scss-wdx/wdx/variables/core/components*/
+// @import "../scss-wdx/wdx/variables/core/components/portal-modal";
+
+// /*#region ../scss-wdx/wdx/variables/portal-mee*/
+// @import "../scss-wdx/wdx/variables/portal-mee/__portal-mee";
+
+// /*#region ../scss-wdx/wdx/variables/dashboard*/
+// @import "../scss-wdx/wdx/variables/dashboard/dashboard-editor-structure-selection";
+
+// /*#region ../scss-wdx/wdx/variables/dashboard-widgets*/
+// @import "../scss-wdx/wdx/variables/dashboard-widgets/relationship-tree";
+
+// /*#region ../scss-wdx/wdx/classes*/
+// @import "../scss-wdx/wdx/classes/__classes";
+
+// /*#region ../scss-wdx/wdx/classes/client*/
+// @import "../scss-wdx/wdx/classes/client/__client";
+
+// /*#region ../scss-wdx/wdx/classes/core/intermediary*/
+// @import "../scss-wdx/wdx/classes/intermediary/__intermediary";
+
+// /*#region ../scss-wdx/wdx/classes/internal*/
+// @import "../scss-wdx/wdx/classes/internal/__internal";
+
+// /*#region ../scss-wdx/wdx/classes/core/*/
+// @import "../scss-wdx/wdx/classes/core/__core";
+
+// /*#region ../scss-wdx/wdx/classes/core/administration*/
+// @import "../scss-wdx/wdx/classes/core/administration/__administration";
+
+// /*#region ../scss-wdx/wdx/variables/internal/components/admin-page*/
+// @import "../scss-wdx/wdx/variables/internal/components/__components";
+
+// /*#region ../scss-wdx/wdx/classes/internal/components/admin-page*/
+// @import "../scss-wdx/wdx/classes/internal/components/__admin-page";
+
+// /*#region ../scss-wdx/wdx/classes/core/components*/
+// @import "../scss-wdx/wdx/classes/core/components/__components";
+
+// /*#region ../scss-wdx/wdx/classes/core/dashboard*/
+// @import "../scss-wdx/wdx/classes/core/dashboard/__dashboard";
+
+// /*#region ../scss-wdx/wdx/classes/core/dashboard-widgets*/
+// @import "../scss-wdx/wdx/classes/core/dashboard-widgets/__dashboard-widgets";
+
+// /*#region ../scss-wdx/wdx/classes/core/features*/
+// @import "../scss-wdx/wdx/classes/core/features/__features";
+
+// /*#region ../scss-wdx/wdx/classes/core/portal-mee*/
+// @import "../scss-wdx/wdx/classes/core/portal-mee/__portal-mee";
+
+// /*#region ../scss-wdx/wdx/classes/core/wizards*/
+// @import "../scss-wdx/wdx/classes/core/wizards/__wizards";
+
+// /*#region ../scss-wdx/wdx/classes/libs/admin*/
+// @import "../scss-wdx/wdx/classes/libs/admin/admin-dynamic-editor";
+// @import "../scss-wdx/wdx/classes/libs/admin/admin-dynamic-editor/simple-value-unit-editor";
+// /*#endregion*/
+
+// /*#region ../scss-wdx/wdx/classes/libs/configurer/display*/
+// @import "../scss-wdx/wdx/classes/libs/configurer/display/__configurer-display";
+
+// /*#region ../scss-wdx/wdx/classes/libs/dashboard-apps/*/
+// @import "../scss-wdx/wdx/classes/libs/dashboard-apps/__dashboard-apps";
+
+// /*#region ../scss-wdx/wdx/classes/libs/ui/*/
+// @import "../scss-wdx/wdx/classes/libs/ui/__ui";
+// @import "../scss-wdx/wdx/classes/libs/widgets/_widgets";

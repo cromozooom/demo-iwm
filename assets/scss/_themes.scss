@@ -1,0 +1,292 @@
+// $primary: rgb(250, 164, 250);
+$brandName: "play";
+$brandName: "gray";
+$brandName: "flowerPowerModern";
+$brandName: "flowerPower";
+$brandName: "punk"; // missing brand
+$brandName: "dove"; // missing brand
+$brandName: "RothChildish"; // missing brand
+$brandName: "rmm";
+$brandName: "edwardJones";
+$brandName: "charlesHarley";
+$brandName: "cai";
+$h: 0;
+$s: 0;
+$l: 0;
+$brand: black;
+$onBrand: white;
+$secondary: hsl(0, 0%, 90%);
+$info: #17a2b8;
+$success: #28a745;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+
+$brand-1: #fafcfc;
+$brand-2: #f5f9f9;
+$brand-3: #f0f6f6;
+$brand-4: #e4efef;
+$brand-5: #d3e6e5;
+$brand-6: #bfdbda;
+$brand-7: #9fc9c7;
+$brand-8: #7bb3b0;
+$brand-9: #5e9e9b;
+$brand-10: #50928f;
+$brand-11: #377675;
+$brand-12: #133c3b;
+
+.theme {
+  &:after {
+    content: "#{$brandName}";
+  }
+}
+@if $brandName == "cai" {
+  // cai
+  //   $primary: hsl(178, 31%, 42%);
+  //   $highlight: hsl(201, 35%, 31%);
+  $secondary: hsl(172, 43%, 73%);
+  $brand: hsl(178, 31%, 42%);
+  $h: 201;
+  $s: 35;
+  $l: 31;
+  $brand-1: #fafcfc;
+  $brand-2: #f5f9f9;
+  $brand-3: #f0f6f6;
+  $brand-4: #e4efef;
+  $brand-5: #d3e6e5;
+  $brand-6: #bfdbda;
+  $brand-7: #9fc9c7;
+  $brand-8: #7bb3b0;
+  $brand-9: #5e9e9b;
+  $brand-10: #50928f;
+  $brand-11: #377675;
+  $brand-12: #133c3b;
+
+  $success: #11ae76;
+  $info: #6c757d;
+  $warning: #ff9100;
+  $danger: #ca0c0c;
+} @else if $brandName == "dove" {
+  // $highlight: hsl(46, 100%, 50%);
+  $brand: hsl(42, 56%, 68%);
+  $brand: hsl(42, 56%, 68%);
+  $secondary: hsl(231, 0%, 51%);
+  $success: #51bd42;
+  $info: #92bce1;
+  $warning: #ffe75c;
+  $danger: #ff2b2b;
+  $highlight_: hsl(42, 56%, 68%);
+  $primary_: hsl(232, 73%, 45%);
+  $h: 232;
+  $s: 73;
+  $l: 45;
+  $brand-1: #fdfbf8;
+  $brand-2: #fbf8f1;
+  $brand-3: #f9f4e9;
+  $brand-4: #f5eddb;
+  $brand-5: #eee2c4;
+  $brand-6: #e7d4a9;
+  $brand-7: #dabf7f;
+  $brand-8: #bda66f;
+  $brand-9: #a69161;
+  $brand-10: #988559;
+  $brand-11: #7a6b47;
+  $brand-12: #3d3624;
+} @else if $brandName == "rmm" {
+  // $highlight: hsl(46, 100%, 50%);
+  $brand: hsl(0, 100%, 95%);
+  $secondary: hsl(231, 0%, 51%);
+  $success: #51bd42;
+  $info: #92bce1;
+  $warning: #ffe75c;
+  $danger: #ff2b2b;
+  // $highlight: hsl(218, 41%, 37%);
+  $_primary: hsl(307, 46%, 29%);
+  $h: 307;
+  $s: 45;
+  $l: 39;
+  // RMM
+  $brand: hsl(231, 20%, 25%);
+  // $primary: hsl(212, 100%, 13%);
+  $secondary: hsl(231, 20%, 51%);
+  $tertiary: hsl(209, 16%, 49%);
+  $highlight: hsl(212, 100%, 13%);
+  $success: #328832;
+  $info: #3457a2;
+  $warning: #f0ad4e;
+  $danger: #f31212;
+  $h: 212;
+  $s: 100;
+  $l: 13;
+} @else if $brandName == "punk" {
+  // $highlight: hsl(46, 100%, 50%);
+  $brand: hsl(0, 100%, 95%);
+  $secondary: hsl(231, 0%, 51%);
+  $success: #51bd42;
+  $info: #92bce1;
+  $warning: #ffe75c;
+  $danger: #ff2b2b;
+  // $highlight: hsl(218, 41%, 37%);
+  $_primary: hsl(307, 46%, 29%);
+  $h: 307;
+  $s: 45;
+  $l: 39;
+} @else if $brandName == "RothChildish" {
+  // $highlight: hsl(46, 100%, 50%);
+  $brand: hsl(212, 100%, 13%);
+  $secondary: hsl(231, 20%, 51%);
+  $success: #4b8d8b;
+  $info: #6c757d;
+  $warning: #ebcb9a;
+  $danger: #f15e5f;
+  // $highlight: hsl(218, 41%, 37%);
+  // $primary: hsl(212, 100%, 13%);
+  $h: 218;
+  $s: 41;
+  $l: 37;
+} @else if $brandName == "edwardJones" {
+  // $highlight: hsl(46, 100%, 50%);
+  $secondary: #eee;
+  $brand: hsl(47, 95%, 62%);
+  $onBrand: hsl(0, 0%, 0%);
+  $warning: hsl(36, 100%, 45%);
+  // $primary: hsl(196, 97%, 26%);
+  $h: 196;
+  $s: 97;
+  $l: 26;
+} @else if $brandName == "charlesHarley" {
+  // cai
+  $primary: hsl(207, 38%, 27%);
+  $highlight: hsl(68, 68%, 52%);
+  $secondary: #eee;
+
+  $brand: hsl(68, 68%, 52%);
+  $h: 207;
+  $s: 38;
+  $l: 27;
+
+  $brand-1: #fbfdf2;
+  $brand-2: #f9fbeb;
+  $brand-3: #f3f8d7;
+  $brand-4: #eff5ca;
+  $brand-5: #e4eea3;
+  $brand-6: #dce988;
+  $brand-7: #dae782;
+  $brand-8: #d4e46e;
+  $brand-9: #bad02f;
+  $brand-10: #a3b629;
+  $brand-11: #5d6817;
+  $brand-12: #39400e;
+
+  $success: #86961d;
+  $info: #00295c;
+  $warning: #f0ad4e;
+  $danger: #d8544f;
+} @else if $brandName == "gray" {
+  // cai
+  //   $primary: hsl(207, 38%, 27%);
+  //   $highlight: hsl(68, 68%, 52%);
+  $secondary: hsl(0, 0%, 50%);
+  $info: hsl(0, 0%, 50%);
+  $brand: hsl(0, 0%, 50%);
+  $success: hsl(0, 0%, 50);
+  $warning: hsl(0, 0%, 50);
+  $danger: hsl(0, 0%, 50);
+  $light: hsl(0, 0%, 50);
+  $dark: hsl(0, 0%, 50%);
+
+  $h: 0;
+  $s: 0;
+  $l: 40;
+} @else if $brandName == "flowerPower" {
+  $primary: hsl(212, 24%, 11%);
+  $highlight: hsl(347, 99%, 45%);
+  $secondary: hsl(46, 64%, 52%);
+  $brand: hsl(212, 24%, 11%);
+
+  //   red
+  $brand: hsl(347, 99%, 45%);
+  $h: 347;
+  $s: 99;
+  $l: 45;
+
+  //   black
+  $h: 212;
+  $s: 24;
+  $l: 11;
+
+  $flower-1: #fffcfc;
+  $flower-2: #fef8fa;
+  $flower-3: #fef1f4;
+  $flower-4: #fce7ec;
+  $flower-5: #fbdae1;
+  $flower-6: #f9c9d3;
+  $flower-7: #f6aebd;
+  $flower-8: #f289a0;
+  $flower-9: #ef6482;
+  $flower-10: #ec4d6f;
+  $flower-11: #d90130;
+  $flower-12: #720119;
+  $brand: hsl(212, 24%, 11%);
+  $secondary: hsl(46, 64%, 52%);
+  //   red
+  $h: 347;
+  $s: 99;
+  $l: 45;
+} @else if $brandName == "play" {
+  $brand: hsl(300, 100%, 80%);
+} @else if $brandName == "flowerPowerModern" {
+  // $primary: hsl(212, 24%, 11%);
+  $highlight: hsl(347, 99%, 45%);
+  $secondary: hsl(46, 64%, 52%);
+
+  $brand: hsl(212, 24%, 11%);
+  $brand: hsl(347, 99%, 45%);
+
+  $h: 212;
+  $s: 24;
+  $l: 11;
+
+  $flower-1: #fffcfc;
+  $flower-2: #fef8fa;
+  $flower-3: #fef1f4;
+  $flower-4: #fce7ec;
+  $flower-5: #fbdae1;
+  $flower-6: #f9c9d3;
+  $flower-7: #f6aebd;
+  $flower-8: #f289a0;
+  $flower-9: #ef6482;
+  $flower-10: #ec4d6f;
+  $flower-11: #d90130;
+  $flower-12: #720119;
+  // $brand: hsl(212, 24%, 11%);
+  $secondary: hsl(46, 64%, 52%);
+  //   red
+  // $h: 347;
+  // $s: 99;
+  // $l: 45;
+}
+
+$primary: hsl($h, $s, $l);
+
+$theme-colors: (
+  "brand": $brand,
+  "secondary": $secondary,
+  "info": $info,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+// $link-color: $primary;
+// $link-color: #2bff00;
+// $component-active-bg: rgb(43, 255, 0);
+// $custom-control-indicator-checked-disabled-bg: rgb(43, 255, 0);
+// $progress-bar-bg: rgb(43, 255, 0);
+
+input {
+  accent-color: $primary;
+}

@@ -1,0 +1,43 @@
+<div class="col-12 card px-3 mb-3">
+  <div class="row">
+    <div class="col-3 my-3">
+      <h2>Illustration sample</h2>
+      <div class="py-3 d-md-flex justify-content-start">
+        <svg
+          class="intro-card--asset mr-3"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use xlink:href="#side-ill-1"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="col-9 my-3">
+      <h2>Font awsome / duotone</h2>
+      {{ range site.Data.icons.icons }}
+        {{ $icon := .icon }}
+        <div class="d-flex gap py-4">
+          <div>
+            <div
+              class="icon-container rounded d-flex justify-content-center align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#{{ $icon }}"></use>
+              </svg>
+            </div>
+          </div>
+          {{ range site.Data.icons.sizes }}
+            <div>
+              <div
+                class="icon-container rounded rounded-lg icon-container-{{ .size }} d-flex justify-content-center align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#{{ $icon }}"></use>
+                </svg>
+              </div>
+            </div>
+          {{ end }}
+
+        </div>
+      {{ end }}
+
+    </div>
+  </div>
+</div>

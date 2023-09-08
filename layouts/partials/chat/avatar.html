@@ -1,0 +1,52 @@
+{{ $name := .name }}
+{{ $theme := .theme | default "light" }}
+{{ $fullName := .fullName | default false }}
+{{ $group := .group | default false }}
+{{ $groupCalss := ""}}
+{{ $themeCLass := "bg-light ink-light"}}
+
+{{ if eq $theme "primary"}}
+{{ $themeCLass = "bg-primary ink-primary"}}
+{{ else if eq $theme "brand"}}
+{{ $themeCLass = "bg-brand ink-brand"}}
+{{ else if eq $theme "light"}}
+{{ $themeCLass = "bg-light ink-light"}}
+{{ else if eq $theme "primary"}}
+{{ $themeCLass = "bg-dark ink-dark"}}
+{{ else if eq $theme "dark"}}
+{{ $themeCLass = "bg-dark ink-dark"}}
+{{ else if eq $theme "info"}}
+{{ $themeCLass = "bg-info ink-info"}}
+{{ else if eq $theme "success"}}
+{{ $themeCLass = "bg-success ink-success"}}
+{{ else if eq $theme "warning"}}
+{{ $themeCLass = "bg-warning ink-warning"}}
+{{ else if eq $theme "danger"}}
+{{ $themeCLass = "bg-danger ink-danger"}}
+{{ else if eq $theme "danger"}}
+{{ end }}
+
+
+{{ if $group }}
+{{ $groupCalss = "overlape"}}
+{{ end }}
+
+
+
+<div x-data="{ companyName: '{{ $name }}' }" class="d-flex justify-content-start align-items-center gap-sm"
+    x-init="companyPO = companyName.split(/([A-Z])/).filter(w => w.length === 1).slice(0, 2).join('')">
+    <div class="square min-w-avatar d-flex justify-content-center align-items-center {{ $groupCalss }}">
+        <button type="button" data-toggle="tooltip" data-placement="top" title="{{ $name }}"
+            class="w-100 h-100 shadow-sm outline-2-white d-block rounded-circle d-flex justify-content-center align-items-center {{ $themeCLass }}">
+            <strong x-text="companyPO"></strong>
+            <!-- <div class="border-0 p-0 bg-transparent {{ $themeCLass }}">
+
+            </div> -->
+        </button>
+    </div>
+    {{ with .fullName }}
+    <div>
+        {{ . }}
+    </div>
+    {{ end }}
+</div>

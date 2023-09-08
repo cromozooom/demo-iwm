@@ -1,0 +1,114 @@
+<div class="py-3 px-3">
+  <h1>bootstrap 4</h1>
+
+  <div
+    class="d-flex justify-content-center align-items-center border"
+    style="width: 10rem; height: 10rem;"
+    x-data="{ size: getComputedStyle($el).width }"
+    @resize.window="size = getComputedStyle($el).width">
+    <span class="badge badge-primary" x-text="'10rem = ' + size"></span>
+  </div>
+
+  <p
+    class="display-1"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Display 1
+  </p>
+
+  <p
+    class="display-2"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span> Display 2
+  </p>
+  <p
+    class="display-3"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span> Display 3
+  </p>
+  <p
+    class="display-4"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span> Display 4
+  </p>
+  <p
+    class="display-5"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span> Display 5
+  </p>
+  <p
+    class="display-6"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span> Display 6
+  </p>
+  <h1
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Heading 1
+  </h1>
+  <h2
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Heading 2
+  </h2>
+  <h3
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Heading 3
+  </h3>
+  <h4
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Heading 4
+  </h4>
+  <h5
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Heading 5
+  </h5>
+  <h6
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Heading 6
+  </h6>
+  <p
+    class="lead"
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, omnis
+    repudiandae nobis repellendus provident ut alias ipsum commodi modi
+    molestias est nisi asperiores nemo inventore atque iste culpa? Molestias,
+    quaerat!
+  </p>
+  <p
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-success" x-text="size"></span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, omnis
+    repudiandae nobis repellendus provident ut alias ipsum commodi modi
+    molestias est nisi asperiores nemo inventore atque iste culpa? Molestias,
+    quaerat!
+  </p>
+  <small
+    x-data="{ size: getComputedStyle($el).fontSize }"
+    @resize.window="size = getComputedStyle($el).fontSize">
+    <span class="badge badge-primary" x-text="size"></span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, omnis
+    repudiandae nobis repellendus provident ut alias ipsum commodi modi
+    molestias est nisi asperiores nemo inventore atque iste culpa? Molestias,
+    quaerat!
+  </small>
+</div>

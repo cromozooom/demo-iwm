@@ -1,0 +1,213 @@
+{{ $title := .title }}
+{{ $count := .count }}
+{{ $active := .active | default false }}
+{{ $messageCount := .messageCount | default 0 }}
+{{ $activeClass := "border-left-transparent list-hover-light" }}
+{{ if $active }}
+  {{ $activeClass = "border-emphasize border-color-info bg-white" }}
+{{ end }}
+
+{{ $messageCounter := "" }}
+{{ $messageCounterClass := "" }}
+
+{{ if gt $messageCount 99 }}
+  {{ $messageCounterClass = "badge-danger" }}
+  {{ $messageCounter = printf "%d+" 99 }}
+{{ else if or (lt $messageCount 99) (eq $messageCount 99) }}
+  {{ if gt $messageCount 50 }}
+    {{ $messageCounterClass = "badge-warning" }}
+    {{ $messageCounter = printf "%d" $messageCount }}
+  {{ else if or (lt $messageCount 50) (eq $messageCount 50) }}
+    {{ $messageCounterClass = "badge-info" }}
+    {{ $messageCounter = printf "%d" $messageCount }}
+  {{ end }}
+{{ end }}
+<div class="p-2 py-3">
+    <div class="d-flex gap-sm">
+        <div class="wysiwyg">
+            <div  class="d-flex gap-sm justify-content-start align-items-start">
+              {{ if $messageCount }}
+                <div class="d-flex justify-content-start align-items-center">
+                  <div
+                    class="badge badge-pill badge-sm m-0 {{ $messageCounterClass }}">
+                    {{ $messageCounter }}
+                  </div>
+                </div>
+              {{ end }}
+              <div>
+                <h6 class="xm-0 xp-0">{{ $title }}</h6>
+              </div>
+            </div>
+            <div class="text-muted">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div
+          class="min-w-4  d-flex flex-column justify-content-start align-items-start">
+          <div class="w-100">
+            <small class="d-flex justify-content-center">
+              <span>99h 99m</span>
+            </small>
+          </div>
+          <div class="d-flex justify-content-center align-items-center w-100 mt-1">
+            <div class="dropdown">
+              <button
+                class="btn btn-sm btn-link square rounded-circle xbtn-link p-1 xdropdown-toggle d-flex justify-content-between align-items-center"
+                type="button"
+                data-toggle="dropdown"
+                aria-expanded="false">
+                <span class="d-none"> Open </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                </svg>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <button class="dropdown-item p-0">
+                  <div class="d-flex gap-sm p-2 align-items-center">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-envelope-slash"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z" />
+                        <path
+                          d="M14.975 10.025a3.5 3.5 0 1 0-4.95 4.95 3.5 3.5 0 0 0 4.95-4.95Zm-4.243.707a2.501 2.501 0 0 1 3.147-.318l-3.465 3.465a2.501 2.501 0 0 1 .318-3.147Zm.39 3.854 3.464-3.465a2.501 2.501 0 0 1-3.465 3.465Z" />
+                      </svg>
+                    </div>
+                    <span> Mute email </span>
+                  </div>
+                </button>
+                <button class="dropdown-item p-0">
+                  <div class="d-flex gap-sm p-2 align-items-center">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-check2-square"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                        <path
+                          d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                      </svg>
+                    </div>
+                    <span> Mark as read </span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- {{ $title }} -->
+    </div>
+</div>
+
+
+{{/*
+    
+    <div class="p-2 py-3 border-bottom ">
+      <div class="d-flex gap-sm">
+        <div class="wysiwyg">
+          <div  class="d-flex gap-sm justify-content-start align-items-start">
+            {{ if $messageCount }}
+              <div class="d-flex justify-content-start align-items-center">
+                <div
+                  class="badge badge-pill badge-sm m-0 {{ $messageCounterClass }}">
+                  {{ $messageCounter }}
+                </div>
+              </div>
+            {{ end }}
+            <div>
+              <h6 class="xm-0 xp-0">{{ $title }}</h6>
+            </div>
+          </div>
+          <div class="text-muted">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div
+          class="min-w-4  d-flex flex-column justify-content-start align-items-start">
+          <div class="w-100">
+            <small class="d-flex justify-content-center">
+              <span>99h 99m</span>
+              <!-- <strong>99h 99m</strong> -->
+            </small>
+          </div>
+          <div class="d-flex justify-content-center align-items-center w-100 mt-1">
+            <div class="dropdown">
+              <button
+                class="btn btn-sm btn-link square rounded-circle xbtn-link p-1 xdropdown-toggle d-flex justify-content-between align-items-center"
+                type="button"
+                data-toggle="dropdown"
+                aria-expanded="false">
+                <span class="d-none"> Open </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                </svg>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item p-0" href="#">
+                  <div class="d-flex gap-sm p-2 align-items-center">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-envelope-slash"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z" />
+                        <path
+                          d="M14.975 10.025a3.5 3.5 0 1 0-4.95 4.95 3.5 3.5 0 0 0 4.95-4.95Zm-4.243.707a2.501 2.501 0 0 1 3.147-.318l-3.465 3.465a2.501 2.501 0 0 1 .318-3.147Zm.39 3.854 3.464-3.465a2.501 2.501 0 0 1-3.465 3.465Z" />
+                      </svg>
+                    </div>
+                    <span> Mute email </span>
+                  </div>
+                </a>
+                <a class="dropdown-item p-0" href="#">
+                  <div class="d-flex gap-sm p-2 align-items-center">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-check2-square"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                        <path
+                          d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                      </svg>
+                    </div>
+                    <span> Mark as read </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+*/}}

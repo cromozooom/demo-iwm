@@ -1,0 +1,69 @@
+<div class="xcontainer ">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="page-tab" data-toggle="tab" data-target="#page" type="button" role="tab"
+        aria-controls="page" aria-selected="true">
+        Page
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="typo-tab" data-toggle="tab" data-target="#typo" type="button" role="tab"
+        aria-controls="typo" aria-selected="false">
+        Typography
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="Spacing-tab" data-toggle="tab" data-target="#Spacing" type="button" role="tab"
+        aria-controls="Spacing" aria-selected="false">
+        Spacing
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="forms-tab" data-toggle="tab" data-target="#forms" type="button" role="tab"
+        aria-controls="forms" aria-selected="false">
+        Forms
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="colors-tab" data-toggle="tab" data-target="#colors" type="button" role="tab"
+        aria-controls="colors" aria-selected="false">
+        Colors
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="modals-tab" data-toggle="tab" data-target="#modals" type="button" role="tab"
+        aria-controls="modals" aria-selected="false">
+        Modals
+      </button>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="page" role="tabpanel" aria-labelledby="page-tab">
+      {{ partial "colors.html" }}
+      {{ partial "page.html" }}
+      <!-- {{ partial "modals.html" }} -->
+      <!-- {{ partial "forms.html" }} -->
+      <!-- {{ partial "typo.html" }} -->
+      <!-- {{ partial "spacing.html" }} -->
+    </div>
+    <div class="tab-pane" id="typo" role="tabpanel" aria-labelledby="typo-tab">
+      {{ partial "typo.html" }}
+      <!-- {{ partial "spacing.html" }} -->
+    </div>
+    <div class="tab-pane" id="Spacing" role="tabpanel" aria-labelledby="Spacing-tab">
+      {{ partial "spacing.html" }}
+    </div>
+    <div class="tab-pane" id="forms" role="tabpanel" aria-labelledby="forms-tab">
+      {{ partial "forms.html" }}
+    </div>
+    <div class="tab-pane" id="colors" role="tabpanel" aria-labelledby="colors-tab">
+      {{ partial "colors.html" }}
+    </div>
+    <div class="tab-pane" id="modals" role="tabpanel" aria-labelledby="modals-tab">
+      {{ partial "modals.html" }}
+    </div>
+  </div>
+</div>

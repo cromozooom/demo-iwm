@@ -1,0 +1,34 @@
+// $enable-responsive-font-sizes: false;
+// $font-size-base: 1.4rem;
+// $font-size-base: 0.875rem;
+$scale: 1.4rem;
+
+// B4 - all 1rem
+$spacer: $scale;
+$paragraph-margin-bottom: $scale;
+// $box-shadow: 0 0.5rem #{$scale} rgba($black, 0.15);
+// $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+$font-size-base: $scale; // Assumes the browser default, typically `16px`
+// // $kbd-box-shadow:              inset 0 -.$scale 0 rgba($black, .25) ;
+// $input-btn-padding-x-lg: $scale;
+// $form-group-margin-bottom: $scale;
+// $custom-control-spacer-x: $scale;
+// $custom-control-indicator-size: $scale;
+// $custom-select-indicator-padding: $scale; // Extra padding to account for the presence of the background-image based indicator
+// $custom-range-track-border-radius: $scale;
+// $custom-range-thumb-width: $scale;
+// $custom-range-thumb-border-radius: $scale;
+// // $custom-range-thumb-box-shadow:              0 .$scale .25rem rgba($black, .1) ;
+// $nav-link-padding-x: $scale;
+// // $dropdown-box-shadow: 0 0.5rem $scale rgba($black, 0.175);
+// $popover-arrow-width: $scale;
+// $modal-inner-padding: $scale;
+// // $modal-content-box-shadow-sm-up: 0 0.5rem $scale rgba($black, 0.5);
+// $modal-header-padding-y: $scale;
+// $modal-header-padding-x: $scale;
+// $alert-margin-bottom: $scale;
+// $progress-height: $scale;
+// // $progress-box-shadow:               inset 0 .$scale .$scale rgba($black, .1) ;
+// $breadcrumb-padding-x: $scale;
+$breadcrumb-margin-bottom: $scale;
+// $spinner-width-sm: $scale;

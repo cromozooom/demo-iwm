@@ -1,0 +1,104 @@
+// Normal
+// https://leonardocolor.io/theme.html?name=WDX&config=%7B%22baseScale%22%3A%22brand-cai%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22brand-cai%22%2C%22colorKeys%22%3A%5B%22%234a8c8a%22%5D%2C%22colorspace%22%3A%22OKLCH%22%2C%22ratios%22%3A%5B%221.02%22%2C%221.05%22%2C%221.09%22%2C%221.17%22%2C%221.28%22%2C%221.46%22%2C%221.79%22%2C%222.36%22%2C%223.07%22%2C%223.58%22%2C%225.22%22%2C%2212.06%22%5D%2C%22smooth%22%3Atrue%7D%2C%7B%22name%22%3A%22dove%22%2C%22colorKeys%22%3A%5B%22%23dbc080%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%221.02%22%2C%221.05%22%2C%221.09%22%2C%221.17%22%2C%221.28%22%2C%221.46%22%2C%221.79%22%2C%222.36%22%2C%223.07%22%2C%223.58%22%2C%225.22%22%2C%2212.06%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22charlesStanley%22%2C%22colorKeys%22%3A%5B%22%23c2d831%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%221.02%22%2C%221.05%22%2C%221.09%22%2C%221.17%22%2C%221.28%22%2C%221.46%22%2C%221.79%22%2C%222.36%22%2C%223.07%22%2C%223.58%22%2C%225.22%22%2C%2212.06%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22flower%22%2C%22colorKeys%22%3A%5B%22%23e40132%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%221.02%22%2C%221.05%22%2C%221.09%22%2C%221.17%22%2C%221.28%22%2C%221.46%22%2C%221.79%22%2C%222.36%22%2C%223.07%22%2C%223.58%22%2C%225.22%22%2C%2212.06%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22edwardjones%22%2C%22colorKeys%22%3A%5B%22%23fad242%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%221.02%22%2C%221.05%22%2C%221.09%22%2C%221.17%22%2C%221.28%22%2C%221.46%22%2C%221.79%22%2C%222.36%22%2C%223.07%22%2C%223.58%22%2C%225.22%22%2C%2212.06%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A100%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D
+$cai: hsl(178, 31%, 42%);
+
+// Yellows
+// https://leonardocolor.io/theme.html?name=Untitled&config=%7B%22baseScale%22%3A%22edwardjones%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22edwardjones%22%2C%22colorKeys%22%3A%5B%22%23fad242%22%5D%2C%22colorspace%22%3A%22OKLCH%22%2C%22ratios%22%3A%5B%221.02%22%2C%221.04%22%2C%221.08%22%2C%221.13%22%2C%221.22%22%2C%221.3%22%2C%221.33%22%2C%221.39%22%2C%221.72%22%2C%222.25%22%2C%226.08%22%2C%2210.98%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A100%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D
+$dove: hsl(42, 56%, 68%);
+$charlesStanley: hsl(68, 68%, 52%);
+
+$brands: (
+  "cai-1": #fafcfc,
+  "cai-2": #f5f9f9,
+  "cai-3": #f0f6f6,
+  "cai-4": #e4efef,
+  "cai-5": #d3e6e5,
+  "cai-6": #bfdbda,
+  "cai-7": #9fc9c7,
+  "cai-8": #7bb3b0,
+  "cai-9": #5e9e9b,
+  "cai-10": #50928f,
+  "cai-11": #377675,
+  "cai-12": #133c3b,
+  "dove-1": #fdfbf8,
+  "dove-2": #fbf8f1,
+  "dove-3": #f9f4e9,
+  "dove-4": #f5eddb,
+  "dove-5": #eee2c4,
+  "dove-6": #e7d4a9,
+  "dove-7": #dabf7f,
+  "dove-8": #bda66f,
+  "dove-9": #a69161,
+  "dove-10": #988559,
+  "dove-11": #7a6b47,
+  "dove-12": #3d3624,
+  "charlesStanley-1": #fbfdf2,
+  "charlesStanley-2": #f9fbeb,
+  "charlesStanley-3": #f3f8d7,
+  "charlesStanley-4": #eff5ca,
+  "charlesStanley-5": #e4eea3,
+  "charlesStanley-6": #dce988,
+  "charlesStanley-7": #dae782,
+  "charlesStanley-8": #d4e46e,
+  "charlesStanley-9": #bad02f,
+  "charlesStanley-10": #a3b629,
+  "charlesStanley-11": #5d6817,
+  "charlesStanley-12": #39400e,
+  "flower-1": #fffcfc,
+  "flower-2": #fef8fa,
+  "flower-3": #fef1f4,
+  "flower-4": #fce7ec,
+  "flower-5": #fbdae1,
+  "flower-6": #f9c9d3,
+  "flower-7": #f6aebd,
+  "flower-8": #f289a0,
+  "flower-9": #ef6482,
+  "flower-10": #ec4d6f,
+  "flower-11": #d90130,
+  "flower-12": #720119,
+  "edwardjones-1": #fffcf2,
+  "edwardjones-2": #fefaeb,
+  "edwardjones-3": #fef5d7,
+  "edwardjones-4": #fdf1ca,
+  "edwardjones-5": #fce8a7,
+  "edwardjones-6": #fce088,
+  "edwardjones-7": #fbdd7c,
+  "edwardjones-8": #fbd866,
+  "edwardjones-9": #e9c129,
+  "edwardjones-10": #d0a800,
+  "edwardjones-11": #815b00,
+  "edwardjones-12": #593300,
+);
+
+body {
+  --brand-1: #{$brand-1};
+  --brand-2: #{$brand-2};
+  --brand-3: #{$brand-3};
+  --brand-4: #{$brand-4};
+  --brand-5: #{$brand-5};
+  --brand-6: #{$brand-6};
+  --brand-7: #{$brand-7};
+  --brand-8: #{$brand-8};
+  --brand-9: #{$brand-9};
+  --brand-10: #{$brand-10};
+  --brand-11: #{$brand-11};
+  --brand-12: #{$brand-12};
+  @each $tone, $value in $brands {
+    --#{$tone}: #{$value};
+  }
+}
+
+@each $tone, $value in $brands {
+  .#{$tone} {
+    position: relative;
+    background: $value;
+    &-ink {
+      color: color-yiq($value, black, white);
+    }
+    &:after {
+      display: block;
+      inset: 0;
+      content: "#{$value}";
+    }
+  }
+}

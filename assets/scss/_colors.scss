@@ -1,0 +1,82 @@
+$tints: (
+  "primary": $primary,
+);
+body {
+  --primary-0: theme-color-level("primary", 0);
+  --primary-1: theme-color-level("primary", 1);
+  --primary-2: theme-color-level("primary", 2);
+  --primary-3: theme-color-level("primary", 3);
+  --primary-4: theme-color-level("primary", 4);
+  --primary-5: theme-color-level("primary", 5);
+  --primary-6: theme-color-level("primary", 6);
+  --primary-7: theme-color-level("primary", 7);
+  --primary-8: theme-color-level("primary", 8);
+  --primary-9: theme-color-level("primary", 9);
+  --primary-10: theme-color-level("primary", 10);
+  --primary-11: theme-color-level("primary", 11);
+  --primary-12: theme-color-level("primary", 12);
+  --primary-13: theme-color-level("primary", 13);
+}
+
+.border-start {
+  border-left: 1px solid;
+}
+@each $color, $value in $theme-colors {
+  .bg-light-#{$color} {
+    background-color: theme-color-level("#{$color}", -10);
+  }
+  .border-light-#{$color} {
+    border: 1px
+      solid
+      color-yiq(
+        $value,
+        theme-color-level(#{$color}, 6),
+        theme-color-level(#{$color}, 6)
+      );
+  }
+  .ink-light-#{$color} {
+    $h: hue($value);
+    $s: saturation($value);
+    $l: lightness($value);
+    $darkValue: hsl($h, $s, 30);
+    color: color-yiq($value, $darkValue, theme-color-level(#{$color}, 0));
+    color: color-yiq(
+      $value,
+      theme-color-level(#{$color}, 6),
+      theme-color-level(#{$color}, 6)
+    );
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .border-ink-#{$color} {
+    border-color: color-yiq(
+      $value,
+      theme-color-level($color, 12),
+      theme-color-level($color, -12)
+    );
+    &-50 {
+      border-color: rgba(
+        color-yiq(
+          $value,
+          theme-color-level($color, 12),
+          theme-color-level($color, -12)
+        ),
+        0.2
+      );
+    }
+  }
+  .ink-#{$color} {
+    // theme-color-level($color, $alert-border-level)
+    color: color-yiq(
+      $value,
+      theme-color-level($color, 11),
+      theme-color-level($color, -11)
+    );
+  }
+  a {
+    &.ink-#{$color}:hover {
+      color: color-yiq($value, black, white);
+    }
+  }
+}

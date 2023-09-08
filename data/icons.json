@@ -1,0 +1,45 @@
+{
+    "icons": [
+        {
+            "icon": "fa-user"
+        },
+        {
+            "icon": "fa-head-side-brain"
+        },
+        {
+            "icon": "fa-file"
+        }
+    ],
+    "sizes": [
+        {
+            "size": "d1"
+        },
+        {
+            "size": "d2"
+        },
+        {
+            "size": "d3"
+        },
+        {
+            "size": "d4"
+        },
+        {
+            "size": "h1"
+        },
+        {
+            "size": "h2"
+        },
+        {
+            "size": "h3"
+        },
+        {
+            "size": "h4"
+        },
+        {
+            "size": "h5"
+        },
+        {
+            "size": "h6"
+        }
+    ]
+}

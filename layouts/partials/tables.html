@@ -1,0 +1,148 @@
+{{ $table := .table | default "default" }}
+{{ if eq $table "opportunities" }}
+{{ $count := 50}}
+<table class="table table-hover">
+    <thead class=" bg-brand ink-brand">
+        <tr>
+            <th scope="col"> # </th>
+            <th scope="col"> Client </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Category </th>
+            <th scope="col"> Est. Close Date </th>
+            <th scope="col"> Stage </th>
+            <th scope="col"> Existing Client </th>
+            <th scope="col"> Owner </th>
+            <th scope="col"> Est. Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range seq $count }}
+        <tr>
+            <th scope="row">{{ index . }}</th>
+            <td>
+                <a href="#" class="d-flex justify-content-start gap-sm align-items-center">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                            <path fill-rule="evenodd"
+                                d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                        </svg>
+                    </div>
+                    <strong>
+                        Mrs Lucy Jackson
+                    </strong>
+                </a>
+            </td>
+            <td>Lucys Opportunity</td>
+            <td>Individual</td>
+            <td>08/28/2023</td>
+            <td>Selling</td>
+            <td>No</td>
+            <td>WDX Service</td>
+            <td>£200,000.00</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+
+{{ else if eq $table "default" }}
+
+<h2>Thead brand</h2>
+<table class="table">
+    <thead class=" bg-brand ink-brand">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+{{ partial "pagination.html" }}
+<hr>
+<h2>Thead dark</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h2>Thead light</h2>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+{{ end }}

@@ -1,0 +1,18 @@
+{{ $options := dict "enableSourceMap" true }}
+{{ if hugo.IsProduction }}
+  {{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
+{{ end }}
+{{ $styles := resources.Get "scss/styles.scss" }}
+{{ with .Params.style }}
+  {{ if eq . "wdx" }}
+    {{ $styles = resources.Get "scss/stylesWDX.scss" }}
+  {{ end }}
+{{ end }}
+{{ $styles = $styles | resources.ToCSS $options }}
+{{ if hugo.IsProduction }}
+  {{ $styles = $styles | fingerprint }}
+{{ end }}
+<link
+  id="style-link"
+  href="{{ $styles.RelPermalink }}"
+  rel="stylesheet" />

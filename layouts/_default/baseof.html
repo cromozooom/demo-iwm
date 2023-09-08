@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{- partial "site-style.html" . -}}
+    {{- partial "site-scripts.html" . -}}
+  </head>
+  <body
+    class="body position-relative h-100 d-flex flex-column min-vh"
+    x-data="{ useAlternateStyle: false, bodyHeight: null, chatOpen: false }"
+    x-init="initializeBodyHeight()">
+    {{- partial "site-nav.html" . -}}
+    {{ block "main" . }}
+    {{ end }}
+  </body>
+</html>

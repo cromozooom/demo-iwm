@@ -1,0 +1,85 @@
+<div class="container-fluid bg-light py-3">
+  <div class="card p-3 page-margin mb-3">
+    <p>WDX page:</p>
+    <small> margin-left: 3.3rem; margin-right: 3.3rem; </small>
+  </div>
+  <div class="page-margin">
+    <div class="row py-3">
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+      {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <div class="d-flex gap-sm card">
+
+          {{- partial "card.html" (dict "card" "title" "title" "Key Dates") -}}
+          <div class="d-flex w-100 gap-sm justify-content-center p-3">
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <div class="d-flex gap-sm card">
+
+          {{- partial "card.html" (dict "card" "title" "title" "Key Dates") -}}
+          <div class="d-flex w-100 gap-sm justify-content-center p-3">
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex gap-sm card">
+          {{- partial "card.html" (dict "card" "title" "title" "Key Dates") -}}
+          <div class="d-flex w-100 gap-sm justify-content-center p-3">
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+            {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <div class="d-flex gap-sm card">
+
+          {{- partial "card.html" (dict "card" "title" "title" "Opportunities") -}}
+          <div class="p-3">
+            {{- partial "tables.html" (dict "table" "opportunities") -}}
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{- partial "tables.html" (dict "card" "keyFacts") -}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{- partial "card.html" (dict "card" "keyFacts") -}}
+      </div>
+      <div class="col">
+        {{- partial "card.html" (dict "card" "keyFacts") -}}
+      </div>
+    </div>
+  </div>
+
+</div>

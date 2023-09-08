@@ -1,0 +1,367 @@
+{{ $tilte := .title }}
+{{ $heigh := .heigh }}
+
+
+<div class="d-flex {{ $heigh }} flex-column">
+  <div
+    class="header min-h-55px sticky-top p-1 bg-light ink-light d-flex justify-content-between align-items-center border-bottom">
+    <div class="d-flex justify-content-start align-items-center gap-sm">
+      <div>
+        <button class="btn btn-sm btn-link px-1" @click="sideOpen = !sideOpen">
+          <svg
+            x-show="!sideOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-arrow-bar-right"
+            viewBox="0 0 16 16">
+            <path
+              fill-rule="evenodd"
+              d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z" />
+          </svg>
+
+          <svg
+            x-show="sideOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-arrow-bar-left"
+            viewBox="0 0 16 16">
+            <path
+              fill-rule="evenodd"
+              d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5ZM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5Z" />
+          </svg>
+        </button>
+      </div>
+      <div class="d-flex justify-content-start align-items-center gap-sm">
+        <div
+          class="d-flex flex-column justify-content-start align-items-start ">
+          <h6 class="mb-0">{{ $tilte }}</h6>
+          <small
+            >Created by Mano Sebastiano Argenti at 16.29 on 23 may 1976</small
+          >
+        </div>
+
+        <button
+          class="btn btn-link rounded-circle square p-0 d-flex justify-content-center align-items-center p-1"
+          type="button"
+          data-toggle="dropdown"
+          aria-expanded="false">
+          <span class="d-none"> Edit </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-pencil"
+            viewBox="0 0 16 16">
+            <path
+              d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="avatar-group d-flex">
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano Argenti" "theme"
+          "primary")
+        }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano Argenti" "theme" "brand"
+          )
+        }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu" "theme" "light") }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano Argenti" "theme" "dark") }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano Argenti" "theme" "info" ) }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano Argenti" "theme" "success"
+          )
+        }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano Argenti" "theme" "warning"
+          )
+        }}
+        {{ partial "chat/avatar.html" (dict "group" true "name" "My Name" "theme" "danger"
+          )
+        }}
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="dropdown">
+          <button
+            class="btn btn-sm btn-link square rounded-circle d-flex justify-content-between align-items-center gap-sm p-2"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-three-dots"
+              viewBox="0 0 16 16">
+              <path
+                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+            </svg>
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right py-2 min-w-20 max-h-15 overflow-auto  styled-scrollbars pt-0">
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Razvan Gabriel Nicu" "theme" "brand")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Mano Sebastiano Argenti" "theme" "light")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Razvan Gabriel Nicu" "theme" "dark")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Mano Sebastiano Argenti" "theme" "info")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Razvan Gabriel Nicu" "theme" "success")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Mano Sebastiano Argenti" "theme" "warning")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Razvan Gabriel Nicu" "theme" "danger")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Razvan Gabriel Nicu")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Mano Sebastiano argenti"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="dropdown">
+          <button
+            class="btn btn-sm btn-link square rounded-circle d-flex justify-content-between align-items-center gap-sm p-2"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-person-fill-add"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path
+                d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" />
+            </svg>
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right min-w-20 max-h-15 overflow-auto  styled-scrollbars pt-0">
+            <div class="search p-2 bg-light ink-light border-bottom sticky-top">
+              <form class="form-inline my-lg-0 w-100 d-flex flex-nowrap">
+                <input
+                  class="form-control rounded-0 flex-grow-1"
+                  type="search"
+                  placeholder="Are you talking to me?"
+                  aria-label="Search" />
+                <button
+                  class="btn rounded-0 btn-primary  my-sm-0"
+                  type="submit">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Razvan Gabriel Nicu")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Razvan Gabriel Nicu")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Razvan Gabriel Nicu")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Razvan Gabriel Nicu")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Razvan Gabriel Nicu")
+              }}
+            </a>
+            <a class="dropdown-item d-flex" href="#">
+              {{ partial "chat/avatar.html" (dict "group" true "name" "Razvan Gabriel Nicu"
+                "fullName" "Mano Sebastiano Argenti")
+              }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="d-flex flex-column flex-grow-1 overflow-auto position-relative styled-scrollbars">
+    <div class="chat flex-grow-1 p-2">
+      {{ partial "chat/bubles.html" }}
+    </div>
+  </div>
+  <footer class="footer py-2 px-2 bg-primary h-auto">
+    <div
+      class="bg-white rounded p-2 max-h-8  overflow-auto styled-scrollbars"
+      contenteditable="true">
+      <p class="p-0 m-0">
+        Lorem ipsum dolor sit ametconsectetur adipisicing elit. Illo, ab
+        reiciendisexplicabo earum voluptatesdignissimos alias saepe beatae
+        doloribus fugiat,perferendis soluta quasofficiis!Cum officia laudantium
+        sunt quia. Voluptatibus.Lorem ipsum dolor sit ametconsectetur
+        adipisicing elit. Illo, ab reiciendisexplicabo earum
+        voluptatesdignissimos alias saepe beatae doloribus fugiat,perferendis
+        soluta quasofficiis!Cum officia laudantium sunt quia. Voluptatibus.Lorem
+        ipsum dolor sit ametconsectetur adipisicing elit. Illo, ab
+        reiciendisexplicabo earum voluptatesdignissimos alias saepe beatae
+        doloribus fugiat,perferendis soluta quasofficiis!Cum officia laudantium
+        sunt quia.
+      </p>
+      <p class="p-0 m-0">
+        Lorem ipsum dolor sit ametconsectetur adipisicing elit. Illo, ab
+        reiciendisexplicabo earum voluptatesdignissimos alias saepe beatae
+        doloribus fugiat,perferendis soluta quasofficiis!Cum officia laudantium
+        sunt quia. Voluptatibus.Lorem ipsum dolor sit ametconsectetur
+        adipisicing elit. Illo, ab reiciendisexplicabo earum
+        voluptatesdignissimos alias saepe beatae doloribus fugiat,perferendis
+        soluta quasofficiis!Cum officia laudantium sunt quia. Voluptatibus.Lorem
+        ipsum dolor sit ametconsectetur adipisicing elit. Illo, ab
+        reiciendisexplicabo earum voluptatesdignissimos alias saepe beatae
+        doloribus fugiat,perferendis soluta quasofficiis!Cum officia laudantium
+        sunt quia.
+      </p>
+      <p class="p-0 m-0">
+        Lorem ipsum dolor sit ametconsectetur adipisicing elit. Illo, ab
+        reiciendisexplicabo earum voluptatesdignissimos alias saepe beatae
+        doloribus fugiat,perferendis soluta quasofficiis!Cum officia laudantium
+        sunt quia. Voluptatibus.Lorem ipsum dolor sit ametconsectetur
+        adipisicing elit. Illo, ab reiciendisexplicabo earum
+        voluptatesdignissimos alias saepe beatae doloribus fugiat,perferendis
+        soluta quasofficiis!Cum officia laudantium sunt quia. Voluptatibus.Lorem
+        ipsum dolor sit ametconsectetur adipisicing elit. Illo, ab
+        reiciendisexplicabo earum voluptatesdignissimos alias saepe beatae
+        doloribus fugiat,perferendis soluta quasofficiis!Cum officia laudantium
+        sunt quia.
+      </p>
+    </div>
+
+    <div class="d-flex justify-content-between mt-2">
+      <div class="">
+        <button class="btn btn-link text-white p-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-link-45deg"
+            viewBox="0 0 16 16">
+            <path
+              d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+            <path
+              d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+          </svg>
+        </button>
+        <button class="btn btn-link text-white p-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-card-image"
+            viewBox="0 0 16 16">
+            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+            <path
+              d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-link text-white p-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-send"
+            viewBox="0 0 16 16">
+            <path
+              d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>

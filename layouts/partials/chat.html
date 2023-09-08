@@ -1,0 +1,207 @@
+{{ $heighClass := .heighClass | default "chat-height-full" }}
+{{ $paddingYClass := .paddingYClass | default "padding-y-chat" }}
+<div class="myChat chat-height padding-y-chat">
+  <div class="row max-w-80 mx-auto overflow-hidden" x-data="{sideOpen: true}">
+    <div class="col">
+      <div class="d-flex card overflow-hidden">
+        <!-- {{- partial "card.html" (dict "theme" "white" "card" "title" "title" "My Chat Organism Component") -}} -->
+        <div class="xborder-top">
+          <div class="row gap-0 m-0 p-0">
+            <div class="col-3 p-0" :class="sideOpen ? 'col-3' : 'd-none'">
+              <div class="d-flex {{ $heighClass }} flex-column">
+                <header class="header sticky-top border-bottom border-right">
+                  <div
+                    class="filter min-h-55px border-bottom p-2 bg-light ink-light d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-sm">
+                      <div>
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-link rounded-circle square p-0 d-flex justify-content-center align-items-center p-1"
+                            type="button"
+                            data-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="d-none"> Sort </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-sort-down"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                            </svg>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-left">
+                            <a class="dropdown-item" href="#">A to Z Down</a>
+                            <a class="dropdown-item" href="#">A to Z Up</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-sm btn-link xdropdown-toggle d-flex justify-content-between align-items-center gap-sm"
+                            type="button"
+                            data-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="xd-none"> Open </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-chevron-down"
+                              viewBox="0 0 16 16">
+                              <path
+                                fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-left">
+                            <a
+                              class="d-flex align-items-center gap-sm active"
+                              href="#">
+                              <div class="p-2 text-success">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  class="bi bi-check2"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                </svg>
+                              </div>
+                              Open
+                            </a>
+                            <a
+                              class="d-flex align-items-center gap-sm"
+                              href="#">
+                              <div class="p-2 text-muted opacity-0">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  class="bi bi-check2"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                </svg>
+                              </div>
+                              Completed
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex gap-sm">
+                      <button
+                        class="btn btn-link rounded-circle square p-0 d-flex justify-content-center align-items-center p-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="currentColor"
+                          class="bi bi-funnel"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                        </svg>
+                      </button>
+                      <button
+                        class="btn btn-primary rounded-circle square p-0 d-flex justify-content-center align-items-center p-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="currentColor"
+                          class="bi bi-plus"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="search p-2 bg-light ink-light">
+                    <form class="form-inline  my-lg-0 w-100 d-flex">
+                      <input
+                        class="form-control rounded-0 flex-grow-1"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search" />
+                      <button
+                        class="btn rounded-0 btn-primary  my-sm-0"
+                        type="submit">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-search"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                      </button>
+                    </form>
+                  </div>
+                </header>
+                <div
+                  class="d-flex flex-column flex-grow-1 overflow-auto position-relative styled-scrollbars">
+                  <div
+                    class="nav flex-column nav-pills"
+                    id="v-pills-tab"
+                    role="tablist"
+                    aria-orientation="vertical">
+                    {{ partial "chat/cards.html" }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-9 p-0" :class="sideOpen ? 'col-9' : 'col-12'">
+              <div
+                class="tab-content {{ $heighClass }}"
+                id="v-pills-tabContent">
+                <div class="tab-content min-h-100vh" id="v-pills-tabContent">
+                  <div
+                    class="tab-pane min-h-100vh fade show active"
+                    id="v-pills-count1"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-count1-tab">
+                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "How do we address our records updates?" "id" 0 ) }}
+                  </div>
+                  <div
+                    class="tab-pane min-h-100vh fade"
+                    id="v-pills-count2"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-count2-tab">
+                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "Service Rquest for Mano sebastiano argenti?" "id" 1 ) }}
+                  </div>
+                  <div
+                    class="tab-pane min-h-100vh fade"
+                    id="v-pills-count3"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-count3-tab">
+                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "This another long long title containing a long long name Mano Sebastiano Argenti" "id" 3 ) }}
+                  </div>
+                  <div
+                    class="tab-pane min-h-100vh fade"
+                    id="v-pills-count4"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-count4-tab">
+                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "This another long long title containing a long boring name Razvan Nicu" "id" 4 ) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

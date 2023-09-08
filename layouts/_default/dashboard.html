@@ -1,0 +1,375 @@
+{{ define "main" }}
+  <section
+    x-data="{ infoSectioHeight: null }"
+    x-init="initializeInfoSectioHeight()"
+    class="info-section border-bottom z-2">
+    <div class="container-fluid py-3 ">
+      <div class="row">
+        <div class="col-1 d-flex justify-content-center">
+          <div>
+            <div class="bg-white text-primary p-3 rounded-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="currentColor"
+                class="bi bi-building"
+                viewBox="0 0 16 16">
+                <path
+                  d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
+                <path
+                  d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="col-11">
+          <div class="row">
+            <div class="col">
+              <ul class="m-0 list-unstyled d-flex flex-column gap-sm">
+                <li>
+                  <span x-text=""></span>
+                  <strong class="primary">Age:</strong> 39 (D.O.B:
+                  1983-12-14T00)
+                </li>
+                <li>
+                  <strong class="primary">Marital Status:</strong> Married
+                </li>
+                <li><strong class="primary">Gender:</strong> Female</li>
+                <li>
+                  <strong class="primary">Preferred Language:</strong> English
+                </li>
+                <li>
+                  <strong class="primary">Preferred Language:</strong> English
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <ul class="m-0 list-unstyled d-flex flex-column gap-sm">
+                <li>
+                  <strong class="primary">Age:</strong> 39 (D.O.B:
+                  1983-12-14T00)
+                </li>
+                <li>
+                  <strong class="primary">Marital Status:</strong> Married
+                </li>
+                <li><strong class="primary">Gender:</strong> Female</li>
+                <li>
+                  <strong class="primary">Preferred Language:</strong> English
+                </li>
+                <li>
+                  <strong class="primary">Preferred Language:</strong> English
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <ul class="m-0 list-unstyled d-flex flex-column gap-sm">
+                <li>
+                  <strong class="primary">Age:</strong> 39 (D.O.B:
+                  1983-12-14T00)
+                </li>
+                <li>
+                  <strong class="primary">Marital Status:</strong> Married
+                </li>
+                <li><strong class="primary">Gender:</strong> Female</li>
+                <li>
+                  <strong class="primary">Preferred Language:</strong> English
+                </li>
+                <li>
+                  <strong class="primary">Preferred Language:</strong> English
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div
+    x-data="{ tabNavigationHeight: null }"
+    x-init="initializeTabNavigationHeight()"
+    class="tab-navigation sticky-top z-2 shadow-md bg-white">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <ul
+          class="nav customTab xnav-tabs bg-white nav__border-bottom position-relative"
+          id="myTab"
+          role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link h5 mb-0 py-3 px-4 active"
+              id="overview-tab"
+              data-toggle="tab"
+              data-target="#overview"
+              type="button"
+              role="tab"
+              aria-controls="overview"
+              aria-selected="true">
+              Overview / chat
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link h5 mb-0 py-3 px-4"
+              id="legal-tab"
+              data-toggle="tab"
+              data-target="#legal"
+              type="button"
+              role="tab"
+              aria-controls="legal"
+              aria-selected="false">
+              Legal Entity
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link h5 mb-0 py-3 px-4"
+              id="accounts-tab"
+              data-toggle="tab"
+              data-target="#accounts"
+              type="button"
+              role="tab"
+              aria-controls="accounts"
+              aria-selected="false">
+              Accounts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link h5 mb-0 py-3 px-4"
+              id="kyc-info-tab"
+              data-toggle="tab"
+              data-target="#kyc-info"
+              type="button"
+              role="tab"
+              aria-controls="kyc-info"
+              aria-selected="false">
+              KYC Information
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link h5 mb-0 py-3 px-4"
+              id="contact-notes-tab"
+              data-toggle="tab"
+              data-target="#contact-notes"
+              type="button"
+              role="tab"
+              aria-controls="contact-notes"
+              aria-selected="false">
+              Contact Notes
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="xposition-relative pr-3">
+        <div class="dropdown">
+          <button
+            class="btn btn-sm xbtn-link xdropdown-toggle d-flex justify-content-between align-items-center gap-sm"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false">
+            <span class="xd-none"> More </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-list"
+              viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Is this enoght</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content flex-grow-1 h-100" id="myTabContent">
+    <div
+      class="tab-pane fade show active "
+      id="overview"
+      role="tabpanel"
+      aria-labelledby="overview-tab">
+      {{ $chat := 1 }}
+      {{ if $chat }}
+        <div x-show="!chatOpen" class="page-margin">
+          {{ partial "chat.html" (dict "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
+        </div>
+      {{ else }}
+        <div class="page-margin position-relative">
+          <div class="row">
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Opportunities") -}}
+                <div class="p-b-actions">
+                  {{- partial "tables.html" (dict "table" "opportunities" ) -}}
+                  <div class="ml-2">
+                    {{ partial "pagination.html" }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fixed-bottom p-2 bg-light border-top">
+            <div class="row">
+              <div class="col">
+                {{ partial "pagination.html" }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-margin mt-3">
+          <div class="row mb-3">
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Key Dates - full row (4 col)") -}}
+                <div class="d-flex w-100 gap-sm justify-content-center p-3">
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Key Dates - 50% row") -}}
+                <div class="d-flex w-100 gap-sm justify-content-center p-3">
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Key Dates") -}}
+                <div class="d-flex w-100 gap-sm justify-content-center p-3">
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-margin">
+          <div class="d-flex gap-sm card">
+            {{- partial "card.html" (dict "card" "title" "title" "Manager tasks") -}}
+            <div class="row py-3 mx-1">
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+    <div
+      class="tab-pane fade"
+      id="legal"
+      role="tabpanel"
+      aria-labelledby="legal-tab">
+      <div class="page-margin">
+        <div class="row py-3">
+          {{ partial "colors.html" . }}
+        </div>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="accounts"
+      role="tabpanel"
+      aria-labelledby="accounts-tab">
+      <div class="page-margin">
+        <div class="row">
+          {{ partial "colors/brand-colors.html" . }}
+          {{ partial "colors/inks.html" . }}
+          {{ partial "colors/fa.html" . }}
+          {{ partial "colors.html" . }}
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="tab-pane fade "
+      id="kyc-info"
+      role="tabpanel"
+      aria-labelledby="kyc-info-tab">
+      <div class="page-margin">
+        <div class="row py-3">
+          <div class="col">
+            <div class="d-flex gap-sm card">
+              {{- partial "card.html" (dict "card" "title" "title" "KYC Information") -}}
+              <div class="row px-3">
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+                {{- partial "card.html" (dict "card" "icon" "title" "Your details") -}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="contact-notes"
+      role="tabpanel"
+      aria-labelledby="contact-notes-tab">
+      <!-- <div class="h-fix-1">test</div> -->
+      <div
+        class="page-margin d-flex flex-column h-fix-1  border border-warning ">
+        <div class="row py-3 d-flex flex-column h-fix-1  border border-danger">
+          <ul class="sideNav h-100">
+            <li>
+              <a href="#">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                  </svg>
+                </div>
+                <span>Home</span>
+              </a>
+            </li>
+          </ul>
+          <!-- {{ partial "lorem.html" . }} -->
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

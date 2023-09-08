@@ -1,0 +1,104 @@
+<div class="p-3">
+  <h6>Padding</h6>
+  <div class="d-flex flex-wrap">
+    <div>
+      <div
+        class="p-1 border"
+        x-data="{ size: getComputedStyle($el).padding }"
+        @resize.window="size = getComputedStyle($el).padding">
+        <span class="badge badge-primary" x-text="'size 1: ' + size"></span>
+      </div>
+    </div>
+    <div>
+      <div
+        class="p-2 border"
+        x-data="{ size: getComputedStyle($el).padding }"
+        @resize.window="size = getComputedStyle($el).padding">
+        <span class="badge badge-primary" x-text="'size 2: ' + size"></span>
+      </div>
+    </div>
+    <div>
+      <div
+        class="p-3 border"
+        x-data="{ size: getComputedStyle($el).padding }"
+        @resize.window="size = getComputedStyle($el).padding">
+        <span class="badge badge-primary" x-text="'size 3: ' + size"></span>
+      </div>
+    </div>
+    <div>
+      <div
+        class="p-4 border"
+        x-data="{ size: getComputedStyle($el).padding }"
+        @resize.window="size = getComputedStyle($el).padding">
+        <span class="badge badge-primary" x-text="'size 4: ' + size"></span>
+      </div>
+    </div>
+    <div>
+      <div
+        class="p-5 border"
+        x-data="{ size: getComputedStyle($el).padding }"
+        @resize.window="size = getComputedStyle($el).padding">
+        <span class="badge badge-primary" x-text="'size 5: ' + size"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-3">
+  <h6>Margin</h6>
+  <div class="d-flex flex-wrap">
+    <div class="border">
+      <div
+        class="m-1"
+        x-data="{ size: getComputedStyle($el).margin }"
+        @resize.window="size = getComputedStyle($el).margin">
+        <span class="badge badge-primary" x-text="'size 1: ' + size"></span>
+      </div>
+    </div>
+    <div class="border">
+      <div
+        class="m-2"
+        x-data="{ size: getComputedStyle($el).margin }"
+        @resize.window="size = getComputedStyle($el).margin">
+        <span class="badge badge-primary" x-text="'size 2: ' + size"></span>
+      </div>
+    </div>
+    <div class="border">
+      <div
+        class="m-3"
+        x-data="{ size: getComputedStyle($el).margin }"
+        @resize.window="size = getComputedStyle($el).margin">
+        <span class="badge badge-primary" x-text="'size 3: ' + size"></span>
+      </div>
+    </div>
+    <div class="border">
+      <div
+        class="m-4"
+        x-data="{ size: getComputedStyle($el).margin }"
+        @resize.window="size = getComputedStyle($el).margin">
+        <span class="badge badge-primary" x-text="'size 4: ' + size"></span>
+      </div>
+    </div>
+    <div class="border">
+      <div
+        class="m-5"
+        x-data="{ size: getComputedStyle($el).margin }"
+        @resize.window="size = getComputedStyle($el).margin">
+        <span class="badge badge-primary" x-text="'size 5: ' + size"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div
+      class="row"
+      x-data="{ size: getComputedStyle($el).marginRight }"
+      @resize.window="size = getComputedStyle($el).marginRight">
+      <div class="col">
+        <span class="badge badge-primary" x-text="'row margin: ' + size"></span>
+        col
+      </div>
+    </div>
+  </div>
+</div>
