@@ -1,5 +1,6 @@
 {{ $heighClass := .heighClass | default "chat-height-full" }}
 {{ $paddingYClass := .paddingYClass | default "padding-y-chat" }}
+{{ $id := .id | default "0" }}
 <div class="myChat chat-height padding-y-chat">
   <div class="row max-w-80 mx-auto overflow-hidden" x-data="{sideOpen: true}">
     <div class="col">
@@ -154,10 +155,10 @@
                   class="d-flex flex-column flex-grow-1 overflow-auto position-relative styled-scrollbars">
                   <div
                     class="nav flex-column nav-pills"
-                    id="v-pills-tab"
+                    id="v-pills-tab-{{ $id }}"
                     role="tablist"
                     aria-orientation="vertical">
-                    {{ partial "chat/cards.html" }}
+                    {{ partial "chat/cards.html" (dict "id" $id ) }}
                   </div>
                 </div>
               </div>
@@ -166,35 +167,35 @@
             <div class="col-9 p-0" :class="sideOpen ? 'col-9' : 'col-12'">
               <div
                 class="tab-content {{ $heighClass }}"
-                id="v-pills-tabContent">
+                id="v-pills-tabContent-{{ $id }}">
                 <div class="tab-content min-h-100vh" id="v-pills-tabContent">
                   <div
                     class="tab-pane min-h-100vh fade show active"
-                    id="v-pills-count1"
+                    id="v-pills-count1-{{ $id }}"
                     role="tabpanel"
-                    aria-labelledby="v-pills-count1-tab">
-                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "How do we address our records updates?" "id" 0 ) }}
+                    aria-labelledby="v-pills-count1-tab-{{ $id }}">
+                    {{ partial "chat/chat-tab.html" (dict "id" $id "heigh" $heighClass "title" "How do we address our records updates?" "id" 0 ) }}
                   </div>
                   <div
                     class="tab-pane min-h-100vh fade"
-                    id="v-pills-count2"
+                    id="v-pills-count2-{{ $id }}"
                     role="tabpanel"
-                    aria-labelledby="v-pills-count2-tab">
-                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "Service Rquest for Mano sebastiano argenti?" "id" 1 ) }}
+                    aria-labelledby="v-pills-count2-tab-{{ $id }}">
+                    {{ partial "chat/chat-tab.html" (dict "id" $id "heigh" $heighClass "title" "Service Rquest for Mano sebastiano argenti?" "id" 1 ) }}
                   </div>
                   <div
                     class="tab-pane min-h-100vh fade"
-                    id="v-pills-count3"
+                    id="v-pills-count3-{{ $id }}"
                     role="tabpanel"
-                    aria-labelledby="v-pills-count3-tab">
-                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "This another long long title containing a long long name Mano Sebastiano Argenti" "id" 3 ) }}
+                    aria-labelledby="v-pills-count3-tab-{{ $id }}">
+                    {{ partial "chat/chat-tab.html" (dict "id" $id "heigh" $heighClass "title" "This another long long title containing a long long name Mano Sebastiano Argenti" "id" 3 ) }}
                   </div>
                   <div
                     class="tab-pane min-h-100vh fade"
-                    id="v-pills-count4"
+                    id="v-pills-count4-{{ $id }}"
                     role="tabpanel"
-                    aria-labelledby="v-pills-count4-tab">
-                    {{ partial "chat/chat-tab.html" (dict "heigh" $heighClass "title" "This another long long title containing a long boring name Razvan Nicu" "id" 4 ) }}
+                    aria-labelledby="v-pills-count4-tab-{{ $id }}">
+                    {{ partial "chat/chat-tab.html" (dict "id" $id "heigh" $heighClass "title" "This another long long title containing a long boring name Razvan Nicu" "id" 4 ) }}
                   </div>
                 </div>
               </div>

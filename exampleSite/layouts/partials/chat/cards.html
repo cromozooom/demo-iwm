@@ -1,61 +1,62 @@
+{{ $id := .id }}
 <a
   class="chatItem border-bottom text-decoration-none active"
-  id="v-pills-count1-tab"
+  id="v-pills-count1-tab-{{ $id }}"
   data-toggle="pill"
-  href="#v-pills-count1"
+  href="#v-pills-count1-{{ $id }}"
   role="tab"
-  aria-controls="v-pills-count1"
+  aria-controls="v-pills-count1-{{ $id }}"
   aria-selected="true">
   {{ partial "chat/subject.html" ( dict "count" 0 "title" "Service request for Robert" "messageCount" 101) }}
 
 </a>
 <a
   class="chatItem border-bottom text-decoration-none"
-  id="v-pills-count2-tab"
+  id="v-pills-count2-tab-{{ $id }}"
   data-toggle="pill"
-  href="#v-pills-count2"
+  href="#v-pills-count2-{{ $id }}"
   role="tab"
-  aria-controls="v-pills-count2"
+  aria-controls="v-pills-count2-{{ $id }}"
   aria-selected="false">
   {{ partial "chat/subject.html" ( dict "count" 0 "title" "Service Rquest for Mano Sebastiano Argenti?" "messageCount" 19) }}
 </a>
 <a
   class="chatItem border-bottom text-decoration-none"
-  id="v-pills-count3-tab"
+  id="v-pills-count3-tab-{{ $id }}"
   data-toggle="pill"
-  href="#v-pills-count3"
+  href="#v-pills-count3-{{ $id }}"
   role="tab"
-  aria-controls="v-pills-count3"
+  aria-controls="v-pills-count3-{{ $id }}"
   aria-selected="false">
   {{ partial "chat/subject.html" ( dict "count" 0 "title" "Long Long name 1?" "messageCount" 51) }}
 </a>
 <a
   class="chatItem border-bottom text-decoration-none"
-  id="v-pills-count4-tab"
+  id="v-pills-count4-tab-{{ $id }}"
   data-toggle="pill"
-  href="#v-pills-count4"
+  href="#v-pills-count4-{{ $id }}"
   role="tab"
-  aria-controls="v-pills-count4"
+  aria-controls="v-pills-count4-{{ $id }}"
   aria-selected="false">
   {{ partial "chat/subject.html" ( dict "count" 0 "title" "Long Long name 2?" "messageCount" 3) }}
 </a>
 <a
   class="chatItem border-bottom text-decoration-none"
-  id="v-pills-count4-tab"
+  id="v-pills-count4-tab-{{ $id }}"
   data-toggle="pill"
-  href="#v-pills-count4"
+  href="#v-pills-count4-{{ $id }}"
   role="tab"
-  aria-controls="v-pills-count4"
+  aria-controls="v-pills-count4-{{ $id }}"
   aria-selected="false">
   {{ partial "chat/subject.html" ( dict "count" 0 "title" "Long Long name 2?" "messageCount" 3) }}
 </a>
 <a
   class="chatItem border-bottom text-decoration-none"
-  id="v-pills-count4-tab"
+  id="v-pills-count4-tab-{{ $id }}"
   data-toggle="pill"
-  href="#v-pills-count4"
+  href="#v-pills-count4-{{ $id }}"
   role="tab"
-  aria-controls="v-pills-count4"
+  aria-controls="v-pills-count4-{{ $id }}"
   aria-selected="false">
   {{ partial "chat/subject.html" ( dict "count" 0 "title" "Long Long name 2?" "messageCount" 3) }}
 </a>

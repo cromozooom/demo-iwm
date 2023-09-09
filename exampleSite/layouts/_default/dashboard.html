@@ -209,7 +209,7 @@
       {{ $chat := 1 }}
       {{ if $chat }}
         <div x-show="!chatOpen" class="page-margin">
-          {{ partial "chat.html" (dict "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
+          {{ partial "chat.html" (dict "id" "01" "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
         </div>
       {{ else }}
         <div class="page-margin position-relative">
