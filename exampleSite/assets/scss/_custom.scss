@@ -7,6 +7,22 @@
   transform: translateX(-50%);
 }
 
+button {
+  svg {
+    transition: all ease-in-out 200ms;
+  }
+  &:hover .icon-hover,
+  .icon {
+    opacity: 1;
+    display: block;
+  }
+  &:hover .icon,
+  .icon-hover {
+    opacity: 0;
+    display: none;
+  }
+}
+
 .results {
   position: absolute;
   width: 100%;
