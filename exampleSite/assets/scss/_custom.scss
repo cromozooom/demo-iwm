@@ -1,5 +1,5 @@
 .message {
-  bottom: 3rem;
+  bottom: 2rem;
   left: 50%;
   display: block;
   position: absolute;
@@ -23,11 +23,15 @@ button {
   }
 }
 
+li.counter.sticky-top {
+  z-index: 10 !important;
+}
+
 .results {
   position: absolute;
   width: 100%;
   top: 100%;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .xtab-pane * {
