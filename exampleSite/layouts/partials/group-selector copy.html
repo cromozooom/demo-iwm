@@ -1,0 +1,263 @@
+<!-- Tippy.js -->
+<!-- https://atomiks.github.io/tippyjs/v6 
+
+-->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
+<!-- Source -->
+
+{{ $holdings := site.Data.holdings  | jsonify }}
+{{ $noHoldings := site.Data.noHoldings  | jsonify }}
+
+
+<div class="col-6"></div>
+<div class="col-6">
+  <div class="d-flex gap-sm card">
+    {{- partial "card.html" (dict "card" "title" "title" "Holdings") -}}
+    <div
+      class="p-3"
+      x-data="{
+        holdings: {{ $holdings }},
+        searchQuery: '',
+        searchResult: [],
+        message: '',
+
+        toggleSelected(item) {
+            item.selected = !item.selected;
+      
+            // Find the corresponding item in holdings and update it
+            const holdingItem = this.holdings.find((holding) => holding.id === item.id);
+            if (holdingItem) {
+              holdingItem.selected = item.selected;
+            }
+        },
+
+        filteredHoldings() {
+            if (this.searchQuery) {
+              const searchQuery = this.searchQuery.toLowerCase();
+              console.log(this.searchQuery)
+              this.searchResult = this.holdings.filter(item => {
+                const fullName = (item.name || '').toLowerCase(); // Use empty string if name is undefined
+                return fullName.includes(searchQuery);
+            });
+            } else {
+                this.searchResult = []; // Clear the results if searchQuery is empty
+            }
+            console.log(this.searchResult)
+          },
+      }">
+      <div x-data="{ test: 'Hello, Alpine!' }">
+        <p x-text="test"></p>
+      </div>
+      <div class="d-flex flex-column mb-2">
+        <div x-data="{ searchQuery: '' }">
+          <input
+            x-model="searchQuery"
+            @input="filteredHoldings"
+            placeholder="Search..."
+            class="form-control rounded-0 flex-grow-1"
+            type="search"
+            placeholder="Search"
+            aria-label="Search" />
+        </div>
+
+        <!-- search result -->
+        <div x-show="searchResult.length">
+          <div class="d-flex gap position-relative p-3 border">
+            <div class="w-50">
+              <ul
+                x-data
+                x-tooltip="Click to Add"
+                class="flex-grow-1 pr-2 max-h-20 overflow-auto  list-unstyled styled-scrollbars">
+                <template x-for="(item, index) in searchResult" :key="index">
+                  <template x-if="!item.selected">
+                    <li class="">
+                      <button
+                        type="button"
+                        class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-start align-items-center"
+                        @click="toggleSelected(item)">
+                        <div class="text-success">
+                          x
+                          <template x-if="item.selected">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-check2-square"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                              <path
+                                d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                            </svg>
+                          </template>
+                        </div>
+                        <span
+                          class="text-decoration-none my-2"
+                          x-text="item.id + ' ' + item.name"></span>
+                      </button>
+                    </li>
+                  </template>
+                </template>
+              </ul>
+            </div>
+            <div class="w-50">
+              <ul
+                x-data
+                x-tooltip="Click to Remove"
+                class="pr-2 flex-grow-1 max-h-20 overflow-auto  list-unstyled styled-scrollbars">
+                <template x-for="(item, index) in searchResult" :key="index">
+                  <template x-if="item.selected">
+                    <li class="">
+                      <button
+                        type="button"
+                        class="btn btn-light gap-sm w-100 text-left mt-2 d-flex justify-content-start align-items-center"
+                        @click="item.selected = !item.selected">
+                        <div class="text-success">
+                          <template x-if="item.selected">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-check2-square"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                              <path
+                                d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                            </svg>
+                          </template>
+                        </div>
+                        <span
+                          class="text-decoration-none my-2"
+                          x-text="item.id + ' ' + item.first_name + ' ' + item.name"></span>
+                      </button>
+                    </li>
+                  </template>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- end search result -->
+      </div>
+      <span
+        xx-text="message"
+        class="message bg-success ink-success px-2 rounded"
+        >was moved</span
+      >
+      <div class="d-flex gap position-relative pt-3">
+        <div class="w-50">
+          <ul
+            x-data
+            x-tooltip="Click to Add"
+            class="flex-grow-1 pr-2 max-h-20 overflow-auto  list-unstyled styled-scrollbars">
+            <template x-for="(item, index) in holdings" :key="index">
+              <template x-if="!item.selected">
+                <li class="">
+                  <button
+                    type="button"
+                    class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-start align-items-center"
+                    @click="item.selected = !item.selected">
+                    <div class="text-success">
+                      <template x-if="item.selected">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-check2-square"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                          <path
+                            d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                        </svg>
+                      </template>
+                    </div>
+                    <span
+                      class="text-decoration-none my-2"
+                      x-text="item.id + ' ' + item.first_name + ' ' + item.name"></span>
+                  </button>
+                </li>
+              </template>
+            </template>
+          </ul>
+        </div>
+        <div class="w-50">
+          <ul
+            x-data
+            x-tooltip="Click to Remove"
+            class="pr-2 flex-grow-1 max-h-20 overflow-auto  list-unstyled styled-scrollbars">
+            <template x-for="(item, index) in holdings" :key="index">
+              <template x-if="item.selected">
+                <li class="">
+                  <button
+                    type="button"
+                    class="btn btn-light gap-sm w-100 text-left mt-2 d-flex justify-content-start align-items-center"
+                    @click="item.selected = !item.selected">
+                    <div class="text-success">
+                      <template x-if="item.selected">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-check2-square"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                          <path
+                            d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                        </svg>
+                      </template>
+                    </div>
+                    <span
+                      class="text-decoration-none my-2"
+                      x-text="item.id + ' ' + item.first_name + ' ' + item.name"></span>
+                  </button>
+                </li>
+              </template>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Your filteredHoldings function -->
+<script>
+  function filteredHoldings() {
+    const searchQuery = this.searchQuery.toLowerCase();
+    this.searchResult = this.holdings.filter((item) => {
+      const fullName = item.name.toLowerCase();
+      return fullName.includes(searchQuery);
+    });
+  }
+</script>
+
+<script>
+  document.addEventListener("alpine:init", () => {
+    // Magic: $tooltip
+    Alpine.magic("tooltip", (el) => (message) => {
+      let instance = tippy(el, { content: message, trigger: "manual" });
+
+      instance.show();
+
+      setTimeout(() => {
+        instance.hide();
+
+        setTimeout(() => instance.destroy(), 150);
+      }, 2000);
+    });
+
+    // Directive: x-tooltip
+    Alpine.directive("tooltip", (el, { expression }) => {
+      tippy(el, { content: expression });
+    });
+  });
+</script>

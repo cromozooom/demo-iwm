@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "first_name": "Paulita",
+        "last_name": "Ubee",
+        "email": "pubee0@twitter.com",
+        "gender": "Non-binary",
+        "ip_address": "158.31.126.221"
+    },
+    {
+        "id": 2,
+        "first_name": "Bobbie",
+        "last_name": "Deans",
+        "email": "bdeans1@diigo.com",
+        "gender": "Female",
+        "ip_address": "179.218.87.202"
+    },
+    {
+        "id": 3,
+        "first_name": "Alphonse",
+        "last_name": "Fenney",
+        "email": "afenney2@ycombinator.com",
+        "gender": "Male",
+        "ip_address": "63.213.41.65"
+    },
+    {
+        "id": 4,
+        "first_name": "Sasha",
+        "last_name": "Ciccottini",
+        "email": "sciccottini3@ca.gov",
+        "gender": "Female",
+        "ip_address": "222.238.68.56"
+    },
+    {
+        "id": 5,
+        "first_name": "Ogdon",
+        "last_name": "Murra",
+        "email": "omurra4@trellian.com",
+        "gender": "Male",
+        "ip_address": "169.184.246.54"
+    },
+    {
+        "id": 6,
+        "first_name": "Egon",
+        "last_name": "Hibling",
+        "email": "ehibling5@facebook.com",
+        "gender": "Male",
+        "ip_address": "115.207.93.13"
+    },
+    {
+        "id": 7,
+        "first_name": "Niven",
+        "last_name": "Boxill",
+        "email": "nboxill6@yelp.com",
+        "gender": "Male",
+        "ip_address": "28.212.60.184"
+    },
+    {
+        "id": 8,
+        "first_name": "Ethel",
+        "last_name": "Coxhell",
+        "email": "ecoxhell7@google.de",
+        "gender": "Female",
+        "ip_address": "140.175.115.194"
+    },
+    {
+        "id": 9,
+        "first_name": "Danika",
+        "last_name": "Dobbson",
+        "email": "ddobbson8@google.de",
+        "gender": "Female",
+        "ip_address": "204.121.121.89"
+    },
+    {
+        "id": 10,
+        "first_name": "Butch",
+        "last_name": "Cromer",
+        "email": "bcromer9@gravatar.com",
+        "gender": "Male",
+        "ip_address": "154.14.4.2"
+    }
+]

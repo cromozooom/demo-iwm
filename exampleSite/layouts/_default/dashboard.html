@@ -28,7 +28,6 @@
             <div class="col">
               <ul class="m-0 list-unstyled d-flex flex-column gap-sm">
                 <li>
-                  <span x-text=""></span>
                   <strong class="primary">Age:</strong> 39 (D.O.B:
                   1983-12-14T00)
                 </li>
@@ -98,6 +97,19 @@
           <li class="nav-item" role="presentation">
             <button
               class="nav-link h5 mb-0 py-3 px-4 active"
+              id="holdings-tab"
+              data-toggle="tab"
+              data-target="#holdings"
+              type="button"
+              role="tab"
+              aria-controls="holdings"
+              aria-selected="true">
+              Holdings
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link h5 mb-0 py-3 px-4"
               id="overview-tab"
               data-toggle="tab"
               data-target="#overview"
@@ -105,12 +117,12 @@
               role="tab"
               aria-controls="overview"
               aria-selected="true">
-              Overview / chat
+              Overview / chat / selector
             </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
-              class="nav-link h5 mb-0 py-3 px-4"
+              class="nav-link h5 mb-0 py-3 px-4 "
               id="legal-tab"
               data-toggle="tab"
               data-target="#legal"
@@ -202,12 +214,18 @@
   </div>
   <div class="tab-content flex-grow-1 h-100" id="myTabContent">
     <div
-      class="tab-pane fade show active "
-      id="overview"
+      class="tab-pane fade show active"
+      id="holdings"
       role="tabpanel"
-      aria-labelledby="overview-tab">
-      {{ $chat := 1 }}
-      {{ if $chat }}
+      aria-labelledby="holdings-tab">
+      {{ $block := 2 }}
+      {{ if eq $block 2 }}
+        <div class="page-margin  mt-3">
+          <div class="row">
+            {{ partial "group-selector.html" . }}
+          </div>
+        </div>
+      {{ else if eq $block 1 }}
         <div x-show="!chatOpen" class="page-margin">
           {{ partial "chat.html" (dict "id" "01" "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
         </div>
@@ -291,6 +309,100 @@
     </div>
     <div
       class="tab-pane fade"
+      id="overview"
+      role="tabpanel"
+      aria-labelledby="overview-tab">
+      {{ $block := 1 }}
+      {{ if eq $block 2 }}
+        <div class="page-margin  mt-3">
+          <div class="row">
+            {{ partial "group-selector.html" . }}
+          </div>
+        </div>
+      {{ else if eq $block 1 }}
+        <div x-show="!chatOpen" class="page-margin">
+          {{ partial "chat.html" (dict "id" "01" "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
+        </div>
+      {{ else }}
+        <div class="page-margin position-relative">
+          <div class="row">
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Opportunities") -}}
+                <div class="p-b-actions">
+                  {{- partial "tables.html" (dict "table" "opportunities" ) -}}
+                  <div class="ml-2">
+                    {{ partial "pagination.html" }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fixed-bottom p-2 bg-light border-top">
+            <div class="row">
+              <div class="col">
+                {{ partial "pagination.html" }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-margin mt-3">
+          <div class="row mb-3">
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Key Dates - full row (4 col)") -}}
+                <div class="d-flex w-100 gap-sm justify-content-center p-3">
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Key Dates - 50% row") -}}
+                <div class="d-flex w-100 gap-sm justify-content-center p-3">
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex gap-sm card">
+                {{- partial "card.html" (dict "card" "title" "title" "Key Dates") -}}
+                <div class="d-flex w-100 gap-sm justify-content-center p-3">
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last comunication") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Last meeting") -}}
+                  {{- partial "card.html" (dict "card" "keyDates" "title" "Next meeting") -}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-margin">
+          <div class="d-flex gap-sm card">
+            {{- partial "card.html" (dict "card" "title" "title" "Manager tasks") -}}
+            <div class="row py-3 mx-1">
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+              {{- partial "card.html" (dict "card" "tasks" "col" 3) -}}
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+    <div
+      class="tab-pane fade "
       id="legal"
       role="tabpanel"
       aria-labelledby="legal-tab">
