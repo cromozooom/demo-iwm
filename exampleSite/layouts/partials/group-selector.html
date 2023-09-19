@@ -2,16 +2,11 @@
 <!-- https://atomiks.github.io/tippyjs/v6 
 
 -->
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
 
 <!-- Source -->
 
 {{ $holdings := site.Data.holdings  | jsonify }}
 {{ $noHoldings := site.Data.noHoldings  | jsonify }}
-
-
-<div class="col-6"></div>
 <div class="col-6">
   <div class="d-flex gap-sm card">
     {{- partial "card.html" (dict "card" "title" "title" "Holdings") -}}
@@ -95,7 +90,7 @@
           <div
             class="results bg-white shadow rounded-lg border"
             x-show="searchResult.length">
-            <div class="d-flex gap position-relative px-2 py-2 ">
+            <div class="d-flex gap-lg position-relative px-2 py-2 ">
               <div class="w-50">
                 <div class="sticky-top bg-white py-2">
                   <span> Not Selected </span>
@@ -150,6 +145,7 @@
                   </template>
                 </ul>
               </div>
+
               <div class="w-50">
                 <div class="sticky-top bg-white py-2">
                   <span> Selected </span>
@@ -285,6 +281,21 @@
               </template>
             </template>
           </ul>
+        </div>
+        <div class="position-relative">
+          <div class="switch-icon position-absolute">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-left-right"
+              viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+            </svg>
+          </div>
         </div>
         <div class="w-50">
           <ul

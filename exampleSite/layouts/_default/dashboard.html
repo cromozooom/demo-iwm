@@ -223,14 +223,15 @@
         <div class="page-margin  mt-3">
           <div class="row">
             {{ partial "group-selector.html" . }}
+            {{ partial "group-selector.html" . }}
           </div>
         </div>
       {{ else if eq $block 1 }}
-        <div x-show="!chatOpen" class="page-margin">
-          {{ partial "chat.html" (dict "id" "01" "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
+        <div x-show="!chatOpen" class="page-margin position-relative z-2">
+          {{ partial "chat.html" (dict "id" "01" "heighClass" "chat-height-full position-relative" "paddingYClass" "padding-y-chat") }}
         </div>
       {{ else }}
-        <div class="page-margin position-relative">
+        <div class="page-margin">
           <div class="row">
             <div class="col">
               <div class="d-flex gap-sm card">
@@ -308,21 +309,90 @@
       {{ end }}
     </div>
     <div
-      class="tab-pane fade"
+      class="tab-pane fade position-relative"
       id="overview"
       role="tabpanel"
       aria-labelledby="overview-tab">
       {{ $block := 1 }}
-      {{ if eq $block 2 }}
-        <div class="page-margin  mt-3">
-          <div class="row">
-            {{ partial "group-selector.html" . }}
-          </div>
-        </div>
-      {{ else if eq $block 1 }}
+      {{ $others := 1 }}
+      {{ if eq $block 1 }}
         <div x-show="!chatOpen" class="page-margin">
           {{ partial "chat.html" (dict "id" "01" "heighClass" "chat-height-full" "paddingYClass" "padding-y-chat") }}
         </div>
+        {{ if $others }}
+
+          <div class="page-margin mb-3">
+            <div class="row max-w-80 mx-auto">
+              <div class="col-6">
+                <div class="card">
+                  {{- partial "card.html" (dict "card" "title" "title" "Uidget 2") -}}
+                  <div class="p-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card">
+                  {{- partial "card.html" (dict "card" "title" "title" "Uidget 3") -}}
+                  <div class="p-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page-margin mb-3">
+            <div class="row max-w-80 mx-auto">
+              <div class="col-12">
+                <div class="card">
+                  {{- partial "card.html" (dict "card" "title" "title" "Uidget 4") -}}
+                  <div class="p-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum, nesciunt iusto, ratione tempore enim voluptatem
+                      in illo nam corrupti odio libero aliquam nulla, doloribus
+                      sunt maxime. Vitae, optio. Cumque, hic!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
       {{ else }}
         <div class="page-margin position-relative">
           <div class="row">
