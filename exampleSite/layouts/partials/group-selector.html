@@ -22,6 +22,7 @@
         searchQuery: '',
         searchResult: [],
         message: '',
+        sufix: ' was added',
         selectedCount: 0, // To track selected items count
         notSelectedCount: 0, // To track not selected items count
 
@@ -41,13 +42,17 @@
             this.countAll();
         },
         toggleSelected(item) {
+            if (item.selected) {
+                this.sufix = 'was removed'
+            };
             item.selected = !item.selected;
-      
+
+
             // Find the corresponding item in holdings and update it
             const holdingItem = this.holdings.find((holding) => holding.id === item.id);
             if (holdingItem) {
               holdingItem.selected = item.selected;
-              this.setMessage(holdingItem.name + ' ' + ' was moved');
+              this.setMessage(holdingItem.name + ' ' +  this.sufix);
             }
             this.countAll();
         },
@@ -92,15 +97,13 @@
             x-show="searchResult.length">
             <div class="d-flex gap position-relative px-2 py-2 ">
               <div class="w-50">
-                <!-- <div class="sticky-top bg-white py-2">
-                  <span>
-                    Not Selected: <strong x-text="notSelectedCount"></strong>
-                  </span>
-                </div> -->
+                <div class="sticky-top bg-white py-2">
+                  <span> Not Selected </span>
+                </div>
                 <ul
                   x-data
                   x-tooltip="Click to Add"
-                  class="mb-0 flex-grow-1 pr-2 max-h-20 overflow-auto  list-unstyled styled-scrollbars">
+                  class="mb-0 flex-grow-1 pr-2 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
                   <template x-for="(item, index) in searchResult" :key="index">
                     <template x-if="!item.selected">
                       <li class="w-100">
@@ -148,11 +151,9 @@
                 </ul>
               </div>
               <div class="w-50">
-                <!-- <div class="sticky-top bg-white py-2">
-                  <span>
-                    Selected: <strong x-text="selectedCount"></strong>
-                  </span>
-                </div> -->
+                <div class="sticky-top bg-white py-2">
+                  <span> Selected </span>
+                </div>
                 <ul
                   x-data
                   x-tooltip="Click to Remove"

@@ -1,9 +1,9 @@
 .message {
-  bottom: 2rem;
+  bottom: 0.5rem;
   left: 50%;
   display: block;
   position: absolute;
-  z-index: 300;
+  z-index: 1001;
   transform: translateX(-50%);
 }
 
@@ -285,6 +285,9 @@ html {
 }
 .max-vh-70 {
   max-height: 60vh;
+}
+.max-h-18 {
+  max-height: 18rem;
 }
 .max-h-20 {
   max-height: 20rem;

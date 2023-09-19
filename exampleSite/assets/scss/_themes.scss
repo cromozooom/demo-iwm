@@ -7,8 +7,8 @@ $brandName: "punk"; // missing brand
 $brandName: "dove"; // missing brand
 $brandName: "RothChildish"; // missing brand
 $brandName: "rmm";
-$brandName: "edwardJones";
 $brandName: "cai";
+$brandName: "edwardJones";
 $brandName: "charlesHarley";
 $h: 0;
 $s: 0;
@@ -179,9 +179,11 @@ $brand-12: #133c3b;
   $brand-11: #5d6817;
   $brand-12: #39400e;
 
-  $success: #86961d;
   $success: #51bd42; // from punk
-  $info: #00295c;
+  $success: hsl(68, 68%, 35%); // original
+  $success: hsl(68, 100%, 30%);
+  $info: hsl(213, 100%, 18%);
+  $info: hsl(207, 100%, 40%);
   $warning: #f0ad4e;
   $danger: #d8544f;
 } @else if $brandName == "gray" {
