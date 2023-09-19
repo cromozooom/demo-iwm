@@ -106,7 +106,7 @@
                   class="mb-0 flex-grow-1 pr-2 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
                   <template x-for="(item, index) in searchResult" :key="index">
                     <template x-if="!item.selected">
-                      <li class="w-100">
+                      <li class="w-100 mb-2">
                         <button
                           type="button"
                           class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
@@ -157,10 +157,10 @@
                 <ul
                   x-data
                   x-tooltip="Click to Remove"
-                  class="mb-0 flex-grow-1 px-1 max-h-20 overflow-auto  list-unstyled styled-scrollbars">
+                  class="mb-0 flex-grow-1 px-1 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
                   <template x-for="(item, index) in searchResult" :key="index">
                     <template x-if="item.selected">
-                      <li class="">
+                      <li class="w-100 mb-2">
                         <button
                           type="button"
                           class="btn btn-outline-success gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
@@ -303,7 +303,7 @@
             </li>
             <template x-for="(item, index) in holdings" :key="index">
               <template x-if="item.selected">
-                <li class="">
+                <li class="mb-2">
                   <button
                     type="button"
                     class="btn btn-outline-success gap-sm w-100 text-left mt-2 d-flex justify-content-start align-items-center"
