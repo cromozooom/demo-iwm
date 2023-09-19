@@ -62,7 +62,7 @@
             // Clear the message after 2 seconds
             setTimeout(() => {
               this.message = '';
-            }, 2000);
+            }, 5000);
         },
 
         filteredHoldings() {
@@ -293,6 +293,13 @@
             class="mb-0 px-2 flex-grow-1 max-h-20 overflow-auto  list-unstyled styled-scrollbars border rounded">
             <li class="counter sticky-top bg-white py-2">
               <span> Selected: <strong x-text="selectedCount"></strong> </span>
+            </li>
+
+            <li x-show="!selectedCount" class="w-100 mb-2">
+              <div
+                class="border text-center text-info border-info p-3 rounded  gap-sm w-100 text-left mt-2">
+                <span> Add someone please </span>
+              </div>
             </li>
             <template x-for="(item, index) in holdings" :key="index">
               <template x-if="item.selected">
