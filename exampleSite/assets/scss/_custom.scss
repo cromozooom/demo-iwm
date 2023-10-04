@@ -1,3 +1,6 @@
+// body * {
+//   outline: 1px solid $danger;
+// }
 .message {
   bottom: 0.5rem;
   left: 50%;
@@ -44,9 +47,6 @@ li.counter.sticky-top {
 .xtab-pane * {
   outline: 1px solid $danger;
 }
-// body * {
-//   outline: 1px solid $danger;
-// }
 
 .gap-0 {
   gap: 0;
@@ -85,6 +85,9 @@ li.counter.sticky-top {
 }
 .z-4 {
   z-index: 4 !important;
+}
+.z-max {
+  z-index: 4000 !important;
 }
 .min-vh,
 html {
@@ -166,6 +169,10 @@ html {
 .min-h-100vh {
   height: calc(var(--vh) - 40px);
 }
+.h-55vh {
+  min-height: 55vh;
+  height: 55vh;
+}
 .min-h-55px {
   min-height: 55px;
 }
@@ -201,6 +208,51 @@ html {
 }
 .min-w-avatar {
   min-width: 2.5rem;
+}
+
+.w-md {
+  width: 2.5rem;
+}
+
+.arrow {
+}
+
+.xwork-item {
+  * {
+    outline: 1px solid red;
+  }
+}
+
+.after-center-border {
+  position: relative;
+  &::before {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 100%;
+    background: $gray-200;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(0%);
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    position: absolute;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0;
+    border: 1.2rem solid transparent;
+    border-right-color: $gray-300;
+    top: 0.7rem;
+    left: 1.8rem;
+  }
+  .icon {
+    z-index: 2;
+    position: inherit;
+  }
 }
 
 .p-b-actions {
@@ -465,7 +517,7 @@ html {
 .sticky-top-custom {
   position: sticky;
   top: 0;
-  z-index: 1020;
+  // z-index: 1020;
 }
 
 $paddingCath: 1rem;
@@ -513,4 +565,45 @@ $paddingCath: 1rem;
 
 .inset-0 {
   inset: 0;
+}
+
+.rounded-top-0 {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.rounded-right-0 {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.rounded-bottom-0 {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-left-0 {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.outline {
+  outline: 2px dashed var(--outline-color);
+}
+.outline-success {
+  --outline-color: #{$success};
+}
+.outline-info {
+  --outline-color: #{$info};
+}
+.outline-offset-s {
+  outline-offset: 3px;
+}
+.outline-offset-ns {
+  outline-offset: -3px;
+}
+
+.tollbar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
 }

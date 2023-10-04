@@ -2,9 +2,37 @@
 // $font-size-base: 1.4rem;
 // $font-size-base: 1rem;
 
+// Chinese
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap");
+// Noto
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital@0;1&display=swap");
+// Roboto
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap");
+
+$latin: "Noto Sans Display", "Noto Sans SC", sans-serif;
+$latin: "Roboto Flex", "Noto Sans SC", sans-serif;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 800;
+$font-weight-bolder: bolder;
+
+$font-weight-base: $font-weight-normal;
+$headings-font-weight: 700;
+$lead-font-weight: 300;
+$dt-font-weight: $font-weight-bold;
+$nested-kbd-font-weight: $font-weight-bold;
+$table-th-font-weight: null;
+
 $font-size-base: 0.875rem;
 $font-size-base: 1rem;
 // $spacer: 0.875rem;
 
 // $card-spacer-y: 0.75rem !default;
 // $card-spacer-x: $spacer * 0.875;
+
+$font-family-sans-serif: $latin;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;

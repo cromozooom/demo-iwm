@@ -87,8 +87,14 @@
   <div
     x-data="{ tabNavigationHeight: null }"
     x-init="initializeTabNavigationHeight()"
-    class="tab-navigation sticky-top z-2 shadow-md bg-white">
-    <div class="d-flex justify-content-between align-items-center">
+    class="tab-navigation sticky-top z-2 shadow-md bg-white"
+    :class="editDasboard ? 'outline outline-info outline-offset-ns' : ''">
+    <div class="position-relative w-100 d-flex justify-content-center z-max">
+      {{ partial "toolbar.html" (dict "type" "info") }}
+    </div>
+    <div
+      class="d-flex justify-content-between align-items-center"
+      :class="editDasboard ? 'p-1' : ''">
       <div>
         <ul
           class="nav customTab xnav-tabs bg-white nav__border-bottom position-relative"
@@ -212,18 +218,39 @@
       </div>
     </div>
   </div>
-  <div class="tab-content flex-grow-1 h-100" id="myTabContent">
+
+  <div
+    class=" tab-content flex-grow-1 h-100"
+    id="myTabContent"
+    :class="editDasboard ? 'outline outline-info outline-offset-ns' : ''">
+    <div class="position-relative w-100 d-flex justify-content-center z-max">
+      {{ partial "toolbar.html" (dict "type" "info") }}
+    </div>
     <div
       class="tab-pane fade show active"
       id="holdings"
       role="tabpanel"
       aria-labelledby="holdings-tab">
       {{ $block := 2 }}
+      {{ partial "form.html" . }}
+
       {{ if eq $block 2 }}
         <div class="page-margin  mt-3">
           <div class="row">
-            {{ partial "group-selector.html" . }}
-            {{ partial "group-selector.html" . }}
+            <div class="col-6 mb-3">
+              {{ partial "work-items.html" . }}
+            </div>
+            <div class="col-6 mb-4">
+              {{ partial "work-items.html" . }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-4">
+              {{ partial "group-selector.html" . }}
+            </div>
+            <div class="col-6 mb-4">
+              {{ partial "group-selector.html" . }}
+            </div>
           </div>
         </div>
       {{ else if eq $block 1 }}
@@ -496,7 +523,6 @@
         </div>
       </div>
     </div>
-
     <div
       class="tab-pane fade "
       id="kyc-info"
@@ -527,8 +553,10 @@
       role="tabpanel"
       aria-labelledby="contact-notes-tab">
       <!-- <div class="h-fix-1">test</div> -->
-      <div
-        class="page-margin d-flex flex-column h-fix-1  border border-warning ">
+      <div class="page-margin d-flex flex-column h-fix-1  ">
+        {{ partial "typo.html" . }}
+
+
         <div class="row py-3 d-flex flex-column h-fix-1  border border-danger">
           <ul class="sideNav h-100">
             <li>

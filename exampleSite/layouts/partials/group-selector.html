@@ -7,12 +7,16 @@
 
 {{ $holdings := site.Data.holdings  | jsonify }}
 {{ $noHoldings := site.Data.noHoldings  | jsonify }}
-<div class="col-6">
-  <div class="d-flex gap-sm card">
-    {{- partial "card.html" (dict "card" "title" "title" "Holdings") -}}
+<div class="relative">
+  <div class="w-100 h-100">
+    {{ partial "toolbar.html"  (dict "type" "success") }}
     <div
-      class="p-2"
-      x-data="{
+      class="d-flex gap-sm card "
+      :class="editDasboard ? 'outline outline-success' : ''">
+      {{- partial "card.html" (dict "card" "title" "title" "Holdings") -}}
+      <div
+        class="p-2"
+        x-data="{
         holdings: {{ $holdings }},
         searchQuery: '',
         searchResult: [],
@@ -74,289 +78,296 @@
             console.log(this.searchResult)
           },
       }"
-      x-init="countAll()">
-      <div class="d-flex flex-column mb-2">
-        <div class="position-relative" x-data="{ searchQuery: '' }">
-          <input
-            x-model="searchQuery"
-            @input="filteredHoldings"
-            @click.outside="searchQuery = '', searchResult = []"
-            placeholder="Search..."
-            class="form-control rounded-0 flex-grow-1"
-            type="search"
-            placeholder="Search"
-            aria-label="Search" />
-          <!-- search result -->
-          <div
-            class="results bg-white shadow rounded-lg border"
-            x-show="searchResult.length">
-            <div class="d-flex gap-lg position-relative px-2 py-2 ">
-              <div class="w-50">
-                <div class="sticky-top bg-white py-2">
-                  <span> Not Selected </span>
-                </div>
-                <ul
-                  x-data
-                  x-tooltip="Click to Add"
-                  class="mb-0 flex-grow-1 pr-2 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
-                  <template x-for="(item, index) in searchResult" :key="index">
-                    <template x-if="!item.selected">
-                      <li class="w-100 mb-2">
-                        <button
-                          type="button"
-                          class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
-                          @click="toggleSelected(item)">
-                          <div
-                            class="d-flex gap justify-content-start align-items-center">
-                            <template x-if="!item.selected">
-                              <div>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  class="icon bi bi-plus"
-                                  viewBox="0 0 16 16">
-                                  <path
-                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                </svg>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  class="icon-hover bi bi-plus-circle"
-                                  viewBox="0 0 16 16">
-                                  <path
-                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path
-                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                </svg>
-                              </div>
-                            </template>
-
-                            <span
-                              class="text-decoration-none my-2"
-                              x-text="item.name"></span>
-                          </div>
-                        </button>
-                      </li>
-                    </template>
-                  </template>
-                </ul>
-              </div>
-
-              <div class="w-50">
-                <div class="sticky-top bg-white py-2">
-                  <span> Selected </span>
-                </div>
-                <ul
-                  x-data
-                  x-tooltip="Click to Remove"
-                  class="mb-0 flex-grow-1 px-1 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
-                  <template x-for="(item, index) in searchResult" :key="index">
-                    <template x-if="item.selected">
-                      <li class="w-100 mb-2">
-                        <button
-                          type="button"
-                          class="btn btn-outline-success gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
-                          @click="toggleSelected(item)">
-                          <div
-                            class="d-flex gap justify-content-start align-items-center">
-                            <div>
-                              <template x-if="item.selected">
+        x-init="countAll()">
+        <div class="d-flex flex-column mb-2">
+          <div class="position-relative" x-data="{ searchQuery: '' }">
+            <input
+              x-model="searchQuery"
+              @input="filteredHoldings"
+              @click.outside="searchQuery = '', searchResult = []"
+              placeholder="Search..."
+              class="form-control rounded-0 flex-grow-1"
+              type="search"
+              placeholder="Search"
+              aria-label="Search" />
+            <!-- search result -->
+            <div
+              class="results bg-white shadow rounded-lg border"
+              x-show="searchResult.length">
+              <div class="d-flex gap-lg position-relative px-2 py-2 ">
+                <div class="w-50">
+                  <div class="sticky-top bg-white py-2">
+                    <span> Not Selected </span>
+                  </div>
+                  <ul
+                    x-data
+                    x-tooltip="Click to Add"
+                    class="mb-0 flex-grow-1 pr-2 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
+                    <template
+                      x-for="(item, index) in searchResult"
+                      :key="index">
+                      <template x-if="!item.selected">
+                        <li class="w-100 mb-2">
+                          <button
+                            type="button"
+                            class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
+                            @click="toggleSelected(item)">
+                            <div
+                              class="d-flex gap justify-content-start align-items-center">
+                              <template x-if="!item.selected">
                                 <div>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
                                     fill="currentColor"
-                                    class="icon-hover bi bi-dash-circle"
+                                    class="icon bi bi-plus"
                                     viewBox="0 0 16 16">
                                     <path
-                                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                    <path
-                                      d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                   </svg>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
                                     fill="currentColor"
-                                    class="icon bi bi-check2-square"
+                                    class="icon-hover bi bi-plus-circle"
                                     viewBox="0 0 16 16">
                                     <path
-                                      d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                     <path
-                                      d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                   </svg>
                                 </div>
                               </template>
+
+                              <span
+                                class="text-decoration-none my-2"
+                                x-text="item.name"></span>
                             </div>
-                            <span
-                              class="text-decoration-none my-2"
-                              x-text="item.name"></span>
-                          </div>
-                          <div>
-                            <template x-if="!item.selected">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="bi bi-plus"
-                                viewBox="0 0 16 16">
-                                <path
-                                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                              </svg>
-                            </template>
-                          </div>
-                        </button>
-                      </li>
+                          </button>
+                        </li>
+                      </template>
                     </template>
-                  </template>
-                </ul>
+                  </ul>
+                </div>
+
+                <div class="w-50">
+                  <div class="sticky-top bg-white py-2">
+                    <span> Selected </span>
+                  </div>
+                  <ul
+                    x-data
+                    x-tooltip="Click to Remove"
+                    class="mb-0 flex-grow-1 px-1 max-h-18 overflow-auto  list-unstyled styled-scrollbars">
+                    <template
+                      x-for="(item, index) in searchResult"
+                      :key="index">
+                      <template x-if="item.selected">
+                        <li class="w-100 mb-2">
+                          <button
+                            type="button"
+                            class="btn btn-outline-success gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
+                            @click="toggleSelected(item)">
+                            <div
+                              class="d-flex gap justify-content-start align-items-center">
+                              <div>
+                                <template x-if="item.selected">
+                                  <div>
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      fill="currentColor"
+                                      class="icon-hover bi bi-dash-circle"
+                                      viewBox="0 0 16 16">
+                                      <path
+                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                      <path
+                                        d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                    </svg>
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      fill="currentColor"
+                                      class="icon bi bi-check2-square"
+                                      viewBox="0 0 16 16">
+                                      <path
+                                        d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                                      <path
+                                        d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                                    </svg>
+                                  </div>
+                                </template>
+                              </div>
+                              <span
+                                class="text-decoration-none my-2"
+                                x-text="item.name"></span>
+                            </div>
+                            <div>
+                              <template x-if="!item.selected">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  class="bi bi-plus"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                              </template>
+                            </div>
+                          </button>
+                        </li>
+                      </template>
+                    </template>
+                  </ul>
+                </div>
               </div>
             </div>
+            <!-- end search result -->
           </div>
-          <!-- end search result -->
         </div>
-      </div>
-      <span
-        x-show="message"
-        x-text="message"
-        class="message bg-info ink-info px-2 py-2 rounded shadow"></span>
-      <div class="d-flex gap position-relative pt-3">
-        <div class="w-50">
-          <ul
-            x-data
-            x-tooltip="Click to Add"
-            class="mb-0 flex-grow-1 px-2 max-h-20 overflow-auto  list-unstyled styled-scrollbars rounded border">
-            <li class="counter sticky-top bg-white py-2">
-              <span>
-                Not Selected: <strong x-text="notSelectedCount"></strong>
-              </span>
-            </li>
-            <template x-for="(item, index) in holdings" :key="index">
-              <template x-if="!item.selected">
-                <li class="">
-                  <button
-                    type="button"
-                    class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
-                    @click="add(item)">
-                    <div
-                      class="d-flex gap justify-content-start align-items-center">
-                      <template x-if="!item.selected">
-                        <div>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="icon bi bi-plus"
-                            viewBox="0 0 16 16">
-                            <path
-                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                          </svg>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="icon-hover bi bi-plus-circle"
-                            viewBox="0 0 16 16">
-                            <path
-                              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                            <path
-                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                          </svg>
-                        </div>
-                      </template>
+        <span
+          x-show="message"
+          x-text="message"
+          class="message bg-info ink-info px-2 py-2 rounded shadow"></span>
+        <div class="d-flex gap position-relative pt-3">
+          <div class="w-50">
+            <ul
+              x-data
+              x-tooltip="Click to Add"
+              class="mb-0 flex-grow-1 px-2 max-h-20 overflow-auto  list-unstyled styled-scrollbars rounded border">
+              <li class="counter sticky-top bg-white py-2">
+                <span>
+                  Not Selected: <strong x-text="notSelectedCount"></strong>
+                </span>
+              </li>
+              <template x-for="(item, index) in holdings" :key="index">
+                <template x-if="!item.selected">
+                  <li class="">
+                    <button
+                      type="button"
+                      class="btn btn-light gap-sm w-100 text-left mt-2  d-flex justify-content-between align-items-center"
+                      @click="add(item)">
+                      <div
+                        class="d-flex gap justify-content-start align-items-center">
+                        <template x-if="!item.selected">
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="icon bi bi-plus"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="icon-hover bi bi-plus-circle"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                              <path
+                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg>
+                          </div>
+                        </template>
+                        <span
+                          class="text-decoration-none my-2"
+                          x-text="item.name"></span>
+                      </div>
+                    </button>
+                  </li>
+                </template>
+              </template>
+            </ul>
+          </div>
+          <div class="position-relative">
+            <div class="switch-icon position-absolute">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left-right"
+                viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+              </svg>
+            </div>
+          </div>
+          <div class="w-50">
+            <ul
+              x-data
+              x-tooltip="Click to Remove"
+              class="mb-0 px-2 flex-grow-1 max-h-20 overflow-auto  list-unstyled styled-scrollbars border rounded">
+              <li class="counter sticky-top bg-white py-2">
+                <span>
+                  Selected: <strong x-text="selectedCount"></strong>
+                </span>
+              </li>
+
+              <li x-show="!selectedCount" class="w-100 mb-2">
+                <div
+                  class="border text-center text-info border-info p-3 rounded  gap-sm w-100 text-left mt-2">
+                  <span> Add someone please </span>
+                </div>
+              </li>
+              <template x-for="(item, index) in holdings" :key="index">
+                <template x-if="item.selected">
+                  <li class="mb-2">
+                    <button
+                      type="button"
+                      class="btn btn-outline-success gap-sm w-100 text-left mt-2 d-flex justify-content-start align-items-center"
+                      @click="remove(item)">
+                      <div class="stext-success">
+                        <template x-if="item.selected">
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="icon-hover bi bi-dash-circle"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                              <path
+                                d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                            </svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="icon bi bi-check2-square"
+                              viewBox="0 0 16 16">
+                              <path
+                                d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                              <path
+                                d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                            </svg>
+                          </div>
+                        </template>
+                      </div>
                       <span
                         class="text-decoration-none my-2"
                         x-text="item.name"></span>
-                    </div>
-                  </button>
-                </li>
+                    </button>
+                  </li>
+                </template>
               </template>
-            </template>
-          </ul>
-        </div>
-        <div class="position-relative">
-          <div class="switch-icon position-absolute">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-arrow-left-right"
-              viewBox="0 0 16 16">
-              <path
-                fill-rule="evenodd"
-                d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
-            </svg>
+            </ul>
           </div>
-        </div>
-        <div class="w-50">
-          <ul
-            x-data
-            x-tooltip="Click to Remove"
-            class="mb-0 px-2 flex-grow-1 max-h-20 overflow-auto  list-unstyled styled-scrollbars border rounded">
-            <li class="counter sticky-top bg-white py-2">
-              <span> Selected: <strong x-text="selectedCount"></strong> </span>
-            </li>
-
-            <li x-show="!selectedCount" class="w-100 mb-2">
-              <div
-                class="border text-center text-info border-info p-3 rounded  gap-sm w-100 text-left mt-2">
-                <span> Add someone please </span>
-              </div>
-            </li>
-            <template x-for="(item, index) in holdings" :key="index">
-              <template x-if="item.selected">
-                <li class="mb-2">
-                  <button
-                    type="button"
-                    class="btn btn-outline-success gap-sm w-100 text-left mt-2 d-flex justify-content-start align-items-center"
-                    @click="remove(item)">
-                    <div class="stext-success">
-                      <template x-if="item.selected">
-                        <div>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="icon-hover bi bi-dash-circle"
-                            viewBox="0 0 16 16">
-                            <path
-                              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                            <path
-                              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                          </svg>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="icon bi bi-check2-square"
-                            viewBox="0 0 16 16">
-                            <path
-                              d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
-                            <path
-                              d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
-                          </svg>
-                        </div>
-                      </template>
-                    </div>
-                    <span
-                      class="text-decoration-none my-2"
-                      x-text="item.name"></span>
-                  </button>
-                </li>
-              </template>
-            </template>
-          </ul>
         </div>
       </div>
     </div>
