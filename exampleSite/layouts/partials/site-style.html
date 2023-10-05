@@ -18,36 +18,36 @@
 {{ $styles_Rmm = $styles_Rmm | resources.ToCSS $options }}
 {{ $styles_punk = $styles_punk | resources.ToCSS $options }}
 {{ if hugo.IsProduction }}
-  {{ $styles = $styles | fingerprint }}
-  {{ $styles_charlesHarley = $styles_charlesHarley | fingerprint }}
-  {{ $styles_edwardJones = $styles_edwardJones | fingerprint }}
-  {{ $styles_dove = $styles_dove | fingerprint }}
-  {{ $styles_Rmm = $styles_Rmm | fingerprint }}
-  {{ $styles_punk = $styles_punk | fingerprint }}
+  {{ $styles = $styles }}
+  {{ $styles_charlesHarley = $styles_charlesHarley }}
+  {{ $styles_edwardJones = $styles_edwardJones }}
+  {{ $styles_dove = $styles_dove }}
+  {{ $styles_Rmm = $styles_Rmm }}
+  {{ $styles_punk = $styles_punk }}
 {{ end }}
 <link
   rel="stylesheet"
-  data="{{ $styles_charlesHarley.RelPermalink }}"
+  css-data="{{ $styles_charlesHarley.Permalink }}"
   rel="stylesheet" />
 <link
   rel="stylesheet"
-  data="{{ $styles_edwardJones.RelPermalink }}"
+  css-data="{{ $styles_edwardJones.Permalink }}"
   rel="stylesheet" />
 <link
   rel="stylesheet"
-  data="{{ $styles_dove.RelPermalink }}"
+  css-data="{{ $styles_dove.Permalink }}"
   rel="stylesheet" />
 <link
   rel="stylesheet"
-  data="{{ $styles_Rmm.RelPermalink }}"
+  css-data="{{ $styles_Rmm.Permalink }}"
   rel="stylesheet" />
 <link
   rel="stylesheet"
-  data="{{ $styles_punk.RelPermalink }}"
+  css-data="{{ $styles_punk.Permalink }}"
   rel="stylesheet" />
 <!--
 -->
 <link
   id="themeStylesheet" rel="stylesheet"
-  href="{{ $styles.RelPermalink }}"
+  href="{{ $styles.Permalink }}"
   rel="stylesheet" />
