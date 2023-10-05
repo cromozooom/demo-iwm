@@ -1,6 +1,8 @@
 // body * {
 //   outline: 1px solid $danger;
 // }
+
+@import "bubble/bubble";
 .message {
   bottom: 0.5rem;
   left: 50%;
@@ -85,6 +87,9 @@ li.counter.sticky-top {
 }
 .z-4 {
   z-index: 4 !important;
+}
+.z-5 {
+  z-index: 5 !important;
 }
 .z-max {
   z-index: 4000 !important;
@@ -213,6 +218,9 @@ html {
 .w-md {
   width: 2.5rem;
 }
+.w-sm {
+  width: 1.5rem;
+}
 
 .arrow {
 }
@@ -223,37 +231,7 @@ html {
   }
 }
 
-.after-center-border {
-  position: relative;
-  &::before {
-    display: block;
-    content: "";
-    width: 2px;
-    height: 100%;
-    background: $gray-200;
-    z-index: 1;
-    left: 50%;
-    transform: translateX(0%);
-    bottom: 0;
-    top: 0;
-    height: 100%;
-    position: absolute;
-  }
-  &::after {
-    position: absolute;
-    content: "";
-    display: block;
-    width: 0;
-    border: 1.2rem solid transparent;
-    border-right-color: $gray-300;
-    top: 0.7rem;
-    left: 1.8rem;
-  }
-  .icon {
-    z-index: 2;
-    position: inherit;
-  }
-}
+
 
 .p-b-actions {
   padding-bottom: 4rem;
@@ -606,4 +584,9 @@ $paddingCath: 1rem;
   left: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
+}
+
+.centerTop {
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -1,15 +1,50 @@
 // $primary: rgb(250, 164, 250);
-$brandName: "play";
-$brandName: "gray";
-$brandName: "flowerPowerModern";
-$brandName: "flowerPower";
-$brandName: "punk"; // missing brand
-$brandName: "dove"; // missing brand
-$brandName: "RothChildish"; // missing brand
-$brandName: "edwardJones";
-$brandName: "charlesHarley";
-$brandName: "rmm";
-$brandName: "cai";
+
+
+$brandCai: hsl(178, 31%, 42%);
+$brandDove: hsl(42, 56%, 68%);
+$brandRmm: hsl(231, 20%, 25%);
+$brandPunk: hsl(0, 100%, 95%);
+$brandRothChildish: hsl(212, 100%, 13%);
+$brandEdwardJones: hsl(47, 95%, 62%);
+$brandCharlesHarley: hsl(68, 68%, 52%);
+$brandGray: hsl(0, 0%, 50%);
+$brandFlowerPower: hsl(347, 99%, 45%);
+$brandFlowerPowerModern: hsl(212, 24%, 11%);
+
+
+.bg-Cai {
+  background: $brandCai
+}
+.bg-Dove {
+  background: $brandDove
+}
+.bg-Rmm {
+  background: $brandRmm
+}
+.bg-Punk {
+  background: $brandPunk
+}
+.bg-RothChildish {
+  background: $brandRothChildish
+}
+.bg-EdwardJones {
+  background: $brandEdwardJones
+}
+.bg-CharlesHarley {
+  background: $brandCharlesHarley
+}
+.bg-Gray {
+  background: $brandGray
+}
+.bg-FlowerPower {
+  background: $brandFlowerPower
+}
+.bg-FlowerPowerModern {
+  background: $brandFlowerPowerModern
+}
+
+
 $h: 0;
 $s: 0;
 $l: 0;

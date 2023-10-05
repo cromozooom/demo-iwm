@@ -2,17 +2,52 @@
 {{ if hugo.IsProduction }}
   {{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
 {{ end }}
+
 {{ $styles := resources.Get "scss/styles.scss" }}
-{{ with .Params.style }}
-  {{ if eq . "wdx" }}
-    {{ $styles = resources.Get "scss/stylesWDX.scss" }}
-  {{ end }}
-{{ end }}
+{{ $styles_charlesHarley := resources.Get "scss/styles_charlesHarley.scss" }}
+{{ $styles_edwardJones := resources.Get "scss/styles_edwardJones.scss" }}
+{{ $styles_dove := resources.Get "scss/styles_dove.scss" }}
+{{ $styles_Rmm := resources.Get "scss/styles_Rmm.scss" }}
+{{ $styles_punk := resources.Get "scss/styles_punk.scss" }}
+
+
 {{ $styles = $styles | resources.ToCSS $options }}
+{{ $styles_charlesHarley = $styles_charlesHarley | resources.ToCSS $options }}
+{{ $styles_edwardJones = $styles_edwardJones | resources.ToCSS $options }}
+{{ $styles_dove = $styles_dove | resources.ToCSS $options }}
+{{ $styles_Rmm = $styles_Rmm | resources.ToCSS $options }}
+{{ $styles_punk = $styles_punk | resources.ToCSS $options }}
 {{ if hugo.IsProduction }}
   {{ $styles = $styles | fingerprint }}
+  {{ $styles_charlesHarley = $styles_charlesHarley | fingerprint }}
+  {{ $styles_edwardJones = $styles_edwardJones | fingerprint }}
+  {{ $styles_dove = $styles_dove | fingerprint }}
+  {{ $styles_Rmm = $styles_Rmm | fingerprint }}
+  {{ $styles_punk = $styles_punk | fingerprint }}
 {{ end }}
+<!--
+  <link
+    rel="stylesheet"
+    href="{{ $styles_charlesHarley.RelPermalink }}"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="{{ $styles_edwardJones.RelPermalink }}"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="{{ $styles_dove.RelPermalink }}"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="{{ $styles_Rmm.RelPermalink }}"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="{{ $styles_punk.RelPermalink }}"
+    rel="stylesheet" />
+-->
 <link
-  id="style-link"
+  id="themeStylesheet" rel="stylesheet"
   href="{{ $styles.RelPermalink }}"
   rel="stylesheet" />

@@ -1,0 +1,50 @@
+.after-center-border {
+  position: relative;
+  &::before {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 100%;
+    background: $gray-200;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(0%);
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    position: absolute;
+  }
+  .icon {
+    z-index: 2;
+    position: inherit;
+  }
+}
+
+.card.card_arrow-left {
+  // outline: 1px solid red;
+  position: relative;
+  background: $gray-100 !important;
+  z-index: 200;
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0;
+    border: .7rem solid transparent;
+    border-right-color: $gray-100;
+    top: 1rem;
+    left: -1.3rem;
+    z-index: 1;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0;
+    border: .7rem solid transparent;
+    border-right-color: $gray-800;
+    top: 1rem;
+    left: -1.3rem;
+    z-index: 0;
+  }
+}

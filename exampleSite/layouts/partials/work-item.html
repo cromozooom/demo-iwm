@@ -1,7 +1,7 @@
 {{ $json := getJSON "data/work-items.json" }}
 
 {{ range $json }}
-  <div class="d-flex">
+  <div class="d-flex ">
     <div>
       <div class=" d-flex gap-xs align-items-start h-100">
         <div class="h-100 py-2 mr-3 after-center-border ">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="flex-grow-1" x-data="{ open: true}">
-      <div class="card bg-light flex-grow-1 mb-3">
+      <div class="card card_arrow-left bg-light flex-grow-1 mb-3">
         <div class="d-flex justify-content-between align-items-start py-1 mt-1">
           <div class="h6 pt-1 ml-3">Title work item</div>
           <div class="d-flex tools">
