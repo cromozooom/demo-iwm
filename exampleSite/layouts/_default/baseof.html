@@ -14,12 +14,12 @@
   <div class="position-relative w-100 z-5">
     <div class="d-flex position-absolute z-5 centerTop gap-sm mt-2 bg-white rounded-pill p-1">
 
-      <button class="b-0 p-0 border-0 w-sm bg-Punk square rounded-circle" x-bind:class="currentTheme === '/scss/styles_punk.css' ? 'active' : 'normal'" x-on:click="changeTheme('/scss/styles_punk.css')"></button>
-      <button class="b-0 p-0 border-0 w-sm bg-Dove square rounded-circle" x-bind:class="currentTheme === '/scss/styles_dove.css' ? 'active' : 'normal'" x-on:click="changeTheme('/scss/styles_dove.css')"></button>
-      <button class="b-0 p-0 border-0 w-sm bg-EdwardJones square rounded-circle" x-bind:class="currentTheme === '/scss/styles_edwardJones.css' ? 'active' : 'normal'" x-on:click="changeTheme('/scss/styles_edwardJones.css')"></button>
-      <button class="b-0 p-0 border-0 w-sm bg-CharlesHarley square rounded-circle" x-bind:class="currentTheme === '/scss/styles_charlesHarley.css' ? 'active' : 'normal'" x-on:click="changeTheme('/scss/styles_charlesHarley.css')"></button>
-      <button class="b-0 p-0 border-0 w-sm bg-Cai square rounded-circle" x-bind:class="currentTheme === '/scss/styles.css' ? 'active' : 'normal'" x-on:click="changeTheme('/scss/styles.css')"></button>
-      <button class="b-0 p-0 border-0 w-sm bg-Rmm square rounded-circle" x-bind:class="currentTheme === '/scss/styles_Rmm.css' ? 'active' : 'normal'" x-on:click="changeTheme('/scss/styles_Rmm.css')"></button>
+      <button class="b-0 p-0 border-0 w-sm bg-Punk square rounded-circle" x-bind:class="currentTheme === '../scss/styles_punk.css' ? 'active' : 'normal'" x-on:click="changeTheme('../scss/styles_punk.css')"></button>
+      <button class="b-0 p-0 border-0 w-sm bg-Dove square rounded-circle" x-bind:class="currentTheme === '../scss/styles_dove.css' ? 'active' : 'normal'" x-on:click="changeTheme('../scss/styles_dove.css')"></button>
+      <button class="b-0 p-0 border-0 w-sm bg-EdwardJones square rounded-circle" x-bind:class="currentTheme === '../scss/styles_edwardJones.css' ? 'active' : 'normal'" x-on:click="changeTheme('../scss/styles_edwardJones.css')"></button>
+      <button class="b-0 p-0 border-0 w-sm bg-CharlesHarley square rounded-circle" x-bind:class="currentTheme === '../scss/styles_charlesHarley.css' ? 'active' : 'normal'" x-on:click="changeTheme('../scss/styles_charlesHarley.css')"></button>
+      <button class="b-0 p-0 border-0 w-sm bg-Cai square rounded-circle" x-bind:class="currentTheme === '../scss/styles.css' ? 'active' : 'normal'" x-on:click="changeTheme('../scss/styles.css')"></button>
+      <button class="b-0 p-0 border-0 w-sm bg-Rmm square rounded-circle" x-bind:class="currentTheme === '../scss/styles_Rmm.css' ? 'active' : 'normal'" x-on:click="changeTheme('../scss/styles_Rmm.css')"></button>
     </div>
   </div>
     {{- partial "site-nav.html" . -}}
@@ -33,7 +33,7 @@
           bodyHeight: null,
           chatOpen: false,
           editDasboard: false,
-          currentTheme: "/scss/styles.css",
+          currentTheme: "../scss/styles.css",
           changeTheme(themePath) {
             this.currentTheme = themePath;
             localStorage.setItem("selectedTheme", themePath);
@@ -46,7 +46,7 @@
               this.currentTheme = savedTheme;
               applyTheme(savedTheme);
             } else {
-              this.currentTheme = "/scss/styles.css";
+              this.currentTheme = "../scss/styles.css";
               applyTheme(this.currentTheme);
             }
           },
