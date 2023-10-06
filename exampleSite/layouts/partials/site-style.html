@@ -3,51 +3,69 @@
   {{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
 {{ end }}
 
+
 {{ $styles := resources.Get "scss/styles.scss" }}
-{{ $styles_charlesHarley := resources.Get "scss/styles_charlesHarley.scss" }}
-{{ $styles_edwardJones := resources.Get "scss/styles_edwardJones.scss" }}
-{{ $styles_dove := resources.Get "scss/styles_dove.scss" }}
-{{ $styles_Rmm := resources.Get "scss/styles_Rmm.scss" }}
-{{ $styles_punk := resources.Get "scss/styles_punk.scss" }}
-
-
 {{ $styles = $styles | resources.ToCSS $options }}
-{{ $styles_charlesHarley = $styles_charlesHarley | resources.ToCSS $options }}
-{{ $styles_edwardJones = $styles_edwardJones | resources.ToCSS $options }}
-{{ $styles_dove = $styles_dove | resources.ToCSS $options }}
-{{ $styles_Rmm = $styles_Rmm | resources.ToCSS $options }}
-{{ $styles_punk = $styles_punk | resources.ToCSS $options }}
-{{ if hugo.IsProduction }}
-  {{ $styles = $styles }}
-  {{ $styles_charlesHarley = $styles_charlesHarley }}
-  {{ $styles_edwardJones = $styles_edwardJones }}
-  {{ $styles_dove = $styles_dove }}
-  {{ $styles_Rmm = $styles_Rmm }}
-  {{ $styles_punk = $styles_punk }}
-{{ end }}
-<link
-  rel="stylesheet"
-  css-data="{{ $styles_charlesHarley.Permalink }}"
-  rel="stylesheet" />
-<link
-  rel="stylesheet"
-  css-data="{{ $styles_edwardJones.Permalink }}"
-  rel="stylesheet" />
-<link
-  rel="stylesheet"
-  css-data="{{ $styles_dove.Permalink }}"
-  rel="stylesheet" />
-<link
-  rel="stylesheet"
-  css-data="{{ $styles_Rmm.Permalink }}"
-  rel="stylesheet" />
-<link
-  rel="stylesheet"
-  css-data="{{ $styles_punk.Permalink }}"
-  rel="stylesheet" />
-<!--
--->
 <link
   id="themeStylesheet" rel="stylesheet"
   href="{{ $styles.Permalink }}"
   rel="stylesheet" />
+
+{{ $styles_cai := resources.Get "scss/styles_cai.scss" }}
+{{ $styles_cai = $styles_cai | resources.ToCSS $options }}
+<link
+  data="{{ $styles_cai.Permalink }}"
+  rel="stylesheet" />
+
+{{ $styles_rmm := resources.Get "scss/styles_rmm.scss" }}
+{{ $styles_rmm = $styles_rmm | resources.ToCSS $options }}
+<link
+  data="{{ $styles_rmm.Permalink }}"
+  rel="stylesheet" />
+
+{{ $styles_gray := resources.Get "scss/styles_gray.scss" }}
+{{ $styles_gray = $styles_gray | resources.ToCSS $options }}
+<link
+  data="{{ $styles_gray.Permalink }}"
+  rel="stylesheet" />
+
+{{ $styles_flowerPowerModern := resources.Get "scss/styles_flowerPowerModern.scss" }}
+{{ $styles_flowerPowerModern = $styles_flowerPowerModern | resources.ToCSS $options }}
+<link
+  data="{{ $styles_flowerPowerModern.Permalink }}"
+  rel="stylesheet" />
+{{ $styles_flowerPower := resources.Get "scss/styles_flowerPower.scss" }}
+{{ $styles_flowerPower = $styles_flowerPower | resources.ToCSS $options }}
+<link
+  data="{{ $styles_flowerPower.Permalink }}"
+  rel="stylesheet" />
+
+{{ $styles_punk := resources.Get "scss/styles_punk.scss" }}
+{{ $styles_punk = $styles_punk | resources.ToCSS $options }}
+<link
+  data="{{ $styles_punk.Permalink }}"
+  rel="stylesheet" />
+
+  {{ $styles_dove := resources.Get "scss/styles_dove.scss" }}
+{{ $styles_dove = $styles_dove | resources.ToCSS $options }}
+<link
+  data="{{ $styles_dove.Permalink }}"
+  rel="stylesheet" />
+  {{ $styles_edwardJones := resources.Get "scss/styles_edwardJones.scss" }}
+{{ $styles_edwardJones = $styles_edwardJones | resources.ToCSS $options }}
+<link
+  data="{{ $styles_edwardJones.Permalink }}"
+  rel="stylesheet" />
+  {{ $styles_charlesHarley := resources.Get "scss/styles_charlesHarley.scss" }}
+{{ $styles_charlesHarley = $styles_charlesHarley | resources.ToCSS $options }}
+<link
+  data="{{ $styles_charlesHarley.Permalink }}"
+  rel="stylesheet" />
+
+  {{ $styles_rothChildish := resources.Get "scss/styles_rothChildish.scss" }}
+{{ $styles_rothChildish = $styles_rothChildish | resources.ToCSS $options }}
+<link
+  data="{{ $styles_rothChildish.Permalink }}"
+  rel="stylesheet" />
+
+

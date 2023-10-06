@@ -13,34 +13,34 @@ $brandFlowerPower: hsl(347, 99%, 45%);
 $brandFlowerPowerModern: hsl(212, 24%, 11%);
 
 
-.bg-Cai {
+.bg-cai {
   background: $brandCai
 }
-.bg-Dove {
+.bg-dove {
   background: $brandDove
 }
-.bg-Rmm {
+.bg-rmm {
   background: $brandRmm
 }
-.bg-Punk {
+.bg-punk {
   background: $brandPunk
 }
-.bg-RothChildish {
+.bg-rothChildish {
   background: $brandRothChildish
 }
-.bg-EdwardJones {
+.bg-edwardJones {
   background: $brandEdwardJones
 }
-.bg-CharlesHarley {
+.bg-charlesHarley {
   background: $brandCharlesHarley
 }
-.bg-Gray {
+.bg-gray {
   background: $brandGray
 }
-.bg-FlowerPower {
+.bg-flowerPower {
   background: $brandFlowerPower
 }
-.bg-FlowerPowerModern {
+.bg-flowerPowerModern {
   background: $brandFlowerPowerModern
 }
 
@@ -167,7 +167,7 @@ $brand-12: #133c3b;
   $h: 307;
   $s: 45;
   $l: 39;
-} @else if $brandName == "RothChildish" {
+} @else if $brandName == "rothChildish" {
   // $highlight: hsl(46, 100%, 50%);
   $brand: hsl(212, 100%, 13%);
   $secondary: hsl(231, 20%, 51%);
