@@ -232,6 +232,7 @@
       role="tabpanel"
       aria-labelledby="holdings-tab">
       {{ $block := 2 }}
+      {{ partial "d3.html" . }}
       {{ partial "form.html" . }}
 
       {{ if eq $block 2 }}
@@ -516,9 +517,9 @@
       aria-labelledby="accounts-tab">
       <div class="page-margin">
         <div class="row">
+          {{ partial "colors/fa.html" . }}
           {{ partial "colors/brand-colors.html" . }}
           {{ partial "colors/inks.html" . }}
-          {{ partial "colors/fa.html" . }}
           {{ partial "colors.html" . }}
         </div>
       </div>

@@ -1,0 +1,150 @@
+[
+  {
+    "name": "Lefter",
+    "main": true,
+    "members": [
+      {
+        "id": 13,
+        "name": "Ana Lefter",
+        "icon": "",
+        "links": [
+          3
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Alexey Lefter",
+        "icon": "",
+        "links": [
+          13
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Cristina Lefter",
+        "icon": "",
+        "links": [
+          13
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Nicu",
+    "main": true,
+    "members": [
+      {
+        "id": 1,
+        "name": "Roua Nicu",
+        "icon": "",
+        "links": [
+          7
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Luna Nicu",
+        "icon": "",
+        "links": []
+      },
+      {
+        "id": 3,
+        "name": "Calina Nicu",
+        "icon": "",
+        "links": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Razvan Nicu",
+        "icon": "",
+        "links": [
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zaharia",
+    "members": [
+      {
+        "id": 5,
+        "name": "Cristi Zaharia",
+        "icon": "",
+        "links": [
+          6,
+          7,
+          4
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Dumi Zaharia",
+        "icon": "",
+        "links": [
+          5
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Leo Zaharia",
+        "icon": "",
+        "links": [
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Covataru",
+    "members": [
+      {
+        "id": 8,
+        "name": "Cristi Covataru",
+        "icon": "",
+        "links": [
+          4
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Ludmila Covataru",
+        "icon": "",
+        "links": [
+          8
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Caterina Covataru",
+        "icon": "",
+        "links": [
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Covataru Senior",
+    "members": [
+      {
+        "id": 11,
+        "name": "Cristi's Dad",
+        "icon": "",
+        "links": [
+          8
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Cristi's Mom",
+        "icon": "",
+        "links": [
+          11
+        ]
+      }
+    ]
+  }
+]

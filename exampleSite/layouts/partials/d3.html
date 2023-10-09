@@ -1,0 +1,78 @@
+<style>
+  xbody * {
+    outline: 1px solid red;
+  }
+  xbody {
+    padding: 5rem;
+  }
+  
+  label {
+    margin: 0;
+  }
+  
+  .gap {
+    gap: 1rem;
+  }
+  
+  label {
+    margin: 0;
+  }
+  
+  .gap {
+    gap: 1rem;
+  }
+  
+  /* svg {
+    outline: 1px solid red;
+  } */
+  
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.4;
+  }
+  
+  .links .hidden-link {
+    display: none;
+  }
+  
+  .icon text {
+    font-family: var(--fa-style-family-classic);
+  }
+  
+  .label text {
+    font-family: sans-serif;
+  }
+  
+  .nodes circle {
+    stroke-width: 1.5px;
+  }
+
+  #d3 {
+    margin: 2rem; 
+    height: calc(100vh - 28rem);
+    display: flex;
+    flex-direction: column;
+  }
+  
+</style>
+
+<div class="page-margin  mt-3">
+
+  <div class="card chat-height">
+    {{- partial "card.html" (dict "card" "title" "title" "Relationship") -}}
+  
+    <div
+      class="position-relative"
+      id="d3"
+      style=""
+    >
+      <div class="p-2 mt-2 ml-2 d-flex gap card position-absolute top-1 left-1">
+        <!-- Zoom -->
+        <input type="range" min="-1500" max="0" id="chargeSlider" />
+        <!-- Families -->
+        <div id="checkboxes" class="d-flex gap align-items-center px-4"></div>
+      </div>
+      <svg id="svg-container" width="100%" height="100%"></svg>
+    </div>
+  </div>
+</div>
