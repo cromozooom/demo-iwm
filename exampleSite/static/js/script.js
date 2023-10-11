@@ -58,59 +58,62 @@ fetch("/js/dataFamilies.json")
         const isChecked = this.checked;
         const checkedFamilyName = this.id;
 
-        if (isChecked) {
-          const filteredFamily = families.find(
-            (family) => family.name === checkedFamilyName
-          );
-          if (filteredFamily) {
-            filteredFamily.members.forEach((member) => {
-              const isNodeExists = familyNodes.some(
-                (node) => node.id === member.id
-              );
+        console.log("families: ", families);
+        
+        
+        // if (isChecked) {
+        //   const filteredFamily = families.find(
+        //     (family) => family.name === checkedFamilyName
+        //   );
+        //   if (filteredFamily) {
+        //     filteredFamily.members.forEach((member) => {
+        //       const isNodeExists = familyNodes.some(
+        //         (node) => node.id === member.id
+        //       );
 
-              if (!isNodeExists) {
-                familyNodes.push({
-                  id: member.id,
-                  name: member.name,
-                  icon: member.icon,
-                  group: checkedFamilyName,
-                });
-              }
+        //       if (!isNodeExists) {
+        //         familyNodes.push({
+        //           id: member.id,
+        //           name: member.name,
+        //           icon: member.icon,
+        //           group: checkedFamilyName,
+        //         });
+        //       }
 
-              member.links.forEach((linkId) => {
-                const isLinkExists = familyLinks.some(
-                  (link) =>
-                    (link.source === member.id && link.target === linkId) ||
-                    (link.source === linkId && link.target === member.id)
-                );
+        //       member.links.forEach((linkId) => {
+        //         const isLinkExists = familyLinks.some(
+        //           (link) =>
+        //             (link.source === member.id && link.target === linkId) ||
+        //             (link.source === linkId && link.target === member.id)
+        //         );
 
-                if (
-                  !isLinkExists &&
-                  familyNodes.some((node) => node.id === linkId)
-                ) {
-                  familyLinks.push({
-                    source: member.id,
-                    target: linkId,
-                    value: 1,
-                  });
-                }
-              });
-            });
-          }
-        } else {
-          const uncheckedFamilyNodes = familyNodes.filter(
-            (node) => node.group === checkedFamilyName
-          );
-          familyNodes = familyNodes.filter(
-            (node) => node.group !== checkedFamilyName
-          );
-          familyLinks = familyLinks.filter((link) => {
-            return !(
-              uncheckedFamilyNodes.some((node) => node.id === link.source) ||
-              uncheckedFamilyNodes.some((node) => node.id === link.target)
-            );
-          });
-        }
+        //         if (
+        //           !isLinkExists &&
+        //           familyNodes.some((node) => node.id === linkId)
+        //         ) {
+        //           familyLinks.push({
+        //             source: member.id,
+        //             target: linkId,
+        //             value: 1,
+        //           });
+        //         }
+        //       });
+        //     });
+        //   }
+        // } else {
+        //   const uncheckedFamilyNodes = familyNodes.filter(
+        //     (node) => node.group === checkedFamilyName
+        //   );
+        //   familyNodes = familyNodes.filter(
+        //     (node) => node.group !== checkedFamilyName
+        //   );
+        //   familyLinks = familyLinks.filter((link) => {
+        //     return !(
+        //       uncheckedFamilyNodes.some((node) => node.id === link.source) ||
+        //       uncheckedFamilyNodes.some((node) => node.id === link.target)
+        //     );
+        //   });
+        // }
 
         updateVisualization("checkbox", familyNodes, familyLinks);
       });
@@ -128,6 +131,9 @@ function updateVisualization(location, nodes, links) {
   console.log("Nodes:", nodes);
   console.log("Links:", links);
 }
+
+
+
 
 function createVisualization(nodes, links) {
   console.log(nodes, links);
