@@ -231,8 +231,6 @@ html {
   }
 }
 
-
-
 .p-b-actions {
   padding-bottom: 4rem;
 }
@@ -589,4 +587,41 @@ $paddingCath: 1rem;
 .centerTop {
   left: 50%;
   transform: translateX(-50%);
+}
+
+.warning-dark-10 {
+  background: theme-color-level("warning", -10);
+}
+.warning-dark-9 {
+  background: theme-color-level("warning", -9);
+}
+.warning-light-6 {
+  background: theme-color-level("warning", 6);
+}
+.danger-dark-10 {
+  background: theme-color-level("danger", -10);
+}
+.danger-dark-9 {
+  background: theme-color-level("danger", -9);
+}
+.danger-light-6 {
+  background: theme-color-level("danger", 6);
+}
+.success-dark-10 {
+  background: theme-color-level("success", -10);
+}
+.success-dark-9 {
+  background: theme-color-level("success", -9);
+}
+.success-light-6 {
+  background: theme-color-level("success", 6);
+}
+.info-dark-10 {
+  background: theme-color-level("info", -10);
+}
+.info-dark-9 {
+  background: theme-color-level("info", -9);
+}
+.info-light-6 {
+  background: theme-color-level("info", 6);
 }

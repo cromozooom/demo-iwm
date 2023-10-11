@@ -1,6 +1,5 @@
 // $primary: rgb(250, 164, 250);
 
-
 $brandCai: hsl(178, 31%, 42%);
 $brandDove: hsl(42, 56%, 68%);
 $brandRmm: hsl(231, 20%, 25%);
@@ -12,38 +11,36 @@ $brandGray: hsl(0, 0%, 50%);
 $brandFlowerPower: hsl(347, 99%, 45%);
 $brandFlowerPowerModern: hsl(212, 24%, 11%);
 
-
 .bg-cai {
-  background: $brandCai
+  background: $brandCai;
 }
 .bg-dove {
-  background: $brandDove
+  background: $brandDove;
 }
 .bg-rmm {
-  background: $brandRmm
+  background: $brandRmm;
 }
 .bg-punk {
-  background: $brandPunk
+  background: $brandPunk;
 }
 .bg-rothChildish {
-  background: $brandRothChildish
+  background: $brandRothChildish;
 }
 .bg-edwardJones {
-  background: $brandEdwardJones
+  background: $brandEdwardJones;
 }
 .bg-charlesHarley {
-  background: $brandCharlesHarley
+  background: $brandCharlesHarley;
 }
 .bg-gray {
-  background: $brandGray
+  background: $brandGray;
 }
 .bg-flowerPower {
-  background: $brandFlowerPower
+  background: $brandFlowerPower;
 }
 .bg-flowerPowerModern {
-  background: $brandFlowerPowerModern
+  background: $brandFlowerPowerModern;
 }
-
 
 $h: 0;
 $s: 0;
@@ -102,6 +99,11 @@ $brand-12: #133c3b;
   $info: #6c757d;
   $warning: #ff9100;
   $danger: #ca0c0c;
+
+  $success: #4b8d8b;
+  $info: #3457a2;
+  $warning: #ffcc00;
+  $danger: #f15e5f;
 } @else if $brandName == "dove" {
   // $highlight: hsl(46, 100%, 50%);
   $brand: hsl(42, 56%, 68%);
