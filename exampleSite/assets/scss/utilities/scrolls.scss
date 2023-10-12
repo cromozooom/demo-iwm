@@ -1,0 +1,35 @@
+.styled-scrollbars {
+  /* Foreground, Background */
+  scrollbar-color: $gray-300 $gray-100;
+  &::-webkit-scrollbar {
+    width: 6px; /* Mostly for vertical scrollbars */
+    height: 6px; /* Mostly for horizontal scrollbars */
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    /* Foreground */
+    background: $white;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 50px;
+    /* Background */
+    background: $white;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      width: 6px; /* Mostly for vertical scrollbars */
+      height: 6px; /* Mostly for horizontal scrollbars */
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 50px;
+      /* Foreground */
+      background: $gray-500;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 50px;
+      /* Background */
+      background: $gray-100;
+    }
+    scrollbar-color: $gray-500 $gray-100;
+  }
+}

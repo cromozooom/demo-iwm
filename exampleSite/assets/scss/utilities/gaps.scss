@@ -1,0 +1,18 @@
+.gap-0 {
+  gap: 0;
+}
+.gap-xs {
+  gap: $spacer * 0.25;
+}
+.gap-sm {
+  gap: $spacer * 0.5;
+}
+.gap {
+  gap: $spacer;
+}
+.gap-lg {
+  gap: $spacer * 1.5;
+}
+.gap-xl {
+  gap: $spacer * 3;
+}

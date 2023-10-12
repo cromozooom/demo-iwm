@@ -1,0 +1,94 @@
+.min-vh,
+html {
+  min-height: 100vh;
+}
+
+.square {
+  aspect-ratio: 1;
+}
+
+.page-margin {
+  margin: 0 3.3rem;
+}
+
+.min-h-100vh {
+  height: calc(var(--vh) - 40px);
+}
+.h-55vh {
+  min-height: 55vh;
+  height: 55vh;
+}
+.min-h-55px {
+  min-height: 55px;
+}
+.min-w-30 {
+  min-width: 30rem;
+}
+.min-w-25 {
+  min-width: 25rem;
+}
+.min-w-20 {
+  min-width: 20rem;
+}
+.min-w-15 {
+  min-width: 15rem;
+}
+.min-w-10 {
+  min-width: 10rem;
+}
+.min-w-8 {
+  min-width: 8rem;
+}
+.min-w-6 {
+  min-width: 6rem;
+}
+.min-w-4 {
+  min-width: 4rem;
+}
+.min-w-3 {
+  min-width: 3rem;
+}
+.min-w-2 {
+  min-width: 2rem;
+}
+.min-w-avatar {
+  min-width: 2.5rem;
+}
+
+.min-w-lg {
+  min-width: 3.25rem;
+}
+.w-xl {
+  width: 4.5rem;
+}
+.w-lg {
+  width: 3.25rem;
+}
+.w-md {
+  width: 2.5rem;
+}
+.w-sm {
+  width: 1.5rem;
+}
+
+.vh-70 {
+  height: 60vh;
+}
+.min-vh-70 {
+  min-height: 60vh;
+}
+.max-vh-70 {
+  max-height: 60vh;
+}
+.max-h-18 {
+  max-height: 18rem;
+}
+.max-h-20 {
+  max-height: 20rem;
+}
+.max-h-15 {
+  max-height: 15rem;
+}
+.max-h-8 {
+  max-height: 8rem;
+}

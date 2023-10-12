@@ -70,8 +70,8 @@ body {
     // theme-color-level($color, $alert-border-level)
     color: color-yiq(
       $value,
-      theme-color-level($color, 11),
-      theme-color-level($color, -11)
+      theme-color-level($color, 15),
+      theme-color-level($color, -15)
     );
   }
   a {

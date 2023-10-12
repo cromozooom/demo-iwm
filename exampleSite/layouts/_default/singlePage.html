@@ -1,0 +1,421 @@
+{{ define "main" }}
+  <div class="d-flex  single-page">
+    <section
+      class="bg-primary d-flex justify-content-between flex-column flex-grow-1 xoverflow-auto styled-scrollbars pr-1"
+      x-data="{ sideOpen: true}">
+      <ul class="list-unstyled p-0 m-0 d-flex flex-column">
+        <li class="sideMenuItem d-flex m-0 p-0 w-100">
+          <button
+            class="p-0 m-0 border-0 bg-transparent ink-primary d-flex align-items-center">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+              </svg>
+            </span>
+            <template x-if="sideOpen">
+              <div class=" min-w-10 d-flex justify-content-start">
+                <small class="d-block xd-none"> Home </small>
+              </div>
+            </template>
+          </button>
+        </li>
+        <li class="sideMenuItem d-flex m-0 p-0 w-100">
+          <button
+            class="p-0 m-0 border-0 bg-transparent ink-primary d-flex align-items-center">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-files"
+                viewBox="0 0 16 16">
+                <path
+                  d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+              </svg>
+            </span>
+            <template x-if="sideOpen">
+              <div class=" min-w-10 d-flex justify-content-start">
+                <small class="d-block xd-none"> Contacts </small>
+              </div>
+            </template>
+          </button>
+        </li>
+        <li class="sideMenuItem d-flex m-0 p-0 w-100">
+          <button
+            class="p-0 m-0 border-0 bg-transparent ink-primary d-flex align-items-center">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-envelope"
+                viewBox="0 0 16 16">
+                <path
+                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+              </svg>
+            </span>
+            <template x-if="sideOpen">
+              <div class=" min-w-10 d-flex justify-content-start">
+                <small class="d-block xd-none"> Something else </small>
+              </div>
+            </template>
+          </button>
+        </li>
+        <li class="sideMenuItem d-flex m-0 p-0 w-100">
+          <button
+            class="p-0 m-0 border-0 bg-transparent ink-primary d-flex align-items-center">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-three-dots"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+              </svg>
+            </span>
+            <template x-if="sideOpen">
+              <div class=" min-w-10 d-flex justify-content-start">
+                <small class="d-block xd-none"> Do not disturb! </small>
+              </div>
+            </template>
+          </button>
+        </li>
+      </ul>
+      <button
+        @click="sideOpen = !sideOpen"
+        class="p-0 m-0 border-0 bg-transparent ink-primary d-flex align-items-center">
+        <!-- <span class="rotate"></span> -->
+        <span
+          class="d-flex w-lg square justify-content-center align-items-center">
+          <svg
+            :class="sideOpen ? '' : 'rotate'"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-bar-left"
+            viewBox="0 0 16 16">
+            <path
+              fill-rule="evenodd"
+              d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z" />
+          </svg>
+        </span>
+        <template x-if="sideOpen">
+          <div class=" min-w-10 d-flex justify-content-start">
+            <small class="d-block xd-none"> Collapse </small>
+          </div>
+        </template>
+      </button>
+    </section>
+    <div class="d-flex h-100 w-100">
+      <div class="sb-cover">
+        <div class="sidebar position-relative">
+          <div class="resizer overflow-visible">
+            <div class="position-relative h-100 w-100 overflow-visible">
+              <button
+                class="d-block rounded-circle border bg-white ink-white square w-sm position-absolute d-flex justify-content-center align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-left"
+                  viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="side-content flex-column">
+            <div
+              class="single-page overflow-x-visible overflow-y-auto styled-scrollbars mr-3 pl-3 pt-1">
+              <div class="mx-1 mt-2">
+                {{ partial "contact-side.html" . }}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rs-content position-relative overflow-auto styled-scrollbars">
+        <div class="sticky-top">
+          <ul
+            class="nav customTab xnav-tabs bg-white nav__border-bottom position-relative"
+            id="myTab"
+            role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link h5 mb-0 py-3 px-4 active"
+                id="holdings-tab"
+                data-toggle="tab"
+                data-target="#holdings"
+                type="button"
+                role="tab"
+                aria-controls="holdings"
+                aria-selected="true">
+                Holdings
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link h5 mb-0 py-3 px-4"
+                id="overview-tab"
+                data-toggle="tab"
+                data-target="#overview"
+                type="button"
+                role="tab"
+                aria-controls="overview"
+                aria-selected="true">
+                Overview / chat / selector
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link h5 mb-0 py-3 px-4 "
+                id="legal-tab"
+                data-toggle="tab"
+                data-target="#legal"
+                type="button"
+                role="tab"
+                aria-controls="legal"
+                aria-selected="false">
+                Legal Entity
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link h5 mb-0 py-3 px-4"
+                id="accounts-tab"
+                data-toggle="tab"
+                data-target="#accounts"
+                type="button"
+                role="tab"
+                aria-controls="accounts"
+                aria-selected="false">
+                Accounts
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link h5 mb-0 py-3 px-4"
+                id="kyc-info-tab"
+                data-toggle="tab"
+                data-target="#kyc-info"
+                type="button"
+                role="tab"
+                aria-controls="kyc-info"
+                aria-selected="false">
+                KYC Information
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link h5 mb-0 py-3 px-4"
+                id="contact-notes-tab"
+                data-toggle="tab"
+                data-target="#contact-notes"
+                type="button"
+                role="tab"
+                aria-controls="contact-notes"
+                aria-selected="false">
+                Contact Notes
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="">
+          {{ partial "typo.html" . }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var resizer = document.querySelector(".resizer"),
+      sidebar = document.querySelector(".sidebar"),
+      button = document.querySelector(".resizer button"),
+      sideContent = document.querySelector(".side-content"),
+      sbWidth = window.getComputedStyle(sidebar).width;
+
+    function hidSideContent() {
+      var sbWidth = parseInt(window.getComputedStyle(sidebar).width, 10);
+      if (sbWidth === 0) {
+        console.log(sbWidth);
+        sideContent.classList.add("d-none");
+        sideContent.classList.remove("d-flex");
+      } else {
+        console.log(sbWidth);
+        sideContent.classList.add("d-flex");
+        sideContent.classList.remove("d-none");
+      }
+    }
+    function initResizerFn(resizer, sidebar) {
+      // track current mouse position in x var
+      var x, w;
+
+      function rs_mousedownHandler(e) {
+        x = e.clientX;
+
+        var sbWidth = window.getComputedStyle(sidebar).width;
+        w = parseInt(sbWidth, 10);
+
+        document.addEventListener("mousemove", rs_mousemoveHandler);
+        document.addEventListener("mouseup", rs_mouseupHandler);
+      }
+      function rs_mousemoveHandler(e) {
+        var dx = e.clientX - x;
+
+        var cw = w + dx; // complete width
+
+        if (cw < 700) {
+          sidebar.style.width = `${cw}px`;
+        }
+        if (cw <= 400) {
+          sidebar.style.width = `400px`;
+          button.classList.remove("open");
+        }
+      }
+
+      function rs_mouseupHandler() {
+        // remove event mousemove && mouseup
+        document.removeEventListener("mouseup", rs_mouseupHandler);
+        document.removeEventListener("mousemove", rs_mousemoveHandler);
+      }
+
+      resizer.addEventListener("mousedown", rs_mousedownHandler);
+      hidSideContent(sbWidth);
+    }
+
+    button.addEventListener("click", function () {
+      if (parseInt(window.getComputedStyle(sidebar).width, 10) > 0) {
+        sidebar.style.width = "0px";
+        button.classList.remove("open");
+      } else {
+        sidebar.style.width = "401px";
+        button.classList.add("open");
+      }
+      hidSideContent(sbWidth);
+    });
+
+    button.classList.add("open");
+    hidSideContent(sbWidth);
+
+    initResizerFn(resizer, sidebar);
+  </script>
+
+  <!-- <div class="d-flex single-page">
+    <section class="bg-primary min-w-lg overflow-auto styled-scrollbars">
+      <ul class="list-unstyled p-0 m-0">
+        <li class="m-0 p-0 min-w-lg">
+          <button class="p-0 m-0 border-0 bg-transparent ink-primary d-flex">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+              </svg>
+            </span>
+            <span class="d-none"> item 1 </span>
+          </button>
+        </li>
+        <li class="m-0 p-0 min-w-lg">
+          <button class="p-0 m-0 border-0 bg-transparent ink-primary d-flex">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+              </svg>
+            </span>
+            <span class="d-none"> item 1 </span>
+          </button>
+        </li>
+        <li class="m-0 p-0 min-w-lg">
+          <button class="p-0 m-0 border-0 bg-transparent ink-primary d-flex">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+              </svg>
+            </span>
+            <span class="d-none"> item 1 </span>
+          </button>
+        </li>
+        <li class="m-0 p-0 min-w-lg">
+          <button class="p-0 m-0 border-0 bg-transparent ink-primary d-flex">
+            <span
+              class="d-flex w-lg square justify-content-center align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+              </svg>
+            </span>
+            <span class="d-none"> item 1 </span>
+          </button>
+        </li>
+      </ul>
+    </section>
+    <section
+      class="bg-light border-right overflow-auto styled-scrollbars w-25 max-w">
+      <div class="card p-2 m-2">
+        {{ partial "typo.html" . }}
+      </div>
+    </section>
+    <section
+      class="flex-grow-1 d-flex flex-column position-relative overflow-auto styled-scrollbars ">
+      <main class="container-fluid">
+        <div class="row">
+          <div class="col-4 border-right">
+            <div class="card p-2 mt-2">action tab info</div>
+          </div>
+          <div class="col-8">
+            {{ partial "typo.html" . }}
+          </div>
+        </div>
+      </main>
+    </section>
+  </div> -->
+{{ end }}
