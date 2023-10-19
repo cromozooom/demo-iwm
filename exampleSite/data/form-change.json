@@ -1,0 +1,148 @@
+{
+    "title": "Basic Details",
+    "sections": [
+        {
+            "title": "Contact Summary",
+            "fields": [
+                {
+                    "lable": "First name",
+                    "checked": false,
+                    "mandatory": true,
+                    "type": "text",
+                    "value": "Mano Senbastiano",
+                    "oldValue": "Razvan Gabriel",
+                    "values": [
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        }
+                    ]
+                },
+                {
+                    "lable": "Last name",
+                    "checked": false,
+                    "mandatory": true,
+                    "type": "text",
+                    "value": "Argenti"
+                },
+                {
+                    "lable": "Middle name",
+                    "checked": false,
+                    "mandatory": false,
+                    "type": "text",
+                    "value": "Something"
+                },
+                {
+                    "lable": "Position",
+                    "checked": false,
+                    "mandatory": false,
+                    "type": "text",
+                    "value": "Designer",
+                    "oldValue": "Senior Designer"
+                },
+                {
+                    "lable": "Nick name",
+                    "checked": false,
+                    "mandatory": false,
+                    "type": "text",
+                    "value": "SoloPX"
+                },
+                {
+                    "lable": "Relationship Type",
+                    "checked": false,
+                    "mandatory": false,
+                    "type": "select",
+                    "value": "client",
+                    "options": [
+                        "Custodian",
+                        "Intermediary &amp; Custodian",
+                        "Client &amp; Custodian",
+                        "Investor",
+                        "Client",
+                        "Intermediary",
+                        "Other",
+                        "Both",
+                        "Asset Manager",
+                        "Joint Associatio"
+                    ]
+                },
+                {
+                    "lable": "Primary Code",
+                    "checked": false,
+                    "mandatory": false,
+                    "type": "text",
+                    "value": "RG64BZ",
+                    "oldValue": "RG64BZ - 45"
+                },
+                {
+                    "lable": "Sufix",
+                    "checked": false,
+                    "mandatory": false,
+                    "type": "text",
+                    "value": "Mano Sebastiano Argento",
+                    "oldValue": "Mano Sebastiano Gld"
+                }
+            ]
+        }
+    ]
+}

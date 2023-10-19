@@ -488,3 +488,47 @@ $paddingCath: 1rem;
 .info-light-6 {
   background: theme-color-level("info", 6);
 }
+
+.form-group:hover {
+  .validate-button {
+    opacity: 1;
+  }
+}
+
+.validate-button {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 0;
+
+  z-index: 3;
+  opacity: 0;
+}
+
+.pointer:hover {
+  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
+}
+
+.hover-field-border {
+  border: 1px solid rgba($success, 0.3);
+  background: rgba($success, 0.05);
+  transition: all 300ms ease-out;
+
+  &:hover {
+    border: 1px solid rgba($success, 0.2);
+    background: rgba($success, 0.15);
+  }
+
+  input::placeholder {
+    font-weight: bold;
+    color: $success;
+  }
+}
+
+.dropdown-limit {
+  overflow: auto;
+  max-height: 30vh;
+}
