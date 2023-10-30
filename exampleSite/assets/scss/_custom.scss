@@ -531,4 +531,12 @@ $paddingCath: 1rem;
 .dropdown-limit {
   overflow: auto;
   max-height: 30vh;
+  white-space: initial !important;
+  .dropdown-item {
+    white-space: initial !important;
+  }
+}
+
+.min-w-30rem {
+  min-width: 30rem;
 }

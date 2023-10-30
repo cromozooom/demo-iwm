@@ -47,8 +47,7 @@
             </header>
             <form action="" class="container-fluid px-0 py-3">
               <template x-for="field in section.fields" >
-                <div 
-                x-data="{openHistory : false}"
+                <div
                 @cclick="field.checked = true"
                 class="form-group row no-gutters rounded px-2"
                 :class="field.oldValue && showDiff && !field.checked ? 'hover-field-border pointer xpt-2 pb-2' : ''"
@@ -57,14 +56,41 @@
                     <span class="badge badge-success validate-button d-flex gap-sm justify-content-center align-items-center">
                       <template x-if="field.values">
 
-                        <div class="dropdown">
+                        <div class="dropdown" x-data="{openHistory : false}">
                           <button class="btn btn-sm btn-success d-flex align-items-center gap-sm"
                             @click="openHistory = !openHistory"
                             @click.outside="openHistory = false"
                             type="button"  x-bind:aria-expanded="openHistory">
                             History
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
+                            
                           </button>
+                          <div class="dropdown-menu dropdown-limit styled-scrollbars flex-column dropdown-menu-left py-0"
+                            :class="openHistory ? 'd-flex' : 'd-none'"
+                          >
+                            <div class="dropdown-item px-1 justify-content-start align-items-start py-2 w-100 max-w-30vw min-w-30rem d-flex gap-sm sticky-top bg-white border-bottom">
+                                <div class="p-1">
+                                  <span class="text-nowrap" x-text="'Current val'"></span>
+                                </div>  
+                                <div class="p-1 flex-grow-1">
+                                  <strong class="text-success d-block text-break" x-text="field.value"></strong>
+
+                                </div>
+                            </div>
+                          <template x-for="history in field.values" >
+                            <div class="dropdown-item px-1 justify-content-start align-items-start py-2 w-100 max-w-30vw min-w-30rem d-flex gap-sm ">
+                              <div class="p-1">
+                                <span class="text-nowrap" x-text="history.date"></span>
+                              </div>  
+                              <div class="p-1 flex-grow-1">
+                                <span class=" d-block text-break" x-text="history.value"></span>
+
+                              </div>
+
+                               
+                            </div>
+                          </template>
+                          </div>
                         </div>
                       </template>
                       <button  @click="field.checked = true" class="btn btn-sm btn-success d-flex align-items-center gap-sm">
@@ -95,9 +121,7 @@
 
                       <div
                         class="d-flex gap-sm justify-content-center align-items-center h5">
-                          <!-- <div class="badge badge-dark" x-text="field.oldValue"></div> -->
-                          <div class="badge badge-dark" x-text="field.oldValue.length > 30 ? field.oldValue.slice(0, 30) + '...' : field.oldValue"></div>
-
+                          <div class="badge badge-dark" x-text="field.oldValue"></div>
                           <div>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -140,57 +164,6 @@
                         </span>
                       </template>
                     </div>
-                    <template x-if="openHistory">
-
-                      <div class="w-100">
-                        <div  class="grid-diff bg-primary ink-primary">
-                          <div class="p-2">
-                            <strong>#</strong>
-                          </div>
-                          <div class="p-2">
-                            <strong>date</strong>
-                          </div>
-                          <div class="p-2">
-                            <strong>by</strong>
-                          </div>
-                          <div class="p-2">
-                            <strong>operation</strong>
-                          </div>
-                          <div class="p-2">
-                            <strong>event</strong>
-                          </div>
-                          <div class="p-2">
-                            <strong>update</strong>
-                          </div>
-                        </div>
-                      </div>
-                    </template>
-                    <template x-if="openHistory">
-                      <div class="overflow-auto styled-scrollbars d-block" style="height: 40vh;">
-                        <template x-for="(val,index) in field.values">
-                          <div  class="grid-diff " :class="{ 'sticky-top': index === 0 }">
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="index + 1"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.date"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="'Mano Sebastiano Argenti'"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="'Create'"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="'Update'"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.value"></div>
-                          </div>
-                        </template>
-                      </div>
-                      
-                    </template>
-                    <template  x-if="openHistory">
-
-                      <div class="d-flex pt-2 justify-content-between w-100">
-                        <button class="btn btn btn-outline-primary d-flex align-items-center gap-sm" @click="openHistory = false">
-                          Hide history 
-                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
-                          
-                        </button>
-                        <button class="btn btn btn-success">Confirm</button>
-                      </div>
-                    </template>
               </div>  
               </template>
             </form>

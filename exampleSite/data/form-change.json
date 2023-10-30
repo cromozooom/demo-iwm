@@ -9,12 +9,16 @@
                     "checked": false,
                     "mandatory": true,
                     "type": "text",
-                    "value": "Mano Senbastiano",
-                    "oldValue": "Razvan Gabriel",
+                    "value": "Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano ",
+                    "oldValue": "Razvan Gabriel long long long long long long long long long long long long long long long long long long long long long long value",
                     "values": [
                         {
                             "date": "23.05.1976",
-                            "value": "Razvan California"
+                            "value": "Razvan Gabriel long long long long long long long long long long long long long long long long long long long long long long value"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano "
                         },
                         {
                             "date": "23.05.1976",
@@ -98,7 +102,77 @@
                     "mandatory": false,
                     "type": "text",
                     "value": "Designer",
-                    "oldValue": "Senior Designer"
+                    "oldValue": "Senior Designer",
+                    "values": [
+                        {
+                            "date": "23.05.1976",
+                            "value": "Senior Designer"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano "
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "value": "Razvan California"
+                        }
+                    ]
                 },
                 {
                     "lable": "Nick name",
