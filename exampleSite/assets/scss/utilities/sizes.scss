@@ -103,4 +103,7 @@ html {
   grid-template-rows: auto;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  &:hover {
+    background: rgba(#fff, 1);
+  }
 }
