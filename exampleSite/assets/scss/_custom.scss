@@ -499,7 +499,7 @@ $paddingCath: 1rem;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  top: -.5rem;
+  top: -0.5rem;
 
   z-index: 3;
   opacity: 0;
@@ -513,19 +513,44 @@ $paddingCath: 1rem;
 }
 
 .hover-field-border {
-  border: 1px solid rgba($success, 0.3);
-  background: rgba($success, 0.05);
+  border: 1px solid transparent;
   transition: all 300ms ease-out;
 
   &:hover {
-    border: 1px solid rgba($success, 0.2);
-    background: rgba($success, 0.15);
+    border: 1px solid var(--border, rgba($black, 0.2));
   }
 
-  input::placeholder {
-    font-weight: bold;
-    color: $success;
+  input,
+  select {
+    text-indent: 0.25rem;
+    // outline: 1px solid red;
   }
+
+  .input-container {
+    // outline: 1px solid red;
+    position: relative;
+    &::before {
+      // outline: 1px solid red;
+      position: absolute;
+      content: "●";
+      display: block;
+      left: 0.5rem;
+      left: 0.1rem;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 1rem;
+      height: 100%;
+      z-index: 1;
+      font-size: 100%;
+      line-height: 2.2rem;
+      color: var(--color, #{$warning});
+    }
+  }
+
+  // input::placeholder {
+  //   font-weight: bold;
+  //   color: $warning;
+  // }
 }
 
 .dropdown-limit {
@@ -539,4 +564,29 @@ $paddingCath: 1rem;
 
 .min-w-30rem {
   min-width: 30rem;
+}
+
+.my-invalid-feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #f15e5f;
+}
+
+.btn-outline-warning.enabled {
+  color: color-yiq($warning, black, white);
+  background: $warning;
+}
+.btn-outline-info.enabled {
+  color: color-yiq($info, black, white);
+  background: $info;
+}
+
+.bg-info-light {
+  --border: #{$info};
+  background: rgba($info, 0.05);
+}
+.bg-warning-light {
+  --border: #{$warning};
+  background: rgba($warning, 0.05);
 }
