@@ -1,5 +1,9 @@
 .styled-scrollbars {
   /* Foreground, Background */
+  --bg: #{$white};
+  --thumb: #{$gray-500};
+  --track: #{$gray-100};
+
   scrollbar-color: $gray-300 $gray-100;
   &::-webkit-scrollbar {
     width: 6px; /* Mostly for vertical scrollbars */
@@ -8,12 +12,12 @@
   &::-webkit-scrollbar-thumb {
     border-radius: 50px;
     /* Foreground */
-    background: $white;
+    background: var(--bg, #{$white});
   }
   &::-webkit-scrollbar-track {
     border-radius: 50px;
     /* Background */
-    background: $white;
+    background: var(--bg, #{$white});
   }
   &:hover {
     &::-webkit-scrollbar {
@@ -23,12 +27,12 @@
     &::-webkit-scrollbar-thumb {
       border-radius: 50px;
       /* Foreground */
-      background: $gray-500;
+      background: var(--thumb, #{$gray-500}) ;
     }
     &::-webkit-scrollbar-track {
       border-radius: 50px;
       /* Background */
-      background: $gray-100;
+      background: var(--track, #{$gray-100});
     }
     scrollbar-color: $gray-500 $gray-100;
   }

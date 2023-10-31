@@ -50,8 +50,8 @@
                 <div 
                 x-data="{openHistory : false}"
                 @cclick="field.checked = true"
-                class="form-group row no-gutters rounded px-2"
-                :class="field.oldValue && showDiff && !field.checked ? 'hover-field-border pointer xpt-2 pb-2' : ''"
+                class="form-group row no-gutters rounded"
+                :class="field.oldValue && showDiff && !field.checked ? 'hover-field-border pointer xpt-2 py-2' : ''"
                 >
                   <div x-show="field.oldValue && !field.checked && showDiff" class="col-12 mb-3 position-relative ">
                     <span class="badge badge-success validate-button d-flex gap-sm justify-content-center align-items-center">
@@ -62,7 +62,7 @@
                             @click="openHistory = !openHistory"
                             @click.outside="openHistory = false"
                             type="button"  x-bind:aria-expanded="openHistory">
-                            History
+                            <span x-show="openHistory">Hide </span>History
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
                           </button>
                         </div>
@@ -86,7 +86,7 @@
                     :for="field.lable"
                     class="col-sm-6 col-form-label d-flex justify-content-between px-1">
 
-                    <div>
+                    <div class="pl-2">
                       <span x-text="field.lable"></span>
                       <span x-show="field.mandatory" class="text-danger">*</span>
                     </div>
@@ -116,7 +116,7 @@
                     </label>
                     <div class="col-sm-6 px-1">
                       <template x-if="field.type === 'text'">
-                        <div x-data="place: field.value !== null && field.value !== undefined && field.value !== '' ? field.value : field.label">
+                        <div class="pr-2" x-data="place: field.value !== null && field.value !== undefined && field.value !== '' ? field.value : field.label">
                           <span x-text="place"></span>
                           <input
                             type="text"
@@ -168,12 +168,12 @@
                     <template x-if="openHistory">
                       <div class="overflow-auto styled-scrollbars d-block" style="height: 40vh;">
                         <template x-for="(val,index) in field.values">
-                          <div  class="grid-diff " :class="{ 'sticky-top': index === 0 }">
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0  }" x-text="index + 1"></div>
+                          <div  class="grid-diff " :class="{ 'sticky-top': index === 0, 'border-top border-success--mute': index !== 0,  }">
+                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="index + 1"></div>
                             <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.date"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="'Mano Sebastiano Argenti'"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="'Create'"></div>
-                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="'Update'"></div>
+                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.by"></div>
+                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.event"></div>
+                            <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.operation"></div>
                             <div class="p-2 d-block" :class="{ 'bg-success ink-success': index === 0 }" x-text="val.value"></div>
                           </div>
                         </template>
@@ -182,7 +182,7 @@
                     </template>
                     <template  x-if="openHistory">
 
-                      <div class="d-flex pt-2 justify-content-between w-100">
+                      <div class="d-flex pt-2 justify-content-between w-100 px-2 border-top">
                         <button class="btn btn btn-outline-primary d-flex align-items-center gap-sm" @click="openHistory = false">
                           Hide history 
                           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
@@ -199,20 +199,7 @@
                 <button class="btn btn-lg btn-light">Cancel</button>
               </div>
               <div class="d-flex gap-sm">
-                <button
-                  class="btn btn-lg d-flex gap-sm align-items-center btn-outline-success">
-                  Confirm all
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-check2"
-                    viewBox="0 0 16 16">
-                    <path
-                      d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-                  </svg>
-                </button>
+                
                 <button class="btn btn-lg btn-primary">Save</button>
               </div>
           </div>
