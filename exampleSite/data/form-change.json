@@ -11,6 +11,26 @@
                     "type": "text",
                     "value": "Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano Mano Senbastiano ",
                     "oldValue": "Razvan Gabriel long long long long long long long long long long long long long long long long long long long long long long value",
+                    "conflict": {
+                        "date": "23.05.1976",
+                        "by": "Razvan Gabriel Nicu",
+                        "prevVal": "Mano Senbastianoincino",
+                        "usePrevVal": false
+                    },
+                    "comments": [
+                        {
+                            "date": "23.05.1976",
+                            "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, earum! Delectus, molestias? Aspernatur quam distinctio, modi excepturi quae tempore veritatis dicta molestiae neque, error ratione obcaecati ab? Sed, inventore suscipit."
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, earum! Delectus, molestias? Aspernatur quam distinctio, modi excepturi quae tempore veritatis dicta molestiae neque, error ratione obcaecati ab? Sed, inventore suscipit."
+                        },
+                        {
+                            "date": "23.05.1976",
+                            "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, earum! Delectus, molestias? Aspernatur quam distinctio, modi excepturi quae tempore veritatis dicta molestiae neque, error ratione obcaecati ab? Sed, inventore suscipit."
+                        }
+                    ],
                     "values": [
                         {
                             "date": "23.05.1976",
