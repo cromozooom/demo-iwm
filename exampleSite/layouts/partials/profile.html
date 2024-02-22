@@ -1,0 +1,19 @@
+<div class="relative">
+  <div class="w-100">
+    {{ partial "toolbar.html"  (dict "type" "success") }}
+    <div
+      class="d-flex gap-sm card"
+      :class="editDasboard ? 'outline outline-success' : ''">
+      {{- partial "card.html" (dict "card" "title" "title" "Profile") -}}
+      <div class="grid">
+        <div>
+          <div>image</div>
+          <div>Mano Sebastiano Argemti</div>
+        </div>
+        <div>
+          actions
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
