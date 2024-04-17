@@ -1,26 +1,36 @@
 {{ define "main" }}
-{{ $jsonData := readFile "data/tiles.json" }}
+  {{ $jsonData := readFile "data/tiles.json" }}
 
-<div class="container-fluid" x-data="{ data: {{ $jsonData | safeJS }}, edit: true, draggedTile: null, draggedTileIndex: null, dropTargetIndex: null, draggedItem: null, draggedItemIndex: null, dropTargetItemIndex: null }">
-  <div class="row pb-2">
-    <div class="col-12 pt-2">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1" x-model="edit">
-        <label class="custom-control-label" for="customSwitch1">Edit Mode</label>
+
+  <div
+    class="container-fluid"
+    x-data="{ data: {{ $jsonData | safeJS }}, edit: false, draggedTile: null, draggedTileIndex: null, dropTargetIndex: null, draggedItem: null, draggedItemIndex: null, dropTargetItemIndex: null }">
+    <div class="row pb-2">
+      <div class="col-12 pt-2">
+        <div class="custom-control custom-switch">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="customSwitch1"
+            x-model="edit" />
+          <label class="custom-control-label" for="customSwitch1"
+            >Edit Mode</label
+          >
+        </div>
+      </div>
+      <div x-show="edit" class="col-12 pt-2">
+        <div class="alert alert-primary" role="alert">
+          Drag & drop tiles and rows
+        </div>
       </div>
     </div>
-    <div x-show="edit" class="col-12 pt-2">
-      <div class="alert alert-primary" role="alert">
-       Drag & drop tiles and rows 
-      </div>
-    </div>
-  </div>
-  <div class="d-grid grid-tiles pb-3" @dragover.prevent>
-    <template x-for="(tile, tileIndex) in data" :key="`tile-${tileIndex}`">
-      <div class="min-w-tile w-100 h-100"
-           @dragstart="draggedTile = tile; draggedTileIndex = tileIndex; dropTargetIndex = null"
-           @dragover.prevent="dropTargetIndex = tileIndex"
-           @drop="
+    <div class="d-grid grid-tiles pb-3" @dragover.prevent>
+      <template x-for="(tile, tileIndex) in data" :key="`tile-${tileIndex}`">
+        <div
+          class="min-w-tile w-100 h-100"
+          @dragstart="draggedTile = tile; draggedTileIndex = tileIndex; dropTargetIndex = null"
+          @dragover.prevent="dropTargetIndex = tileIndex"
+          @drop="
              if (draggedTileIndex !== tileIndex) {
                let movedTile = data.splice(draggedTileIndex, 1)[0];
                data.splice(dropTargetIndex, 0, movedTile);
@@ -35,12 +45,13 @@
              draggedItemIndex = null;
              dropTargetItemIndex = null;
            "
-           draggable="true">
-        <div class="card w-100 h-100 overflow-hidden">
-          <div class="header group dragTile cursor-move d-flex gap justify-content-between align-items-center p-2 bg-brand ink-brand"
-               @dragstart="draggedTile = tile; draggedTileIndex = tileIndex; dropTargetIndex = null"
-               @dragover.prevent="dropTargetIndex = tileIndex"
-               @drop="
+          draggable="true">
+          <div class="card w-100 h-100 overflow-hidden">
+            <div
+              class="header group dragTile cursor-move d-flex gap justify-content-between align-items-center bg-brand ink-brand"
+              @dragstart="draggedTile = tile; draggedTileIndex = tileIndex; dropTargetIndex = null"
+              @dragover.prevent="dropTargetIndex = tileIndex"
+              @drop="
                  if (draggedTileIndex !== tileIndex) {
                    let movedTile = data.splice(draggedTileIndex, 1)[0];
                    data.splice(dropTargetIndex, 0, movedTile);
@@ -55,366 +66,302 @@
                  draggedItemIndex = null;
                  dropTargetItemIndex = null;
                "
-               draggable="true">
-                 
+              draggable="true"
+              x-bind:class="{
+                'py-2 pr-2': edit,
+                'p-2': !edit
+            }">
               <div class="d-flex justify-content-start gap">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                <div class="d-flex align-items-center ink-primary">
+                  <svg
+                    x-show="edit"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-three-dots-vertical opacity-5 "
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
                   </svg>
                 </div>
-                <div>
-                  <strong x-text="tile?.title"></strong>
-                </div>
+                <div><strong x-text="tile?.title"></strong></div>
               </div>
 
-              <div x-show="edit" >
-                
+              <div x-show="edit">
                 <div>
-                  <div class="btn-group" role="group" aria-label="Basic example">
-
-                    <button type="button" class="btn btn-sm btn-brand d-flex align-items-center gap-sm hover-opacity" data-toggle="modal" :data-target="'#tile' + tileIndex ">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                          </svg>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-brand d-flex align-items-center gap-sm hover-opacity"
+                      data-toggle="modal"
+                      :data-target="'#tile' + tileIndex ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-trash"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                        <path
+                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                      </svg>
                     </button>
-                    <button type="button" class="btn btn-sm btn-brand d-flex align-items-center gap-sm " data-toggle="modal" :data-target="'#tile' + tileIndex ">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-brand d-flex align-items-center gap-sm "
+                      data-toggle="modal"
+                      :data-target="'#tile' + tileIndex ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrows-angle-expand"
+                        viewBox="0 0 16 16">
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707" />
                       </svg>
                     </button>
                   </div>
-
                 </div>
-                <div class="modal fade" :id="'tile' + tileIndex " tabindex="-1" :aria-labelledby="'tile' + tileIndex  + 'Label'" aria-hidden="true">
+                <div
+                  class="modal fade"
+                  :id="'tile' + tileIndex "
+                  tabindex="-1"
+                  :aria-labelledby="'tile' + tileIndex  + 'Label'"
+                  aria-hidden="true">
                   <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title text-dark" :id="'tile' + tileIndex  + 'Label'">
+                        <h5
+                          class="modal-title text-dark"
+                          :id="'tile' + tileIndex  + 'Label'">
                           Edit: <span x-text="tile?.title"></span>
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
-                        edit tile form
-                      </div>
+                      <div class="modal-body">edit tile form</div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal">
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Save changes
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-          </div>
-          <template x-if="!edit">
-            <div class="body d-flex flex-column" :id="`tile-${tileIndex}`">
-              <template x-for="(item, itemIndex) in tile?.items" :key="`item-${itemIndex}`">
-                <div :class="itemIndex !== 0 ? 'border-top' : ''" class="d-flex justify-content-between p-2">
-                  <div>
-                    <span x-text="item?.title"></span>
-                  </div>
-                  <div>
-                    <span x-show="item?.count" x-text="item?.count >= 100 ? '+99' : item?.count" class="badge badge-pill badge-info"></span>
-                  </div>
-                </div>
-              </template>
             </div>
-          </template>
-          <template x-if="edit">
-            <div class="body d-flex flex-column h-100" :id="`tile-${tileIndex}`">
-              <template x-for="(item, itemIndex) in tile?.items" :key="`item-${itemIndex}`">
-                <div class="itemDrag d-flex justify-content-between p-2 cursor-move group"
-                     @dragstart="draggedItem = item; draggedItemIndex = itemIndex; dropTargetItemIndex = null"
-                     @dragover.prevent="dropTargetItemIndex = itemIndex"
-                     @drop="
+            <template x-if="!edit">
+              <div class="body d-flex flex-column " :id="`tile-${tileIndex}`">
+                <template
+                  x-for="(item, itemIndex) in tile?.items"
+                  :key="`item-${itemIndex}`">
+                  <div
+                    x-bind:class="{
+                      'border-top': itemIndex !== 0,
+                      'cursor-pointer text-primary hover-white': item.count !== 0,
+                      'text-muted': item.count === 0
+                    }"
+                    class="d-flex justify-content-between p-2 w-100 ">
+                    <div>
+                      <span x-text="item?.title"></span>
+                    </div>
+                    <div>
+                      <span
+                        x-show="item?.count"
+                        x-text="item?.count >= 100 ? '+99' : item?.count"
+                        class="badge badge-pill badge-info"></span>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+            <template x-if="edit">
+              <div
+                class="body d-flex flex-column h-100"
+                :id="`tile-${tileIndex}`">
+                <template
+                  x-for="(item, itemIndex) in tile?.items"
+                  :key="`item-${itemIndex}`">
+                  <div
+                    class="itemDrag d-flex justify-content-between py-2 pr-2 cursor-move group"
+                    @dragstart="draggedItem = item; draggedItemIndex = itemIndex; dropTargetItemIndex = null"
+                    @dragover.prevent="dropTargetItemIndex = itemIndex"
+                    x-bind:class="{
+                      'border-top': itemIndex !== 0,}"
+                    @drop="
                        let movedItem = data[tileIndex].items.splice(draggedItemIndex, 1)[0];
                        data[tileIndex].items.splice(dropTargetItemIndex, 0, movedItem);
                        draggedItem = null;
                        draggedItemIndex = null;
                        dropTargetItemIndex = null;
                      "
-                     draggable="true">
-                  <div>
-                    <span x-text="item?.title"></span>
-                  </div>
-                  <div>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-
-                      <button type="button" class="btn btn-sm btn-link d-flex align-items-center gap-sm hover-opacity" data-toggle="modal" :data-target="'#item' + tileIndex + itemIndex">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                      </button>
-                      <button type="button" class="btn btn-sm btn-link d-flex align-items-center gap-sm" data-toggle="modal" :data-target="'#item' + tileIndex + itemIndex">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
-                        </svg>
-                      </button>
+                    draggable="true">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-three-dots-vertical ink-muted"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                      </svg>
+                      <span x-text="item?.title"></span>
                     </div>
-                  </div>
-                  <div class="modal fade" :id="'item' + tileIndex + itemIndex" tabindex="-1" :aria-labelledby="'item' + tileIndex + itemIndex + 'Label'" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" :id="'item' + tileIndex + itemIndex + 'Label'">
-                            Edit: <span x-text="item?.title"></span>
-                          </h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          edit tile row form
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                    <div>
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic example">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-link d-flex align-items-center gap-sm hover-opacity"
+                          data-toggle="modal"
+                          :data-target="'#item' + tileIndex + itemIndex">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-trash"
+                            viewBox="0 0 16 16">
+                            <path
+                              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                            <path
+                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                          </svg>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-link d-flex align-items-center gap-sm"
+                          data-toggle="modal"
+                          :data-target="'#item' + tileIndex + itemIndex">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-arrows-angle-expand"
+                            viewBox="0 0 16 16">
+                            <path
+                              fill-rule="evenodd"
+                              d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </template>
-              <div class="d-flex justify-content-center flex-grow-1 align-items-end p-2">
-                <button class="btn btn-link gap-sm d-flex align-items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                  </svg>
-                  Add Row</button>
-              </div>
-            </div>
-          </template>
-        </div>
-      </div>
-    </template>
-    <template x-if="edit">
-
-      <div class="min-w-tile">
-        <div class=" card d-flex w-100 h-100 align-items-center justify-content-center">
-          <button class="btn btn-outline-primary gap-sm d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-            </svg>
-            Add Tile</button>
-        </div>
-      </div>
-    </template>
-  </div>
-</div>
-{{ end }}
-
-
-
-{{/*
-
-{{ define "main" }}
-{{ $jsonData := readFile "data/tiles.json" }}
-
-<div class="container-fluid" x-data="{ data: {{ $jsonData | safeJS }}, edit: true, draggedTile: null, draggedTileIndex: null, dropTargetIndex: null, draggedItem: null, draggedItemIndex: null }">
- <div class="row">
-   <div class="col py-4">
-     <div class="custom-control custom-switch">
-       <input type="checkbox" class="custom-control-input" id="customSwitch1" x-model="edit">
-       <label class="custom-control-label" for="customSwitch1">Edit Mode</label>
-     </div>
-   </div>
- </div>
- <div class="row" @dragover.prevent>
-   <template x-for="(tile, tileIndex) in data" :key="`tile-${tileIndex}`">
-     <div class="col"
-          @dragstart="draggedTile = tile; draggedTileIndex = tileIndex; dropTargetIndex = null"
-          @dragover.prevent="dropTargetIndex = tileIndex"
-          @drop="
-            data.splice(draggedTileIndex, 1);
-            data.splice(dropTargetIndex, 0, draggedTile);
-            draggedTile = null;
-            draggedTileIndex = null;
-            dropTargetIndex = null;
-          "
-          draggable="true">
-       <div class="card overflow-hidden">
-         <div class="header dragTile d-flex gap justify-content-start align-items-center p-2 bg-brand text-white">
-           <div>
-             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-             </svg>
-           </div>
-           <div>
-             <strong x-text="tile.title"></strong>
-           </div>
-         </div>
-         <template x-if="!edit">
-           <div class="body d-flex flex-column" :id="`tile-${tileIndex}`">
-             <template x-for="(item, itemIndex) in tile.items" :key="`item-${itemIndex}`">
-               <div :class="itemIndex !== 0 ? 'border-top' : ''" class="d-flex justify-content-between p-2">
-                 <div>
-                   <span x-text="item.title + ' ' + itemIndex"></span>
-                 </div>
-                 <div>
-                   <span x-show="item.count" x-text="item.count" class="badge badge-pill badge-info"></span>
-                 </div>
-               </div>
-             </template>
-           </div>
-         </template>
-         <template x-if="edit">
-           <div class="body d-flex flex-column" :id="`tile-${tileIndex}`">
-             <template x-for="(item, itemIndex) in tile.items" :key="`item-${itemIndex}`">
-               <div class="itemDrag d-flex justify-content-between p-2 cursor-move"
-                    @dragstart="draggedItem = item; draggedItemIndex = itemIndex; dropTargetIndex = null"
-                    @dragover.prevent="dropTargetIndex = itemIndex"
-                    @drop="
-                      tile.items.splice(draggedItemIndex, 1);
-                      tile.items.splice(dropTargetIndex, 0, draggedItem);
-                      draggedItem = null;
-                      draggedItemIndex = null;
-                      dropTargetIndex = null;
-                    "
-                    draggable="true">
-                 <div>
-                   <span x-text="item.title"></span>
-                 </div>
-                 <div>
-                   <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" :data-target="'#item' + tileIndex + itemIndex">
-                     Edit
-                   </button>
-                 </div>
-                 <div class="modal fade" :id="'item' + tileIndex + itemIndex" tabindex="-1" :aria-labelledby="'item' + tileIndex + itemIndex + 'Label'" aria-hidden="true">
-                   <div class="modal-dialog modal-xl">
-                     <div class="modal-content">
-                       <div class="modal-header">
-                         <h5 class="modal-title" :id="'item' + tileIndex + itemIndex + 'Label'">
-                           Edit: <span x-text="item.title"></span>
-                         </h5>
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                         </button>
-                       </div>
-                       <div class="modal-body">
-                         ...
-                       </div>
-                       <div class="modal-footer">
-                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                         <button type="button" class="btn btn-primary">Save changes</button>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </template>
-           </div>
-         </template>
-       </div>
-     </div>
-   </template>
- </div>
-</div>
-{{ end }}
-*/}}
-
-
-
-{{/*
-  <div class="container-fluid" x-data="{ data: {{ $jsonData | safeJS }}, edit: true, draggedItem: null, draggedItemIndex: null, dropTargetIndex: null }">
-    <div class="row">
-      <div class="col py-4">
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="customSwitch1" x-model="edit">
-          <label class="custom-control-label" for="customSwitch1">Edit Mode</label>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <template x-for="(tile, tileIndex) in data" :key="`tile-${tileIndex}`">
-        <div class="col">
-          <div class="card overflow-hidden">
-            <div class="header dragTile d-flex gap justify-content-start align-items-center p-2 bg-brand text-white">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                </svg>
-              </div>
-              <div>
-                <strong x-text="tile.title"></strong>
-              </div>
-            </div>
-            <template template x-if="!edit">
-              <div  class="body d-flex flex-column" :id="`tile-${tileIndex}`">
-                <template x-for="(item, itemIndex) in tile.items" :key="`item-${itemIndex}`">
-                  <div
-                    :class="itemIndex !== 0  ? 'border-top' : ''"
-                    class="d-flex justify-content-between p-2">
-                    <div>
-                      <span x-text="item.title + ' '  + itemIndex"></span>
-                    </div>
-                    <div>
-                      <span x-show="item.count" x-text="item.count" class="badge badge-pill badge-info"></span>
-                    </div>
-                  </div>
-                </template>
-  
-              </div>
-            </template>
-            <template x-if="edit">
-              <div class="body d-flex flex-column" :id="`tile-${tileIndex}`">
-                <template x-for="(item, itemIndex) in tile.items" :key="`item-${itemIndex}`">
-                  <div class="itemDrag d-flex justify-content-between p-2 cursor-move"
-                      @dragstart="draggedItem = item; draggedItemIndex = itemIndex; dropTargetIndex = null"
-                      @dragover.prevent="dropTargetIndex = itemIndex"
-                      @drop="
-                        tile.items.splice(draggedItemIndex, 1);
-                        tile.items.splice(dropTargetIndex, 0, draggedItem);
-                        draggedItem = null;
-                        draggedItemIndex = null;
-                        dropTargetIndex = null;
-                      "
-                      draggable="true">
-                    <div>
-                      <span x-text="item.title"></span>
-                    </div>
-                    <div>
-                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#item" :data-target=" '#item' + tileIndex + itemIndex">
-                        Edit
-                      </button>
-                    </div>
-                    <div class="modal fade"  :id="'item' + tileIndex + itemIndex" tabindex="-1"  :aria-labelledby="'item' + tileIndex + itemIndex + 'Label'" aria-hidden="true">
+                    <div
+                      class="modal fade"
+                      :id="'item' + tileIndex + itemIndex"
+                      tabindex="-1"
+                      :aria-labelledby="'item' + tileIndex + itemIndex + 'Label'"
+                      aria-hidden="true">
                       <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" :id="'item' + tileIndex + itemIndex + 'Label'">
-                              Edit: 
-                              <span x-text="item.title"></span>
+                            <h5
+                              class="modal-title"
+                              :id="'item' + tileIndex + itemIndex + 'Label'">
+                              Edit: <span x-text="item?.title"></span>
                             </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
-                            ...
-                          </div>
+                          <div class="modal-body">edit tile row form</div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-dismiss="modal">
+                              Close
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                              Save changes
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
-  
-  
                   </div>
                 </template>
+                <div
+                  class="d-flex justify-content-center flex-grow-1 align-items-end p-2">
+                  <button class="btn btn-link gap-sm d-flex align-items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-plus"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    </svg>
+                    Add Row
+                  </button>
+                </div>
               </div>
             </template>
           </div>
         </div>
       </template>
+      <template x-if="edit">
+        <div class="min-w-tile">
+          <div
+            class=" card d-flex w-100 h-100 align-items-center justify-content-center">
+            <button
+              class="btn btn-outline-primary gap-sm d-flex align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-plus"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+              </svg>
+              Add Tile
+            </button>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
-
-*/}}
-
+{{ end }}
