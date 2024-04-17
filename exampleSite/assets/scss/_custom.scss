@@ -615,12 +615,14 @@ $paddingCath: 1rem;
 }
 
 .group {
+  background: rgba(black, 0);
   .hover {
     &-opacity {
       opacity: 0;
     }
   }
   &:hover {
+    background: rgba(black, 0.05);
     .hover {
       &-opacity {
         opacity: 1;
