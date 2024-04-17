@@ -604,6 +604,16 @@ $paddingCath: 1rem;
   }
 }
 
+.min-w-tile {
+  min-width: 20rem;
+}
+
+.grid-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(336px, 1fr));
+  grid-gap: 1rem;
+}
+
 // body * {
 //   outline: 1px solid red;
 // }
