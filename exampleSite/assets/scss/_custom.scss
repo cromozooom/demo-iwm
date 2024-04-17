@@ -523,7 +523,6 @@ $paddingCath: 1rem;
   input,
   select {
     text-indent: 0.25rem;
-    // outline: 1px solid red;
   }
 
   .input-container {
@@ -590,3 +589,21 @@ $paddingCath: 1rem;
   --border: #{$warning};
   background: rgba($warning, 0.05);
 }
+
+.position--end-top {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.cursor {
+  &-move {
+    cursor: move;
+  }
+  &-pointer {
+    cursor: pointermove;
+  }
+}
+
+// body * {
+//   outline: 1px solid red;
+// }

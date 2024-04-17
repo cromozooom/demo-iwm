@@ -19,7 +19,7 @@
               <template x-for="field in section.fields" >
                 <div 
                 x-data="{openHistory : false, openError : false, openNote : false, showInvalid : false}"
-                @click.outside="openNote = false"
+                @click.outside="openNote = false, openHistory = false, openError = false"
                 class="form-group row no-gutters rounded"
                 :class="{
                   'hover-field-border pointer py-2' : field.oldValue && !field.checked  ,
@@ -34,8 +34,8 @@
                   </div>  
                   <div x-show="field.oldValue && !field.checked && showDiff" class="col-12 mb-3 position-relative ">
                     <span class="p-1 btn-group rounded validate-button bg-light border d-flex justify-content-center align-items-center">
-                      <button  @click="openError = !openError"
-                      @click.outside="openError = false" 
+                      <button  @click="openError = !openError, openHistory = false, openNote = false"
+                     
                       type="button" 
                       :class="openError ? 'enabled' : ''"
                       class="btn btn-sm p-2 btn-outline-warning d-flex align-items-center gap-sm"
@@ -49,12 +49,12 @@
                       <button x-show="field.values"
                       :class="openHistory ? 'enabled' : ''" 
                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
-                        @click="openHistory = !openHistory"
-                        @click.outside="openHistory = false"
+                        @click="openError = false, openHistory = !openHistory, openNote = false"
+                        
                         type="button"  x-bind:aria-expanded="openHistory">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
                       </button>
-                      <button  @click="openNote = !openNote"
+                      <button   @click="openError = false, openHistory = false, openNote = !openNote"
                       :class="openNote ? 'enabled' : ''" 
                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
                       type="button"  x-bind:aria-expanded="openNote"
@@ -202,27 +202,193 @@
                       <div class="w-100 mt-2">
                         <h6 class="px-2">Your notes</h6>
                         <div class="d-flex flex-column gap overflow-auto styled-scrollbars d-block  border-top p-2 " style="height: 30vh;">
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+                              Acepoly AUS—Discovery, Acepoly AUS—Demo, Acepoly AUS—Pricing discussion, Acepoly AUS—Legal discussion, BPS second use case—Legal discussion, EFC inbound—Discovery, Robinetworks RFQ—Pricing discussion
+                            </div>
                           </div>
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+                              Negotiation, Negotiation, Negotiation, Negotiation, Proposal, Evaluation, Closed—lost
+                            </div>
                           </div>
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+                              BPS Pilot—Discovery, BPS second use case—Discovery, BPS Pilot—Pricing discussion, BPS second use case—Legal discussion
+                            </div>
                           </div>
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                            </div>
                           </div>
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam porro expedita qui possimus blanditiis deserunt optio, atque rerum quo odit quas totam beatae provident, magnam aliquid! Assumenda sint nesciunt esse.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                            </div>
                           </div>
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                            </div>
                           </div>
-                          <div class="bg-white rounded p-3">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam porro expedita qui possimus blanditiis deserunt optio, atque rerum quo odit quas totam beatae provident, magnam aliquid! Assumenda sint nesciunt esse.
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                            </div>
                           </div>
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                            </div>
+                          </div>
+                          <div class="bg-white shadow-sm rounded position-relative">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="px-2">
+                                <small>23.05.1976</small>
+                              </div>
+                              <div class="actions">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 80h-82.4l-34-56.7A48 48 0 0 0 274.4 0H173.6a48 48 0 0 0-41.2 23.3L98.4 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16l21.2 339a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM173.6 48h100.8l19.2 32H154.4zm173.3 416H101.11l-21-336h287.8z"/></svg>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-link">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="px-3 py-2">
+
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam reprehenderit deserunt molestiae ducimus inventore, officia quia ipsa nostrum est vero ratione cupiditate saepe illo, debitis at? Est dolore suscipit incidunt.
+                            </div>
+                          </div>
+                          
 
                         </div>
                         <div class="px-2 pt-2 border-top">
@@ -230,13 +396,191 @@
                             <label for="exampleFormControlTextarea1">Add Note</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                           </div>
-                          <button class="btn btn-primary" type="button">Add note</button>
+                          <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary d-flex justify-content-center gap-sm align-items-center" type="button">
+                              <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M368 224H224V80c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v144H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h144v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V288h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"/></svg>
+                              Add note</button>
+                          </div>
                         </div>
                       </div>
                     </template>
 
               </div>  
               </template>
+
+              <div class="d-flex">
+                 <div x-show="field.oldValue && !field.checked && showDiff" class="col-12 mb-3 position-relative ">
+                    <span class="p-1 btn-group rounded validate-button bg-light border d-flex justify-content-center align-items-center">
+                      <button  @click="openError = !openError, openHistory = false, openNote = false"
+                     
+                      type="button" 
+                      :class="openError ? 'enabled' : ''"
+                      class="btn btn-sm p-2 btn-outline-warning d-flex align-items-center gap-sm"
+                       x-bind:aria-expanded="openError"
+                       >
+                      <svg  fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 384 512"><path d="M304 192c-38 0-69.8 26.5-77.9 62-23.9-3.5-58-12.9-83.9-37.6-16.6-15.9-27.9-36.5-33.7-61.6C138.6 143.3 160 114.1 160 80c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-35.8-23.5-66.1-56-76.3V246.1c1.6 1.7 3.3 3.4 5 5 39.3 37.5 90.4 48.6 121.2 51.8 12.1 28.9 40.6 49.2 73.8 49.2 44.2 0 80-35.8 80-80S348.2 192 304 192zM80 48c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm0 416c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm224-160c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"/></svg>  
+                      
+                      <!-- <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 576 512"><path d="M248.747 204.705l6.588 112c.373 6.343 5.626 11.295 11.979 11.295h41.37a12 12 0 0 0 11.979-11.295l6.588-112c.405-6.893-5.075-12.705-11.979-12.705h-54.547c-6.903 0-12.383 5.812-11.978 12.705zM330 384c0 23.196-18.804 42-42 42s-42-18.804-42-42 18.804-42 42-42 42 18.804 42 42zm-.423-360.015c-18.433-31.951-64.687-32.009-83.154 0L6.477 440.013C-11.945 471.946 11.118 512 48.054 512H527.94c36.865 0 60.035-39.993 41.577-71.987L329.577 23.985zM53.191 455.002L282.803 57.008c2.309-4.002 8.085-4.002 10.394 0l229.612 397.993c2.308 4-.579 8.998-5.197 8.998H58.388c-4.617.001-7.504-4.997-5.197-8.997z"/></svg> -->
+                        
+                      </button>
+                      <button x-show="field.values"
+                      :class="openHistory ? 'enabled' : ''" 
+                      class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                        @click="openError = false, openHistory = !openHistory, openNote = false"
+                        
+                        type="button"  x-bind:aria-expanded="openHistory">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
+                      </button>
+                      <button   @click="openError = false, openHistory = false, openNote = !openNote"
+                      :class="openNote ? 'enabled' : ''" 
+                      class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                      type="button"  x-bind:aria-expanded="openNote"
+                      
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512"><path
+                          fill="currentColor"
+                           d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"/></svg>
+                        
+                      </button>
+                    </span>
+                  </div>
+                
+                <div class="row no-gutters rounded pointer py-2 px-2">
+                  <div class="form-group">
+                    <div  class="col-12 mb-3 position-relative invisible">
+                     <span class="p-1 btn-group rounded validate-button bg-light border d-flex justify-content-center align-items-center">
+                       <button  @click="openError = !openError, openHistory = false, openNote = false"
+                      
+                       type="button" 
+                       :class="openError ? 'enabled' : ''"
+                       class="btn btn-sm p-2 btn-outline-warning d-flex align-items-center gap-sm"
+                        x-bind:aria-expanded="openError"
+                        >
+                       <svg  fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 384 512"><path d="M304 192c-38 0-69.8 26.5-77.9 62-23.9-3.5-58-12.9-83.9-37.6-16.6-15.9-27.9-36.5-33.7-61.6C138.6 143.3 160 114.1 160 80c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-35.8-23.5-66.1-56-76.3V246.1c1.6 1.7 3.3 3.4 5 5 39.3 37.5 90.4 48.6 121.2 51.8 12.1 28.9 40.6 49.2 73.8 49.2 44.2 0 80-35.8 80-80S348.2 192 304 192zM80 48c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm0 416c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm224-160c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"/></svg>  
+                       
+                       <!-- <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 576 512"><path d="M248.747 204.705l6.588 112c.373 6.343 5.626 11.295 11.979 11.295h41.37a12 12 0 0 0 11.979-11.295l6.588-112c.405-6.893-5.075-12.705-11.979-12.705h-54.547c-6.903 0-12.383 5.812-11.978 12.705zM330 384c0 23.196-18.804 42-42 42s-42-18.804-42-42 18.804-42 42-42 42 18.804 42 42zm-.423-360.015c-18.433-31.951-64.687-32.009-83.154 0L6.477 440.013C-11.945 471.946 11.118 512 48.054 512H527.94c36.865 0 60.035-39.993 41.577-71.987L329.577 23.985zM53.191 455.002L282.803 57.008c2.309-4.002 8.085-4.002 10.394 0l229.612 397.993c2.308 4-.579 8.998-5.197 8.998H58.388c-4.617.001-7.504-4.997-5.197-8.997z"/></svg> -->
+                         
+                       </button>
+                       <button x-show="field.values"
+                       :class="openHistory ? 'enabled' : ''" 
+                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                         @click="openError = false, openHistory = !openHistory, openNote = false"
+                         
+                         type="button"  x-bind:aria-expanded="openHistory">
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
+                       </button>
+                       <button   @click="openError = false, openHistory = false, openNote = !openNote"
+                       :class="openNote ? 'enabled' : ''" 
+                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                       type="button"  x-bind:aria-expanded="openNote"
+                       
+                       >
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512"><path
+                           fill="currentColor"
+                            d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"/></svg>
+                         
+                       </button>
+                     </span>
+                   </div>
+                   <label for="exampleFormControlInput1">Email address</label>
+                    <div class="input-container">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                  </div>
+                </div>
+                <div class="row no-gutters rounded pointer py-2 hover-field-border px-2">
+                  <div class="form-group">
+                    <div  class="col-12 mb-3 position-relative ">
+                     <span class="p-1 btn-group rounded validate-button bg-light border d-flex justify-content-center align-items-center">
+                       <button  @click="openError = !openError, openHistory = false, openNote = false"
+                      
+                       type="button" 
+                       :class="openError ? 'enabled' : ''"
+                       class="btn btn-sm p-2 btn-outline-warning d-flex align-items-center gap-sm"
+                        x-bind:aria-expanded="openError"
+                        >
+                       <svg  fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 384 512"><path d="M304 192c-38 0-69.8 26.5-77.9 62-23.9-3.5-58-12.9-83.9-37.6-16.6-15.9-27.9-36.5-33.7-61.6C138.6 143.3 160 114.1 160 80c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-35.8-23.5-66.1-56-76.3V246.1c1.6 1.7 3.3 3.4 5 5 39.3 37.5 90.4 48.6 121.2 51.8 12.1 28.9 40.6 49.2 73.8 49.2 44.2 0 80-35.8 80-80S348.2 192 304 192zM80 48c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm0 416c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm224-160c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"/></svg>  
+                       
+                       <!-- <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 576 512"><path d="M248.747 204.705l6.588 112c.373 6.343 5.626 11.295 11.979 11.295h41.37a12 12 0 0 0 11.979-11.295l6.588-112c.405-6.893-5.075-12.705-11.979-12.705h-54.547c-6.903 0-12.383 5.812-11.978 12.705zM330 384c0 23.196-18.804 42-42 42s-42-18.804-42-42 18.804-42 42-42 42 18.804 42 42zm-.423-360.015c-18.433-31.951-64.687-32.009-83.154 0L6.477 440.013C-11.945 471.946 11.118 512 48.054 512H527.94c36.865 0 60.035-39.993 41.577-71.987L329.577 23.985zM53.191 455.002L282.803 57.008c2.309-4.002 8.085-4.002 10.394 0l229.612 397.993c2.308 4-.579 8.998-5.197 8.998H58.388c-4.617.001-7.504-4.997-5.197-8.997z"/></svg> -->
+                         
+                       </button>
+                       <button x-show="field.values"
+                       :class="openHistory ? 'enabled' : ''" 
+                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                         @click="openError = false, openHistory = !openHistory, openNote = false"
+                         
+                         type="button"  x-bind:aria-expanded="openHistory">
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
+                       </button>
+                       <button   @click="openError = false, openHistory = false, openNote = !openNote"
+                       :class="openNote ? 'enabled' : ''" 
+                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                       type="button"  x-bind:aria-expanded="openNote"
+                       
+                       >
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512"><path
+                           fill="currentColor"
+                            d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"/></svg>
+                         
+                       </button>
+                     </span>
+                   </div>
+                    <label for="exampleFormControlSelect1">Country</label>
+                    <div class="input-container">
+                      <select class="form-control " id="exampleFormControlSelect1">
+                        <option>Romania</option>
+                        <option>Romania</option>
+                        <option>Romania</option>
+                        <option>Romania</option>
+                        <option>Romania</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row no-gutters rounded py-2 px-2">
+                  <div class="form-group">
+                    <div  class="col-12 mb-3 position-relative invisible">
+                     <span class="p-1 btn-group rounded validate-button bg-light border d-flex justify-content-center align-items-center">
+                       <button  @click="openError = !openError, openHistory = false, openNote = false"
+                      
+                       type="button" 
+                       :class="openError ? 'enabled' : ''"
+                       class="btn btn-sm p-2 btn-outline-warning d-flex align-items-center gap-sm"
+                        x-bind:aria-expanded="openError"
+                        >
+                       <svg  fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 384 512"><path d="M304 192c-38 0-69.8 26.5-77.9 62-23.9-3.5-58-12.9-83.9-37.6-16.6-15.9-27.9-36.5-33.7-61.6C138.6 143.3 160 114.1 160 80c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-35.8-23.5-66.1-56-76.3V246.1c1.6 1.7 3.3 3.4 5 5 39.3 37.5 90.4 48.6 121.2 51.8 12.1 28.9 40.6 49.2 73.8 49.2 44.2 0 80-35.8 80-80S348.2 192 304 192zM80 48c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm0 416c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm224-160c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"/></svg>  
+                       
+                       <!-- <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 576 512"><path d="M248.747 204.705l6.588 112c.373 6.343 5.626 11.295 11.979 11.295h41.37a12 12 0 0 0 11.979-11.295l6.588-112c.405-6.893-5.075-12.705-11.979-12.705h-54.547c-6.903 0-12.383 5.812-11.978 12.705zM330 384c0 23.196-18.804 42-42 42s-42-18.804-42-42 18.804-42 42-42 42 18.804 42 42zm-.423-360.015c-18.433-31.951-64.687-32.009-83.154 0L6.477 440.013C-11.945 471.946 11.118 512 48.054 512H527.94c36.865 0 60.035-39.993 41.577-71.987L329.577 23.985zM53.191 455.002L282.803 57.008c2.309-4.002 8.085-4.002 10.394 0l229.612 397.993c2.308 4-.579 8.998-5.197 8.998H58.388c-4.617.001-7.504-4.997-5.197-8.997z"/></svg> -->
+                         
+                       </button>
+                       <button x-show="field.values"
+                       :class="openHistory ? 'enabled' : ''" 
+                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                         @click="openError = false, openHistory = !openHistory, openNote = false"
+                         
+                         type="button"  x-bind:aria-expanded="openHistory">
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill="currentColor"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
+                       </button>
+                       <button   @click="openError = false, openHistory = false, openNote = !openNote"
+                       :class="openNote ? 'enabled' : ''" 
+                       class="btn btn-sm p-2 btn-outline-info d-flex align-items-center gap-sm"
+                       type="button"  x-bind:aria-expanded="openNote"
+                       
+                       >
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512"><path
+                           fill="currentColor"
+                            d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"/></svg>
+                         
+                       </button>
+                     </span>
+                   </div>
+                   <label for="group-1">Phone</label>
+                    <div class="input-container">
+                      <input type="email" class="form-control" id="group-1" placeholder="07783363309">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
             <div class="d-flex justify-content-between">
               <div>
