@@ -2,11 +2,16 @@
 {{ $jsonData := readFile "data/tiles.json" }}
 
 <div class="container-fluid" x-data="{ data: {{ $jsonData | safeJS }}, edit: true, draggedTile: null, draggedTileIndex: null, dropTargetIndex: null, draggedItem: null, draggedItemIndex: null, dropTargetItemIndex: null }">
-  <div class="row">
-    <div class="col py-4">
+  <div class="row pb-2">
+    <div class="col-12 pt-2">
       <div class="custom-control custom-switch">
         <input type="checkbox" class="custom-control-input" id="customSwitch1" x-model="edit">
         <label class="custom-control-label" for="customSwitch1">Edit Mode</label>
+      </div>
+    </div>
+    <div x-show="edit" class="col-12 pt-2">
+      <div class="alert alert-primary" role="alert">
+       Drag & drop tiles and rows 
       </div>
     </div>
   </div>
@@ -152,7 +157,7 @@
                 </div>
               </template>
               <div class="d-flex justify-content-center align-items-end p-2">
-                <button class="btn btn-outline-primary">Add row</button>
+                <button class="btn btn-outline-primary">Add Row</button>
               </div>
             </div>
           </template>
@@ -163,7 +168,7 @@
 
       <div class="min-w-tile">
         <div class=" card d-flex w-100 h-100 align-items-center justify-content-center">
-          <button class="btn btn-outline-primary">Add tile</button>
+          <button class="btn btn-outline-primary">Add TILE</button>
         </div>
       </div>
     </template>
