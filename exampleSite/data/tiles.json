@@ -1,0 +1,158 @@
+[
+    {
+        "title": "Today",
+        "icon": "home",
+        "items": [
+            {
+                "title": "Tasks Due",
+                "count": 1
+            },
+            {
+                "title": "Clients Meetings",
+                "count": 0
+            },
+            {
+                "title": "Advisers Meetings",
+                "count": 0
+            },
+            {
+                "title": "All Meetings",
+                "count": 48
+            },
+            {
+                "title": "Phone Calls scheduled today",
+                "count": 0
+            }
+        ]
+    },
+    {
+        "title": "My Tasks",
+        "icon": "home",
+        "items": [
+            {
+                "title": "Overdue",
+                "count": 0
+            },
+            {
+                "title": "Due next 7 Days",
+                "count": 0
+            },
+            {
+                "title": "Active",
+                "count": 0
+            },
+            {
+                "title": "Completed in the last 30 days",
+                "count": 0
+            },
+            {
+                "title": "Phone Call Notes to complete",
+                "count": 0
+            }
+        ]
+    },
+    {
+        "title": "My Appointments",
+        "icon": "home",
+        "items": [
+            {
+                "title": "Overdue",
+                "count": 0
+            },
+            {
+                "title": "Scheduled for Next 7 Days",
+                "count": 0
+            },
+            {
+                "title": "Active",
+                "count": 0
+            },
+            {
+                "title": "Completed in the last 30 days",
+                "count": 0
+            },
+            {
+                "title": "My Clients Not Met in 12 Months",
+                "count": 0
+            }
+        ]
+    },
+    {
+        "title": "My Suitability Review",
+        "icon": "home",
+        "items": [
+            {
+                "title": "Overdue",
+                "count": 0
+            },
+            {
+                "title": "Due next 7 Days",
+                "count": 0
+            },
+            {
+                "title": "Active",
+                "count": 0
+            },
+            {
+                "title": "Completed in the last 30 days",
+                "count": 0
+            },
+            {
+                "title": "Phone Call Notes to complete",
+                "count": 0
+            }
+        ]
+    },
+    {
+        "title": "My Opportunities",
+        "icon": "home",
+        "items": [
+            {
+                "title": "Overdue",
+                "count": 0
+            },
+            {
+                "title": "Due next 7 Days",
+                "count": 0
+            },
+            {
+                "title": "Active",
+                "count": 0
+            },
+            {
+                "title": "Completed in the last 30 days",
+                "count": 0
+            },
+            {
+                "title": "Phone Call Notes to complete",
+                "count": 0
+            }
+        ]
+    },
+    {
+        "title": "Requests & Complaints",
+        "icon": "home",
+        "items": [
+            {
+                "title": "Overdue",
+                "count": 0
+            },
+            {
+                "title": "Due next 7 Days",
+                "count": 0
+            },
+            {
+                "title": "Active",
+                "count": 0
+            },
+            {
+                "title": "Completed in the last 30 days",
+                "count": 0
+            },
+            {
+                "title": "Phone Call Notes to complete",
+                "count": 0
+            }
+        ]
+    }
+]
