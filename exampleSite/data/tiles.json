@@ -31,15 +31,15 @@
         "items": [
             {
                 "title": "Overdue",
-                "count": 0
+                "count": 120
             },
             {
                 "title": "Due next 7 Days",
-                "count": 0
+                "count": 89
             },
             {
                 "title": "Active",
-                "count": 0
+                "count": 10
             },
             {
                 "title": "Completed in the last 30 days",
@@ -57,7 +57,7 @@
         "items": [
             {
                 "title": "Overdue",
-                "count": 0
+                "count": 150
             },
             {
                 "title": "Scheduled for Next 7 Days",
@@ -83,19 +83,19 @@
         "items": [
             {
                 "title": "Overdue",
-                "count": 0
+                "count": 10
             },
             {
                 "title": "Due next 7 Days",
-                "count": 0
+                "count": 16
             },
             {
                 "title": "Active",
-                "count": 0
+                "count": 98
             },
             {
                 "title": "Completed in the last 30 days",
-                "count": 0
+                "count": 100
             },
             {
                 "title": "Phone Call Notes to complete",
@@ -117,11 +117,11 @@
             },
             {
                 "title": "Due next 7 Days",
-                "count": 0
+                "count": 7
             },
             {
                 "title": "Active",
-                "count": 0
+                "count": 15
             },
             {
                 "title": "Completed in the last 30 days",
@@ -129,7 +129,7 @@
             },
             {
                 "title": "Phone Call Notes to complete",
-                "count": 0
+                "count": 120
             }
         ]
     },
@@ -139,7 +139,7 @@
         "items": [
             {
                 "title": "Overdue",
-                "count": 0
+                "count": 15
             },
             {
                 "title": "Due next 7 Days",
@@ -147,7 +147,7 @@
             },
             {
                 "title": "Active",
-                "count": 0
+                "count": 70
             },
             {
                 "title": "Completed in the last 30 days",
@@ -155,7 +155,7 @@
             },
             {
                 "title": "Phone Call Notes to complete",
-                "count": 0
+                "count": 150
             }
         ]
     }

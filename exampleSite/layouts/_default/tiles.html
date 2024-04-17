@@ -118,7 +118,7 @@
                     <span x-text="item?.title"></span>
                   </div>
                   <div>
-                    <span x-show="item?.count" x-text="item?.count" class="badge badge-pill badge-info"></span>
+                    <span x-show="item?.count" x-text="item?.count >= 100 ? '+99' : item?.count" class="badge badge-pill badge-info"></span>
                   </div>
                 </div>
               </template>
