@@ -640,6 +640,17 @@ $paddingCath: 1rem;
   }
 }
 
+.outline {
+  &-info {
+    outline: 2px dotted $info;
+    outline-offset: 2px;
+  }
+}
+
+.transition {
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
 .opacity {
   &-5 {
     opacity: 0.5;
