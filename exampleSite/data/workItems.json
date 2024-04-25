@@ -1,0 +1,315 @@
+[
+    {
+        "Title": "1 Title Mr JM FName JM LName 2024/02/04 16:06:02 - 1707062762112",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "OutcomeD": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "Created": "2/4/24, 4:21 PM",
+        "CompletedD": "2/4/24, 4:21 PM",
+        "ByD": "Meno Sebastiano Argenti",
+        "ReasonsD": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "CommentsD": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "2 Title Mr JM FName",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "bookmark",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "Outcome": {
+            "Title": "Sample of outcome title",
+            "State": "danger"
+        },
+        "CreatedD": "2/4/24, 4:21 PM",
+        "Completed": "2/4/24, 4:21 PM",
+        "By": "Meno Sebastiano Argenti",
+        "ReasonsD": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "CommentsD": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            },
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "3 Title Mr JM FName",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "Outcome": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "CreatedD": "2/4/24, 4:21 PM",
+        "Completed": "2/4/24, 4:21 PM",
+        "By": "Meno Sebastiano Argenti",
+        "Reasons": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "Comments": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            },
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "3 Title Mr JM FName",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "Outcome": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "CreatedD": "2/4/24, 4:21 PM",
+        "Completed": "2/4/24, 4:21 PM",
+        "By": "Meno Sebastiano Argenti",
+        "Reasons": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "Comments": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            },
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "1 Title Mr JM FName JM LName 2024/02/04 16:06:02 - 1707062762112",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "OutcomeD": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "Created": "2/4/24, 4:21 PM",
+        "CompletedD": "2/4/24, 4:21 PM",
+        "ByD": "Meno Sebastiano Argenti",
+        "ReasonsD": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "CommentsD": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "3 Title Mr JM FName",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "Outcome": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "CreatedD": "2/4/24, 4:21 PM",
+        "Completed": "2/4/24, 4:21 PM",
+        "By": "Meno Sebastiano Argenti",
+        "Reasons": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "Comments": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            },
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "3 Title Mr JM FName",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "Outcome": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "CreatedD": "2/4/24, 4:21 PM",
+        "Completed": "2/4/24, 4:21 PM",
+        "By": "Meno Sebastiano Argenti",
+        "Reasons": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "Comments": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            },
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    },
+    {
+        "Title": "1 Title Mr JM FName JM LName 2024/02/04 16:06:02 - 1707062762112",
+        "options": {
+            "viewDetails": false,
+            "expandView": true
+        },
+        "Icon": "home",
+        "Info": true,
+        "ProcessStep": "Confirm Client Suitability",
+        "OutcomeD": {
+            "Title": "Sample of outcome title",
+            "State": "success"
+        },
+        "Created": "2/4/24, 4:21 PM",
+        "CompletedD": "2/4/24, 4:21 PM",
+        "ByD": "Meno Sebastiano Argenti",
+        "ReasonsD": [
+            "Source of founds",
+            "Reason 1",
+            "Reason 2"
+        ],
+        "CommentsD": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ],
+        "Details": [
+            {
+                "By": "Meno Sebastiano Argenti",
+                "Created": "2/4/24, 4:21 PM",
+                "Comment": "Things to know when using the tooltip plugin: Tooltips rely on the 3rd party library Popper for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper in order for tooltips to work!"
+            }
+        ]
+    }
+]

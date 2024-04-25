@@ -3,6 +3,17 @@ html {
   min-height: 100vh;
 }
 
+.commentsHeigh {
+  max-height: 10rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.popoverHeigh {
+  max-height: 10rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 .square {
   aspect-ratio: 1;
 }

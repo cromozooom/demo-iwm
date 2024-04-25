@@ -1,0 +1,325 @@
+{{ define "main" }}
+  {{ $jsonData := getJSON "data/workItems.json" }}
+  {{ $jsonDataAlpine := readFile "data/workItems.json" }}
+
+  
+
+
+
+
+  <div
+    class="container"
+    x-data="{ data: {{ $jsonDataAlpine | safeJS }}
+    , showCompactView: true,
+    setAllExpandViewToFalse() {
+      this.data.forEach(item => {
+        item.options.expandView = false;
+      });
+    },
+    setAllExpandViewToTrue() {
+      this.data.forEach(item => {
+        item.options.expandView = true;
+      });
+    },
+    hasAnyOptionTrue() {
+      return this.data.some(item => item.options.expandView === true);
+    },
+    hasAnyOptionFalse() {
+      return this.data.some(item => item.options.expandView === false);
+    }
+  }">
+    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-none" viewBox="0 0 16 16">
+      <symbol fill="currentColor" id="bookmark" viewBox="0 0 16 16">
+        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+      </symbol>
+      <symbol fill="currentColor" id="home" viewBox="0 0 16 16">
+          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+      </symbol>
+      <symbol fill="currentColor" id="bezier" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+          <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.52 6.52 0 0 0 1.814 9H2.5q.186 0 .358.043a5.52 5.52 0 0 1 3.185-3.185A1.5 1.5 0 0 1 6 5.5zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.52 6.52 0 0 1 2.72 3.5H13.5q-.185 0-.358.043a5.52 5.52 0 0 0-3.185-3.185"/>
+      </symbol>
+    </svg>
+    <div class="row">
+      
+      <div class="col-6 d-flex flex-column  pb-2">
+        <div>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-link" x-show="hasAnyOptionTrue()" @click="setAllExpandViewToFalse()">Compact All</button>
+            <button class="btn btn-sm btn-link"  x-show="hasAnyOptionFalse()" @click="setAllExpandViewToTrue()">Expand All</button>
+          </div>
+        </div>
+        <template
+          x-for="(workItem, workItemIndex) in data"
+          :key="`workItem-${workItemIndex}`">
+          <div class="d-flex bg-white border-left border-right statusMarker"
+
+            :class="[
+            workItemIndex ? 'border-bottom' : 'border-top border-bottom rounded-top',
+            workItem.Outcome ? `statusMarker-${workItem.Outcome.State}` : 'statusMarker-default'
+            ]
+            "
+          >
+            <side class="px-3 pt-2">
+              <!-- <span x-text="workItem.Details.length"></span> -->
+              <!-- <span x-text="workItemIndex"></span>
+              <span x-text="workItem.Outcome.Sate"></span> -->
+              <div
+              class="square d-flex badge badge-pill rounded-circle p-2"
+              :class="workItem.Outcome ? `badge-${workItem.Outcome.State}-light` : 'badge-info-light'">
+              <!-- <use x-bind:xlink:href="`#${workItem.Icon}`"></use> -->
+              <!-- <use x-bind:xlink:href="`#${workItem.Icon}`"></use> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                <use xlink:href="#bookmark" />
+              </svg>
+
+              </div>
+            </side>
+            <main class="flex-grow-1 d-flex flex-column gap-sm pb-2">
+              <div
+                class="d-flex justify-content-between align-items-start w-100 ">
+                <div class="pt-2">
+                  <!-- <span x-text="workItem.options.viewDetails"></span> -->
+                  <strong x-text="workItem.Title"></strong>
+                </div>
+                <div>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                      <button
+                        type="button"
+                        class="btn btn-link dropdown-toggle dropdown-toggle__noShevron"
+                        data-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-three-dots"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                        </svg>
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="d-flex flex-column">
+                          <button
+                          x-show="workItem.Outcome.Title.length"
+                          @click="workItem.options.expandView = !workItem.options.expandView"
+                          class="dropdown-item">
+                            <span x-show="!workItem.options.expandView"> Expand this</span>
+                            <span x-show="workItem.options.expandView"> Compact this</span>
+                          </button>
+                        </div>
+                        
+                        <button class="dropdown-item" x-show="hasAnyOptionTrue()" @click="setAllExpandViewToFalse()">Compact All</button>
+                        <button class="dropdown-item"  x-show="hasAnyOptionFalse()" @click="setAllExpandViewToTrue()">Expand All</button>
+            
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="row no-gutters">
+                <div class="col-6">
+                  <template x-if="workItem.ProcessStep">
+                    <div class="d-flex flex-column">
+                      <small class="text-muted"> Process Step </small>
+                      <div>
+                        <span
+                          x-text="workItem.ProcessStep"
+                          class="">
+                        </span>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+                <div class="col-6">
+                  <template x-if="workItem.Outcome">
+                    <div class="d-flex flex-column">
+                      <small class="text-muted"> Process Step </small>
+                      <div>
+                        <span
+                          x-text="workItem.Outcome.Title"
+                          class="badge lead"
+                          :class="`badge-${workItem.Outcome.State || 'info'}-light`">
+                        </span>
+                      </div>
+                    </div>
+                  </template>
+                  <template x-if="workItem.Created">
+                    <div class="d-flex flex-column">
+                      <small class="text-muted"> Created On </small>
+                      <div>
+                        <span x-text="workItem.Created"> </span>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+              <template x-if="workItem.options.expandView && workItem.Completed && workItem.By">
+                <div
+                  class="row no-gutters">
+                  <template x-if="workItem.Completed">
+                    <div class="col-6">
+                      <div class="d-flex flex-column">
+                        <small class="text-muted"> Completed on </small>
+                        <div>
+                          <span x-text="workItem.Completed"> </span>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                  <template x-if="workItem.By">
+                    <div class="col-6">
+                        <div class="d-flex flex-column">
+                          <small class="text-muted"> Completed by </small>
+                          <div>
+                            <span x-text="workItem.By"> </span>
+                          </div>
+                        </div>
+                      </div>
+                  </template>
+                </div>
+              </template>
+
+              <template x-if="workItem.Reasons && workItem.options.expandView">
+                <div
+                  class="row no-gutters">
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <small class="text-muted"> Reasons </small>
+
+                      <div class="d-flex gap-sm flex-wrap">
+                        <template
+                          x-for="(reason, reasonsIndex) in workItem.Reasons"
+                          :key="`reason-${reasonsIndex}`">
+                          <span x-text="reason" class=" badge badge-info-light badge-pill"></span>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </template>
+              <template x-if="workItem.Comments && workItem.options.expandView">
+                <div
+                  class="row no-gutters">
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <small class="text-muted"> Comments </small>
+                      
+                      <div class="d-flex gap flex-wrap commentsHeigh mr-2 border p-2 rounded">
+                        <template
+                          x-for="(comment, commentsIndex) in workItem.Comments"
+                          :key="`comment-${commentsIndex}`">
+                          <span x-text="comment.Comment"></span>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </template>
+              
+              <template x-if="workItem.options.viewDetails && workItem.Details">
+                <div
+                  class="row no-gutters border-top pt-2"
+                  >
+                  <div class="pr-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Deleniti qui aliquam explicabo obcaecati dolor. Earum, ea.
+                    Veniam, explicabo. Iure magnam ea in maxime laborum. Quis,
+                    magnam. Quaerat vitae optio doloribus.
+                  </div>
+                </div>
+              </template>
+              <div x-show="workItem.Details">
+                <button class="btn btn-sm btn-link px-0" @click="workItem.options.viewDetails = !workItem.options.viewDetails">
+                  <span
+                    x-show="!workItem.options.viewDetails"
+                    >
+                    Show
+                    </span>
+                    <span
+                    x-show="workItem.options.viewDetails"
+                    >
+                    Hide
+                    </span>
+                    details
+                </button>
+              </div>
+              <template x-if="!workItem.Outcome" >
+                <div
+                class="d-flex justify-content-between pr-2 pt-2">
+                <div></div>
+                <div class="d-flex align-items-center">
+                  <a
+                    tabindex="0"
+                    class="btn btn-sm btn-neutral square d-flex align-items-center rounded-circle"
+                    role="button"
+                    data-html="true"
+                    data-toggle="popover"
+                    data-trigger="focus"
+                    title="Info"
+                    data-content="<div class='popoverHeigh text-left p-1'><em>This is the fist description</em><br><b>Subtitle</b> <p> Lorem ipsum dolor sit, ame</p>">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-info-circle"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </a>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Button group with nested dropdown">
+                    <!-- <button type="button" class="btn btn-primary">1</button>
+                  <button type="button" class="btn btn-primary">2</button> -->
+
+                    <div class="btn-group" role="group">
+                      <button
+                        type="button"
+                        class="btn  btn-outline-primary dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-expanded="false">
+                        Complete AML
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"
+                          >Complete something else</a
+                        >
+                        <a class="dropdown-item" href="#"
+                          >Complete something else</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              </template>
+
+            </main>
+          </div>
+        </template>
+
+       
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+    $(function () {
+      // Enables popover
+      $("[data-toggle=popover]").popover();
+    });
+  </script>
+{{ end }}

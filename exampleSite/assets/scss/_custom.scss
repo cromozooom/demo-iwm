@@ -657,6 +657,41 @@ $paddingCath: 1rem;
   }
 }
 
+.dropdown-toggle__noShevron::after {
+  content: none !important;
+}
+
+.border-left-double {
+  border-left-style: solid;
+  border-left-width: 4px;
+  border-left-color: $info;
+}
+
+.statusMarker {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 5px;
+    border-radius: 0 5px 5px 0;
+    background: $gray-200;
+    height: calc(100% - 20px);
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  &-success::before {
+    background: $success-light;
+  }
+  &-info::before {
+    background: $info-light;
+  }
+  &-danger::before {
+    background: $danger-light;
+  }
+}
+
 // body * {
 //   outline: 1px solid red;
 // }

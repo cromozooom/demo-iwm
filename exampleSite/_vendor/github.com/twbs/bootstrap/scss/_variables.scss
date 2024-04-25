@@ -72,6 +72,10 @@ $warning: $yellow !default;
 $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
+$success-light: #d0ecd6;
+$info-light: #ccebef;
+$warning-light: #fff1c8;
+$danger-light: #f7d3d6;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(

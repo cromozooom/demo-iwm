@@ -55,6 +55,11 @@ $danger: #dc3545;
 $light: #f8f9fa;
 $dark: #343a40;
 
+$success-light: #d0ecd6;
+$info-light: #ccebef;
+$warning-light: #fff1c8;
+$danger-light: #f7d3d6;
+
 $brand-1: #fafcfc;
 $brand-2: #f5f9f9;
 $brand-3: #f0f6f6;
@@ -79,9 +84,10 @@ $brand-12: #133c3b;
   //   $highlight: hsl(201, 35%, 31%);
   $secondary: hsl(172, 43%, 73%);
   $brand: hsl(178, 31%, 42%);
-  $h: 201;
-  $s: 35;
-  $l: 31;
+  $primary: hsl(178, 100%, 32%);
+  $h: 178;
+  $s: 100;
+  $l: 32;
   $brand-1: #fafcfc;
   $brand-2: #f5f9f9;
   $brand-3: #f0f6f6;
@@ -104,6 +110,11 @@ $brand-12: #133c3b;
   $info: #3457a2;
   $warning: #ffcc00;
   $danger: #f15e5f;
+
+  $info: #17a2b8;
+  $success: #28a745;
+  $warning: #ffc107;
+  $danger: #dc3545;
 } @else if $brandName == "dove" {
   // $highlight: hsl(46, 100%, 50%);
   $brand: hsl(42, 56%, 68%);
@@ -319,6 +330,10 @@ $theme-colors: (
   "danger": $danger,
   "light": $light,
   "dark": $dark,
+  "info-light": $info-light,
+  "success-light": $success-light,
+  "warning-light": $warning-light,
+  "danger-light": $danger-light,
 );
 
 // $link-color: $primary;
