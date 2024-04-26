@@ -52,7 +52,7 @@
         <template
           x-for="(workItem, workItemIndex) in data"
           :key="`workItem-${workItemIndex}`">
-          <div class="d-flex bg-white border-left border-right statusMarker"
+          <div x-data="{ showCommentBox: false }" class="d-flex bg-white border-left border-right statusMarker"
 
             :class="[
             workItemIndex ? 'border-bottom' : 'border-top border-bottom rounded-top',
@@ -60,19 +60,68 @@
             ]
             "
           >
-            <side class="px-3 pt-2">
+            <side class="px-3 pt-2 d-flex flex-column gap-sm">
               <!-- <span x-text="workItem.Details.length"></span> -->
               <!-- <span x-text="workItemIndex"></span>
               <span x-text="workItem.Outcome.Sate"></span> -->
               <div
-              class="square d-flex badge badge-pill rounded-circle p-2"
+              class="square d-flex badge badge-pill rounded-circle p-2 align-items-center justify-content-center"
               :class="workItem.Outcome ? `badge-${workItem.Outcome.State}-light` : 'badge-info-light'">
               <!-- <use x-bind:xlink:href="`#${workItem.Icon}`"></use> -->
               <!-- <use x-bind:xlink:href="`#${workItem.Icon}`"></use> -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
-                <use xlink:href="#bookmark" />
-              </svg>
+                <svg x-show="workItem.Icon === 'bookmark'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                  <use  xlink:href="#bookmark" />
+                </svg>
+                <svg x-show="workItem.Icon === 'home'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                  <use  xlink:href="#home" />
+                </svg>
 
+              </div>
+              <div class="d-flex flex-column">
+
+                <button type="button" @click="showCommentBox = !showCommentBox" class="btn btn-link square rounded-circle  bg-light">
+                  <svg width="16"
+                  height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentcolor"><path d="M208 416c0-26.5-21.5-48-48-48H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H448c8.8 0 16 7.2 16 16V352c0 8.8-7.2 16-16 16H309.3c-10.4 0-20.5 3.4-28.8 9.6L208 432V416zm-.2 76.2l.2-.2 101.3-76H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h48 48v48 4 .3 6.4V496c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L202.7 496l5.1-3.8zM224 128v48H176c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h48v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240h48c8.8 0 16-7.2 16-16V192c0-8.8-7.2-16-16-16H288V128c0-8.8-7.2-16-16-16H240c-8.8 0-16 7.2-16 16z"/></svg>
+                </button>
+  
+                <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Button group with nested dropdown">
+                      <div class="btn-group" role="group">
+                        <button
+                          type="button"
+                          class="btn btn-link square rounded-circle dropdown-toggle bg-light dropdown-toggle__noShevron"
+                          data-toggle="dropdown"
+                          aria-expanded="false">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-three-dots"
+                            viewBox="0 0 16 16">
+                            <path
+                              d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                          </svg>
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="d-flex flex-column">
+                            <button
+                            x-show="workItem.Outcome.Title.length"
+                            @click="workItem.options.expandView = !workItem.options.expandView"
+                            class="dropdown-item">
+                              <span x-show="!workItem.options.expandView"> Expand this</span>
+                              <span x-show="workItem.options.expandView"> Compact this</span>
+                            </button>
+                          </div>
+                          
+                          <button class="dropdown-item" x-show="hasAnyOptionTrue()" @click="setAllExpandViewToFalse()">Compact All</button>
+                          <button class="dropdown-item"  x-show="hasAnyOptionFalse()" @click="setAllExpandViewToTrue()">Expand All</button>
+              
+                        </div>
+                      </div>
+                    </div>
               </div>
             </side>
             <main class="flex-grow-1 d-flex flex-column gap-sm pb-2">
@@ -82,7 +131,7 @@
                   <!-- <span x-text="workItem.options.viewDetails"></span> -->
                   <strong x-text="workItem.Title"></strong>
                 </div>
-                <div>
+                <!-- <div>
                   <div
                     class="btn-group"
                     role="group"
@@ -121,7 +170,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div
                 class="row no-gutters">
@@ -204,6 +253,25 @@
                   </div>
                 </div>
               </template>
+              <template x-if="showCommentBox">
+                <div class="d-flex flex-column w-100 pr-2">
+                  <div class="form-group mb-2 w-100">
+                    <label for="exampleFormControlTextarea1">Add your comments</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div class="form-group mb-0 w-100 d-flex justify-content-between">
+                    <div>
+                      <button type="submit" @click="showCommentBox = !showCommentBox" class="btn btn-link bg-light">Cancel</button>
+                    </div>
+                    <div>
+
+                      <button type="submit" class="btn btn-outline-primary">Add comment</button>
+                    </div>
+                  </div>
+                  
+                </div>
+
+              </template>
               <template x-if="workItem.Comments && workItem.options.expandView">
                 <div
                   class="row no-gutters">
@@ -250,15 +318,23 @@
                     details
                 </button>
               </div>
-              <template x-if="!workItem.Outcome" >
+              
+              <div class="d-flex">
+
+              </div>
+              <div
+              class="d-flex justify-content-between pr-2 ">
+              <div>
+                
+
+              </div>
+              <template x-if="!workItem.Outcome">
+              <div class="d-flex align-items-center">
                 <div
-                class="d-flex justify-content-between pr-2 pt-2">
-                <div></div>
-                <div class="d-flex align-items-center">
-                  <div
-                  class="btn-group"
-                  role="group"
-                  aria-label="Button group with nested dropdown">
+                class="btn-group"
+                role="group"
+                aria-label="Button group with nested dropdown">
+
                   <a
                   tabindex="0"
                   class="btn btn-sm btn-primary d-flex align-items-center "
@@ -281,9 +357,9 @@
                         d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
                       </svg>
                     </a>
-                    <!-- <button type="button" class="btn btn-primary">1</button>
-                  <button type="button" class="btn btn-primary">2</button> -->
-                  <div class="btn-group" role="group">
+                
+                <!-- <button type="button" class="btn btn-primary">2</button> -->
+                  <div  class="btn-group" role="group">
                     <button
                       type="button"
                       class="btn  btn-primary dropdown-toggle"
@@ -300,12 +376,12 @@
                       >
                     </div>
                   </div>
+                </template>
 
-                </div>
-                </div>
               </div>
-
-              </template>
+              </div>
+            </div>
+             
 
             </main>
           </div>
