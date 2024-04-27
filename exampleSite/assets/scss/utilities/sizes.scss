@@ -8,6 +8,21 @@ html {
   overflow-y: auto;
   scrollbar-width: thin;
 }
+.commentsHeighSummary {
+  // scrollbar-width: thin;
+  // max-height: 3rem;
+  // overflow-y: auto;
+
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .popoverHeigh {
   max-height: 10rem;
   overflow-y: auto;

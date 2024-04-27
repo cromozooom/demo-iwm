@@ -1,60 +1,67 @@
 {{ define "main" }}
-  {{ $jsonData := getJSON "data/workItems.json" }}
-  {{ $jsonDataAlpine := readFile "data/workItems.json" }}
-
-  
-
-
+{{ $jsonData := getJSON "data/workItems.json" }}
+{{ $jsonDataAlpine := readFile "data/workItems.json" }}
+<svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-none" viewBox="0 0 16 16">
+  <symbol fill="currentColor" id="arrow-up" viewBox="0 0 448 512">
+    <path d="M6.1 261.9L25.9 281.7c4.7 4.7 12.3 4.7 17 0L198 126.6V468c0 6.6 5.4 12 12 12h28c6.6 0 12-5.4 12-12V126.6l155.1 155.1c4.7 4.7 12.3 4.7 17 0l19.8-19.8c4.7-4.7 4.7-12.3 0-17L232.5 35.5c-4.7-4.7-12.3-4.7-17 0L6.1 244.9c-4.7 4.7-4.7 12.3 0 17z"/>
+  </symbol>
+  <symbol fill="currentColor" id="arrows-v" viewBox="0 0 256 512">
+    <path d="M160 406.2V105.8l43.7 46.2c9.3 9.8 24.8 10 34.4 .5l10.8-10.8c9.4-9.4 9.4-24.6 0-33.9L150.6 9.4c-12.5-12.5-32.8-12.5-45.3 0L7 107.7c-9.4 9.4-9.4 24.6 0 33.9l10.8 10.8c9.6 9.6 25.1 9.3 34.4-.5L96 105.8v300.4l-43.7-46.2c-9.3-9.8-24.8-10-34.4-.5l-10.8 10.8c-9.4 9.4-9.4 24.6 0 33.9l98.3 98.3c12.5 12.5 32.8 12.5 45.3 0l98.3-98.3c9.4-9.4 9.4-24.6 0-33.9l-10.8-10.8c-9.6-9.6-25.1-9.3-34.4 .5L160 406.2z"/>
+  </symbol>
+  <symbol fill="currentColor" id="bookmark" viewBox="0 0 384 512">
+    <path d="M0 48C0 21.5 21.5 0 48 0l0 48V441.4l130.1-92.9c8.3-6 19.6-6 27.9 0L336 441.4V48H48V0H336c26.5 0 48 21.5 48 48V488c0 9-5 17.2-13 21.3s-17.6 3.4-24.9-1.8L192 397.5 37.9 507.5c-7.3 5.2-16.9 5.9-24.9 1.8S0 497 0 488V48z"/>
+  </symbol>
+  <symbol fill="currentColor" id="home" viewBox="0 0 576 512">
+    <path d="M272.5 5.7c9-7.6 22.1-7.6 31.1 0l264 224c10.1 8.6 11.4 23.7 2.8 33.8s-23.7 11.3-33.8 2.8L512 245.5V432c0 44.2-35.8 80-80 80H144c-44.2 0-80-35.8-80-80V245.5L39.5 266.3c-10.1 8.6-25.3 7.3-33.8-2.8s-7.3-25.3 2.8-33.8l264-224zM288 55.5L112 204.8V432c0 17.7 14.3 32 32 32h48V312c0-22.1 17.9-40 40-40H344c22.1 0 40 17.9 40 40V464h48c17.7 0 32-14.3 32-32V204.8L288 55.5zM240 464h96V320H240V464z"/>
+  </symbol>
+  <symbol fill="currentColor" id="project" viewBox="0 0 576 512">
+    <path d="M136 80c4.4 0 8 3.6 8 8v80c0 4.4-3.6 8-8 8H56c-4.4 0-8-3.6-8-8V88c0-4.4 3.6-8 8-8h80zM56 32C25.1 32 0 57.1 0 88v80c0 30.9 25.1 56 56 56h80c5.6 0 11.1-.8 16.2-2.4l75.9 101.2c-2.7 6.5-4.1 13.7-4.1 21.2v80c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56V344c0-30.9-25.1-56-56-56H280c-5.6 0-11.1 .8-16.2 2.4L187.9 189.2c2.7-6.5 4.1-13.7 4.1-21.2V152H384v16c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56V88c0-30.9-25.1-56-56-56H440c-30.9 0-56 25.1-56 56v16H192V88c0-30.9-25.1-56-56-56H56zM360 336c4.4 0 8 3.6 8 8v80c0 4.4-3.6 8-8 8H280c-4.4 0-8-3.6-8-8V344c0-4.4 3.6-8 8-8h80zM440 80h80c4.4 0 8 3.6 8 8v80c0 4.4-3.6 8-8 8H440c-4.4 0-8-3.6-8-8V88c0-4.4 3.6-8 8-8z"/>
+  </symbol>
+  <symbol fill="currentColor" id="comment-alt-medical" viewBox="0 0 512 512">
+    <path d="M448 0H64A64 64 0 0 0 0 64v288a64 64 0 0 0 64 64h96v84a12 12 0 0 0 12.1 12 11.8 11.8 0 0 0 7.1-2.4L304 416h144a64 64 0 0 0 64-64V64a64 64 0 0 0 -64-64zm16 352a16 16 0 0 1 -16 16H288l-12.8 9.6L208 428v-60H64a16 16 0 0 1 -16-16V64a16 16 0 0 1 16-16h384a16 16 0 0 1 16 16zM344 176h-56v-56a8 8 0 0 0 -8-8h-48a8 8 0 0 0 -8 8v56h-56a8 8 0 0 0 -8 8v48a8 8 0 0 0 8 8h56v56a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-56h56a8 8 0 0 0 8-8v-48a8 8 0 0 0 -8-8z"/>
+  </symbol>
+  <symbol fill="currentColor" id="comment-alt-edit" viewBox="0 0 512 512">
+    <path d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288zM164.9 243.2l-4.8 42.8c-.6 5.7 4.2 10.6 10 10l42.8-4.8 85.5-85.5-48-48-85.5 85.5zm159.3-133.9c-7-7-18.4-7-25.4 0l-28.3 28.3 48 48 28.3-28.3c7-7 7-18.4 0-25.4l-22.6-22.6z"/>
+  </symbol>
+  <symbol fill="currentColor" id="bezier" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+      <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.52 6.52 0 0 0 1.814 9H2.5q.186 0 .358.043a5.52 5.52 0 0 1 3.185-3.185A1.5 1.5 0 0 1 6 5.5zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.52 6.52 0 0 1 2.72 3.5H13.5q-.185 0-.358.043a5.52 5.52 0 0 0-3.185-3.185"/>
+  </symbol>
+</svg>
 
 
   <div
     class="container"
     x-data="{ data: {{ $jsonDataAlpine | safeJS }}
     , showCompactView: true,
-    setAllExpandViewToFalse() {
-      this.data.forEach(item => {
-        item.options.expandView = false;
-        item.options.viewDetails = false;
-        item.options.showCommentBox = false;
-      });
+    hasAnyCommentsSummaryTrue() {
+      console.log('anyTrue:' +  this.data.some(item => item.options.commentsSummary === true))
+      return this.data.some(item => item.options.commentsSummary === true) ;
     },
-    setAllExpandViewToTrue() {
-      this.data.forEach(item => {
-        item.options.expandView = true;
-      });
-    },
-    hasAnyOptionTrue() {
-      return this.data.some(item => item.options.expandView === true) || this.data.some(item => item.options.viewDetails === true) ;
-    },
-    hasAnyOptionFalse() {
-      return this.data.some(item => item.options.expandView === false);
-    }
-  }">
-  <!-- hasAnyOptionTrue() {
-    return this.data.some(item => Object.values(item.options).some(value => value === true));
+    hasAnyCommentsSummaryFalse() {
+      console.log('anyFalse:' + this.data.some(item => item.options.commentsSummary === false))
+      return this.data.some(item => item.options.commentsSummary === false);
+    }, 
+    setAllCommentSummaryTrue() {
+    this.data.forEach(item => {
+      item.options.commentsSummary = true;
+      item.options.showCommentBox = false;
+    });
   },
-  hasAnyOptionFalse() {
-    return this.data.some(item => Object.values(item.options).some(value => value === false));
-  } -->
-    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-none" viewBox="0 0 16 16">
-      <symbol fill="currentColor" id="bookmark" viewBox="0 0 16 16">
-        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
-      </symbol>
-      <symbol fill="currentColor" id="home" viewBox="0 0 16 16">
-          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-      </symbol>
-      <symbol fill="currentColor" id="bezier" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
-          <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.52 6.52 0 0 0 1.814 9H2.5q.186 0 .358.043a5.52 5.52 0 0 1 3.185-3.185A1.5 1.5 0 0 1 6 5.5zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.52 6.52 0 0 1 2.72 3.5H13.5q-.185 0-.358.043a5.52 5.52 0 0 0-3.185-3.185"/>
-      </symbol>
-    </svg>
+  setAllCommentSummaryFalse() {
+    this.data.forEach(item => {
+      item.options.commentsSummary = false;
+    });
+  },
+  }">
+  <!-- 
+-->
     <div class="row">
-      
       <div class="col-6 d-flex flex-column  pb-2">
         <div>
           <div class="btn-group">
-            <button class="btn btn-sm btn-link" x-show="hasAnyOptionTrue()" @click="setAllExpandViewToFalse()">Compact All</button>
-            <button class="btn btn-sm btn-link"  x-show="hasAnyOptionFalse()" @click="setAllExpandViewToTrue()">Expand All</button>
+            <button class="btn btn-sm btn-link" x-show="hasAnyCommentsSummaryFalse()" @click="setAllCommentSummaryTrue()">Compact All</button>
+            <button class="btn btn-sm btn-link"  x-show="hasAnyCommentsSummaryTrue()" @click="setAllCommentSummaryFalse()">Expand All</button>
           </div>
         </div>
         <template
@@ -68,118 +75,92 @@
             ]
             "
           >
-            <side class="px-3 pt-2 d-flex flex-column gap-sm">
-              <!-- <span x-text="workItem.Details.length"></span> -->
-              <!-- <span x-text="workItemIndex"></span>
-              <span x-text="workItem.Outcome.Sate"></span> -->
-              <div
+          <side class="px-3 py-2 d-flex flex-column gap-sm">
+            <!-- <span x-text="workItem.options.commentsSummary"></span> -->
+            <div
               class="square d-flex badge badge-pill rounded-circle p-2 align-items-center justify-content-center"
               :class="workItem.Outcome ? `badge-${workItem.Outcome.State}-light` : 'badge-info-light'">
               <!-- <use x-bind:xlink:href="`#${workItem.Icon}`"></use> -->
               <!-- <use x-bind:xlink:href="`#${workItem.Icon}`"></use> -->
-                <svg x-show="workItem.Icon === 'bookmark'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+              <svg x-show="workItem.Icon === 'bookmark'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
                   <use  xlink:href="#bookmark" />
-                </svg>
-                <svg x-show="workItem.Icon === 'home'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
-                  <use  xlink:href="#home" />
-                </svg>
+              </svg>
+              <svg x-show="workItem.Icon === 'home'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                <use  xlink:href="#home" />
+              </svg>
+              <svg x-show="workItem.Icon === 'project'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                <use  xlink:href="#project" />
+              </svg>
+            </div>
 
-              </div>
-              <div class="d-flex flex-column">
+            <div class="d-flex flex-column">
 
-                <button type="button" @click="workItem.options.showCommentBox = !workItem.options.showCommentBox" class="btn btn-link square rounded-circle  bg-light">
-                  <svg width="16"
-                  height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentcolor"><path d="M208 416c0-26.5-21.5-48-48-48H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H448c8.8 0 16 7.2 16 16V352c0 8.8-7.2 16-16 16H309.3c-10.4 0-20.5 3.4-28.8 9.6L208 432V416zm-.2 76.2l.2-.2 101.3-76H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h48 48v48 4 .3 6.4V496c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L202.7 496l5.1-3.8zM224 128v48H176c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h48v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240h48c8.8 0 16-7.2 16-16V192c0-8.8-7.2-16-16-16H288V128c0-8.8-7.2-16-16-16H240c-8.8 0-16 7.2-16 16z"/></svg>
-                </button>
-  
-                <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Button group with nested dropdown">
-                      <div class="btn-group" role="group">
-                        <button
-                          type="button"
-                          class="btn btn-link square rounded-circle dropdown-toggle bg-light dropdown-toggle__noShevron"
-                          data-toggle="dropdown"
-                          aria-expanded="false">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-three-dots"
-                            viewBox="0 0 16 16">
-                            <path
-                              d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                          </svg>
-                        </button>
-                        <div class="dropdown-menu">
-                          <div class="d-flex flex-column">
-                            <button
-                            x-show="workItem.Outcome.Title.length"
-                            @click="workItem.options.expandView = !workItem.options.expandView"
-                            class="dropdown-item">
-                              <span x-show="!workItem.options.expandView"> Expand this</span>
-                              <span x-show="workItem.options.expandView"> Compact this</span>
-                            </button>
-                          </div>
-                          
-                          <button class="dropdown-item" x-show="hasAnyOptionTrue()" @click="setAllExpandViewToFalse()">Compact All</button>
-                          <button class="dropdown-item"  x-show="hasAnyOptionFalse()" @click="setAllExpandViewToTrue()">Expand All</button>
-              
-                        </div>
-                      </div>
-                    </div>
-              </div>
-            </side>
-            <main class="flex-grow-1 d-flex flex-column gap-sm pb-2">
+              <button x-show="!workItem.Comment.length" type="button" @click="workItem.options.showCommentBox = !workItem.options.showCommentBox" class="btn btn-link square rounded-circle bg-light"
+              data-toggle="tooltip"  title="Add Comments"
+              >
+                <svg x-show="!workItem.Comment.length" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                  <use  xlink:href="#comment-alt-medical" />
+                </svg>
+                <svg x-show="workItem.Comment.length" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                  <use  xlink:href="#comment-alt-edit" />
+                </svg>
+              </button>
+
               <div
+                class="btn-group"
+                role="group"
+                aria-label="Button group with nested dropdown">
+                <div class="btn-group" role="group" x-show="workItem.Comment.length"> 
+                  <button
+                    type="button"
+                    class="btn btn-link square rounded-circle dropdown-toggle bg-light dropdown-toggle__noShevron"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                    
+                    >
+                    
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                    </svg>
+                  </button>
+                  <div class="dropdown-menu" >
+                    <div class="d-flex flex-column">
+                      <button
+                      
+                      @click="workItem.options.commentsSummary = !workItem.options.commentsSummary"
+                      class="dropdown-item">
+                        <span x-show="workItem.options.commentsSummary"> Expand this</span>
+                        <span x-show="!workItem.options.commentsSummary"> Compact this</span>
+                      </button>
+                    </div>
+                    
+                    <button class="dropdown-item" x-show="hasAnyCommentsSummaryFalse()" @click="setAllCommentSummaryTrue()">Compact All</button>
+                    <button class="dropdown-item"  x-show="hasAnyCommentsSummaryTrue()" @click="setAllCommentSummaryFalse()">Expand All</button>
+
+                    <!-- <button class="dropdown-item" x-show="hasAnyCommentsSummaryTrue()" @click="setAllCommentSummaryFalse()">Compact All</button>
+                    <button class="dropdown-item"  x-show="hasAnyCommentsSummaryFalse()" @click="setAllCommentSummaryFalse()">Expand All</button> -->
+        
+                  </div>
+                </div>
+              </div>
+            </div>
+          </side>
+          <main class="flex-grow-1 d-flex flex-column gap-sm pb-2">
+            <div
                 class="d-flex justify-content-between align-items-start w-100 ">
                 <div class="pt-2">
-                  <!-- <span x-text="workItem.options.viewDetails"></span> -->
                   <strong x-text="workItem.Title"></strong>
                 </div>
-                <!-- <div>
-                  <div
-                    class="btn-group"
-                    role="group"
-                    aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                      <button
-                        type="button"
-                        class="btn btn-link dropdown-toggle dropdown-toggle__noShevron"
-                        data-toggle="dropdown"
-                        aria-expanded="false">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-three-dots"
-                          viewBox="0 0 16 16">
-                          <path
-                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                        </svg>
-                      </button>
-                      <div class="dropdown-menu">
-                        <div class="d-flex flex-column">
-                          <button
-                          x-show="workItem.Outcome.Title.length"
-                          @click="workItem.options.expandView = !workItem.options.expandView"
-                          class="dropdown-item">
-                            <span x-show="!workItem.options.expandView"> Expand this</span>
-                            <span x-show="workItem.options.expandView"> Compact this</span>
-                          </button>
-                        </div>
-                        
-                        <button class="dropdown-item" x-show="hasAnyOptionTrue()" @click="setAllExpandViewToFalse()">Compact All</button>
-                        <button class="dropdown-item"  x-show="hasAnyOptionFalse()" @click="setAllExpandViewToTrue()">Expand All</button>
-            
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
+
+              <!-- FIRST ROW -->
               <div
                 class="row no-gutters">
                 <div class="col-6">
@@ -218,7 +199,8 @@
                   </template>
                 </div>
               </div>
-              <template x-if="workItem.options.expandView && workItem.Completed && workItem.By">
+              
+              <template x-if=" workItem.Completed && workItem.By">
                 <div
                   class="row no-gutters">
                   <template x-if="workItem.Completed">
@@ -244,7 +226,7 @@
                 </div>
               </template>
 
-              <template x-if="workItem.Reasons && workItem.options.expandView">
+              <template x-if="workItem.Reasons ">
                 <div
                   class="row no-gutters">
                   <div class="col-12">
@@ -261,11 +243,21 @@
                   </div>
                 </div>
               </template>
+
               <template x-if="workItem.options.showCommentBox">
-                <div class="d-flex flex-column w-100 pr-2">
+                <div class="d-flex flex-column w-100 pr-2 border-top">
                   <div class="form-group mb-2 w-100">
-                    <label for="exampleFormControlTextarea1">Add your comments</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="exampleFormControlTextarea1 " class="mb-2 mt-1">
+                      <small>
+
+                        <span x-show="workItem.Comment.length">Edit</span>  
+                        <span x-show="!workItem.Comment.length">Add</span>  
+                        comments
+                      </small>
+                    </label>
+                    <textarea class="form-control w-100" id="exampleFormControlTextarea1" 
+                    x-model="workItem.Comment"
+                    rows="4"></textarea>
                   </div>
                   <div class="form-group mb-0 w-100 d-flex justify-content-between">
                     <div>
@@ -273,129 +265,81 @@
                     </div>
                     <div>
 
-                      <button type="submit" class="btn btn-outline-primary">Add comment</button>
+                      <button
+                      @click="workItem.options.showCommentBox = !workItem.options.showCommentBox"
+                      type="submit" class="btn btn-outline-primary">
+                        <span x-show="workItem.Comment.length">Save</span>  
+                      <span x-show="!workItem.Comment.length">Add</span>  
+                       comment</button>
                     </div>
                   </div>
                   
                 </div>
 
               </template>
-              <template x-if="workItem.Comments && workItem.options.expandView">
-                <div
-                  class="row no-gutters">
-                  <div class="col-12">
-                    <div class="d-flex flex-column">
-                      <small class="text-muted"> Comments </small>
-                      
-                      <div class="d-flex gap flex-wrap commentsHeigh mr-2 border p-2 rounded">
-                        <template
-                          x-for="(comment, commentsIndex) in workItem.Comments"
-                          :key="`comment-${commentsIndex}`">
-                          <span x-text="comment.Comment"></span>
-                      </template>
-                    </div>
-                  </div>
-                </div>
-              </template>
-              
-              <template x-if="workItem.options.viewDetails && workItem.Details">
-                <div
-                  class="row no-gutters pt-2"
-                  >
-                  <span class="text-muted">Details</span>
-                  <div class="pr-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Deleniti qui aliquam explicabo obcaecati dolor. Earum, ea.
-                    Veniam, explicabo. Iure magnam ea in maxime laborum. Quis,
-                    magnam. Quaerat vitae optio doloribus.
-                  </div>
-                </div>
-              </template>
-              <div x-show="workItem.Details">
-                <button class="btn btn-sm btn-link px-0" @click="workItem.options.viewDetails = !workItem.options.viewDetails">
-                  <span
-                    x-show="!workItem.options.viewDetails"
-                    >
-                    Show
-                    </span>
-                    <span
-                    x-show="workItem.options.viewDetails"
-                    >
-                    Hide
-                    </span>
-                    details
-                </button>
-              </div>
-              <div
-              class="d-flex justify-content-between pr-2 ">
-              <div>
-                
 
-              </div>
-              <template x-if="!workItem.Outcome">
-              <div class="d-flex align-items-center">
-                <div
-                class="btn-group"
-                role="group"
-                aria-label="Button group with nested dropdown">
+              <template x-if="workItem.Comment.length ">
+                <template x-if="!workItem.options.showCommentBox">
+                  <div
+                    class="row no-gutters">
+                    <div class="col-12">
+                      <div class="d-flex flex-column border-top">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <small class="text-muted"> Comments
+                            <!-- <span x-text="workItem.options.showCommentBox"></span>   -->
+                            <!-- <span x-text="workItem.options.commentsSummary"></span>   -->
+                          </small>
+                          <div>
+                            <div class="btn-group mr-2">
 
-                  <a
-                  tabindex="0"
-                  class="btn btn-sm btn-primary d-flex align-items-center "
-                  role="button"
-                      data-html="true"
-                      data-toggle="popover"
-                      data-trigger="focus"
-                      title="Info"
-                      data-content="<div class='popoverHeigh text-left p-1'><em>This is the fist description</em><br><b>Subtitle</b> <p> Lorem ipsum dolor sit, ame</p>">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        class="bi bi-info-circle"
-                        viewBox="0 0 16 16">
-                        <path
-                          d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                        <path
-                        d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                      </svg>
-                    </a>
-                
-                <!-- <button type="button" class="btn btn-primary">2</button> -->
-                  <div  class="btn-group" role="group">
-                    <button
-                      type="button"
-                      class="btn  btn-primary dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-expanded="false">
-                      Complete AML
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#"
-                        >Complete something else</a
-                      >
-                      <a class="dropdown-item" href="#"
-                        >Complete something else</a
-                      >
+                              <button type="button" @click="workItem.options.showCommentBox = !workItem.options.showCommentBox" class="btn btn-sm btn-link "
+                              
+                              >
+                                <svg x-show="!workItem.Comment.length" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                                  <use  xlink:href="#comment-alt-medical" />
+                                </svg>
+                                <svg x-show="workItem.Comment.length" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                                  <use  xlink:href="#comment-alt-edit" />
+                                </svg>
+                              </button>
+                              <button
+                                @click="workItem.options.commentsSummary = !workItem.options.commentsSummary"
+                                class="btn btn-sm btn-link"
+                                
+                                >
+                                  <svg x-show="workItem.options.commentsSummary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                                    <use  xlink:href="#arrows-v" />
+                                  </svg>
+                                  <svg  x-show="!workItem.options.commentsSummary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier" viewBox="0 0 16 16">
+                                    <use  xlink:href="#arrow-up" />
+                                  </svg>
+                              </button>
+  
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex gap flex-wrap mr-2 xborder xp-2 xrounded">
+
+                          <span class=""
+                          x-text="workItem.Comment"
+                          :class="workItem.options.commentsSummary ? 'commentsHeighSummary' : 'commentsHeigh'"
+                          >
+                            <!-- <span ></span> -->
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </template>
-
-              </div>
-              </div>
-            </div>
-             
-
-            </main>
-          </div>
+              </template>
+          </main>
+        </div>
         </template>
 
-       
       </div>
     </div>
   </div>
-
+  
   
   <script>
     $(function () {
